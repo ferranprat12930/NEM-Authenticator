@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "NEM Authenticator",
+  "short_name": "NEM Authenticator",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
