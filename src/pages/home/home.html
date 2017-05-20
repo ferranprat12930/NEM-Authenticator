@@ -6,9 +6,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let unconfirmedTransaction of unconfirmedTransactions?.data">
+      <p>To {{unconfirmedTransaction.transaction.otherTrans.recipient}}</p>
+      <h1>Amount: {{unconfirmedTransaction.transaction.otherTrans.amount | xem}} XEM</h1>
+    </button>
+  </ion-list>
 </ion-content>
