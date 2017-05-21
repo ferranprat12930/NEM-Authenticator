@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {NavController} from "ionic-angular";
 import {UnconfirmedTransactions} from "nem-library/dist/src/models/UnconfirmedTransactions";
 import {AccountHttp} from "nem-library";
-import {Observable} from "@reactivex/rxjs";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'page-home',
