@@ -9,7 +9,9 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let unconfirmedTransaction of unconfirmedTransactions?.data">
+    <button ion-item
+            *ngFor="let unconfirmedTransaction of unconfirmedTransactions?.data"
+            (click)="cosignTransaction(unconfirmedTransaction)">
       <p>To {{unconfirmedTransaction.transaction.otherTrans.recipient}}</p>
       <h1>Amount: {{unconfirmedTransaction.transaction.otherTrans.amount | xem}} XEM</h1>
     </button>
