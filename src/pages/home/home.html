@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="unconfirmedTransactions?.data.length != 0">
     <button ion-item
             *ngFor="let unconfirmedTransaction of unconfirmedTransactions?.data"
             (click)="cosignTransaction(unconfirmedTransaction)">
@@ -16,4 +16,13 @@
       <h1>Amount: {{unconfirmedTransaction.transaction.otherTrans.amount | xem}} XEM</h1>
     </button>
   </ion-list>
+  <ion-grid *ngIf="unconfirmedTransactions?.data.length == 0">
+    <ion-row align-items-center text-center>
+      <ion-col>
+        <h1 class="smile-face">:)</h1>
+        <br/>
+        <h3>You have no pending transactions</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
