@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {Loading, LoadingController, NavController} from "ionic-angular";
+import {Loading, LoadingController, NavController, ToastController} from "ionic-angular";
 import {
   Account,
   AccountHttp,
@@ -21,7 +21,8 @@ export class HomePage implements OnInit {
   loader: Loading;
 
   constructor(public navCtrl: NavController,
-              private loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              public toastCtrl: ToastController) {
     this.loader = loadingCtrl.create({
       content: "Please wait..."
     });
@@ -44,6 +45,14 @@ export class HomePage implements OnInit {
   }
 
   cosignTransaction(unconfirmedTransaction: UnconfirmedTransaction) {
+    if (unconfirmedTransaction.transaction.signatures.length == 0) {
+      this.signTransaction(unconfirmedTransaction);
+    } else {
+      this.showAlreadyConfirmedTransactionToast();
+    }
+  }
+
+  private signTransaction(unconfirmedTransaction: UnconfirmedTransaction) {
     const transactionHttp = new TransactionHttp({domain: 'bob.nem.ninja'});
     const account = new Account(this.address,
       '5d5d829644625eb6554273f70b1187d904761fab4c5c0e5f01666f6725e9278b',
@@ -62,6 +71,14 @@ export class HomePage implements OnInit {
         console.log(x);
       }
     );
+  }
+
+  private showAlreadyConfirmedTransactionToast() {
+    let toast = this.toastCtrl.create({
+      message: "transaction already signed, pending to be included in a block",
+      duration: 3000
+    });
+    toast.present();
   }
 
 }
