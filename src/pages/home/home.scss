@@ -15,4 +15,25 @@ page-home {
   ion-row {
     flex: 1;
   }
+
+  ion-label {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .signedTransaction {
+    background-color: #16C60C;
+  }
+
+  .signedTransaction ion-card-header {
+    color: white;
+  }
+
+  .signedTransaction ion-card-content p {
+    color: whitesmoke;
+  }
+
+  .signedTitle {
+    color: whitesmoke;
+  }
 }

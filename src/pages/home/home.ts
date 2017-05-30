@@ -1,7 +1,13 @@
 import {Component, OnInit} from "@angular/core";
 import {Loading, LoadingController, NavController} from "ionic-angular";
-import {UnconfirmedTransaction, UnconfirmedTransactions} from "nem-library/dist/src/models/UnconfirmedTransactions";
-import {AccountHttp, TransactionHttp} from "nem-library";
+import {
+  Account,
+  AccountHttp,
+  MultisigSignatureTransaction,
+  TransactionHttp,
+  UnconfirmedTransaction,
+  UnconfirmedTransactions
+} from "nem-library";
 import {Observable} from "rxjs";
 
 @Component({
@@ -9,8 +15,9 @@ import {Observable} from "rxjs";
   templateUrl: 'home.html'
 })
 export class HomePage implements OnInit {
-  unconfirmedTransactions: UnconfirmedTransactions;
-  private unconfirmedTransactionsEndpoint: Observable<any>;
+  readonly address = 'TAZM4LSMAHPDEKHJJO6MVMBQ3C2KCJME5A2DYFOJ';
+  unconfirmedTransactions: UnconfirmedTransaction[];
+  private unconfirmedTransactionsEndpoint: Observable<UnconfirmedTransactions>;
   loader: Loading;
 
   constructor(public navCtrl: NavController,
@@ -20,23 +27,41 @@ export class HomePage implements OnInit {
     });
     this.loader.present();
     const accountHttp = new AccountHttp({domain: 'bob.nem.ninja'});
-    this.unconfirmedTransactionsEndpoint = Observable.interval(5000).flatMap(x => {
-      return accountHttp.unconfirmedTransactions('TAZM4LSMAHPDEKHJJO6MVMBQ3C2KCJME5A2DYFOJ');
+    this.unconfirmedTransactionsEndpoint = Observable.interval(5000).startWith(0).flatMap(x => {
+      return accountHttp.unconfirmedTransactions(this.address);
     });
   }
 
   ngOnInit(): void {
     this.unconfirmedTransactionsEndpoint.subscribe(
       value => {
-        this.unconfirmedTransactions = value;
+        this.unconfirmedTransactions = value.data.filter(x => {
+          return x.transaction.type == 4100;
+        });
         this.loader.dismiss();
       }
     );
   }
 
   cosignTransaction(unconfirmedTransaction: UnconfirmedTransaction) {
-    //const transactionHttp = new TransactionHttp();
-    
+    const transactionHttp = new TransactionHttp({domain: 'bob.nem.ninja'});
+    const account = new Account(this.address,
+      '5d5d829644625eb6554273f70b1187d904761fab4c5c0e5f01666f6725e9278b',
+      '');
+    const multisigSignedTransaction = new MultisigSignatureTransaction(
+      unconfirmedTransaction.transaction.timeStamp,
+      unconfirmedTransaction.transaction.deadline,
+      unconfirmedTransaction.transaction.fee,
+      'TBUAUC3VYKPP3PJPOH7A7BCB2C4I64XZAAOZBO6N',
+      {data: unconfirmedTransaction.meta.data},
+      account.publicKey
+    );
+    const signedTransaction = account.signTransaction(multisigSignedTransaction);
+    console.log(multisigSignedTransaction);
+    transactionHttp.announceTransaction(signedTransaction).subscribe(x => {
+        console.log(x);
+      }
+    );
   }
 
 }

@@ -8,15 +8,25 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngIf="unconfirmedTransactions?.data.length != 0">
-    <button ion-item
-            *ngFor="let unconfirmedTransaction of unconfirmedTransactions?.data"
+  <ion-list *ngIf="unconfirmedTransactions?.length != 0" no-lines>
+    <button ion-item no-padding
+            *ngFor="let unconfirmedTransaction of unconfirmedTransactions"
             (click)="cosignTransaction(unconfirmedTransaction)">
-      <p>To {{unconfirmedTransaction.transaction.otherTrans.recipient}}</p>
-      <h1>Amount: {{unconfirmedTransaction.transaction.otherTrans.amount | xem}} XEM</h1>
+      <ion-card class="margin-horizontal"
+                [ngClass]="{'signedTransaction': (unconfirmedTransaction.transaction.signatures.length != 0)}">
+        <ion-card-header>
+          Amount: {{unconfirmedTransaction.transaction.otherTrans.amount | xem}} XEM
+        </ion-card-header>
+        <ion-card-content>
+          <p>To {{unconfirmedTransaction.transaction.otherTrans.recipient}}</p>
+          <h1 *ngIf="unconfirmedTransaction.transaction.signatures.length != 0"
+              text-center
+              class="signedTitle">SIGNED</h1>
+        </ion-card-content>
+      </ion-card>
     </button>
   </ion-list>
-  <ion-grid *ngIf="unconfirmedTransactions?.data.length == 0">
+  <ion-grid *ngIf="unconfirmedTransactions?.length == 0">
     <ion-row align-items-center text-center>
       <ion-col>
         <h1 class="smile-face">:)</h1>
