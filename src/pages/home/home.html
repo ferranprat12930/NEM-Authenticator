@@ -12,8 +12,7 @@
     <button ion-item no-padding
             *ngFor="let unconfirmedTransaction of unconfirmedTransactions"
             (click)="cosignTransaction(unconfirmedTransaction)">
-      <ion-card class="margin-horizontal"
-                [ngClass]="{'signedTransaction': (unconfirmedTransaction.transaction.signatures.length != 0)}">
+      <ion-card [ngClass]="{'signedTransaction': (unconfirmedTransaction.transaction.signatures.length != 0)}">
         <ion-card-header>
           Amount: {{unconfirmedTransaction.transaction.otherTrans.amount | xem}} XEM
         </ion-card-header>

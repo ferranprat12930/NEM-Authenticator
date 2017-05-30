@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {Loading, LoadingController, NavController, ToastController} from "ionic-angular";
+import {Loading, LoadingController, ModalController, NavController, ToastController} from "ionic-angular";
 import {
   Account,
   AccountHttp,
@@ -9,6 +9,7 @@ import {
   UnconfirmedTransactions
 } from "nem-library";
 import {Observable} from "rxjs";
+import {TransactionModal} from "./transaction.modal";
 
 @Component({
   selector: 'page-home',
@@ -22,6 +23,7 @@ export class HomePage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,
+              public modalCtrl: ModalController,
               public toastCtrl: ToastController) {
     this.loader = loadingCtrl.create({
       content: "Please wait..."
@@ -46,7 +48,13 @@ export class HomePage implements OnInit {
 
   cosignTransaction(unconfirmedTransaction: UnconfirmedTransaction) {
     if (unconfirmedTransaction.transaction.signatures.length == 0) {
-      this.signTransaction(unconfirmedTransaction);
+      let modal = this.modalCtrl.create(TransactionModal, {unconfirmedTransaction: unconfirmedTransaction});
+      modal.onDidDismiss((agreed) => {
+        if (agreed) {
+          this.signTransaction(unconfirmedTransaction);
+        }
+      });
+      modal.present();
     } else {
       this.showAlreadyConfirmedTransactionToast();
     }
