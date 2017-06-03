@@ -9,6 +9,9 @@ import {HomePage} from "../pages/home/home";
 import {XEMPipe} from "../pipes/xem.pipe";
 import {TransactionModal} from "../pages/home/transaction.modal";
 import {IonicStorageModule} from "@ionic/storage";
+import {AccountHttpInstance} from "../values/accounthttp.value";
+import {AccountHttp, TransactionHttp} from "nem-library";
+import {TransactionHttpInstance} from "../values/transactionhttp.value";
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import {IonicStorageModule} from "@ionic/storage";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: AccountHttp, useValue: AccountHttpInstance},
+    {provide: TransactionHttp, useValue: TransactionHttpInstance}
   ]
 })
 export class AppModule {}

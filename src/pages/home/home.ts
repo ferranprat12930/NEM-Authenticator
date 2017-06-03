@@ -24,12 +24,13 @@ export class HomePage implements OnInit {
   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,
               public modalCtrl: ModalController,
-              public toastCtrl: ToastController) {
+              public toastCtrl: ToastController,
+              public accountHttp: AccountHttp,
+              public transactionHttp: TransactionHttp) {
     this.loader = loadingCtrl.create({
       content: "Please wait..."
     });
     this.loader.present();
-    const accountHttp = new AccountHttp({domain: 'bob.nem.ninja'});
     this.unconfirmedTransactionsEndpoint = Observable.interval(5000).startWith(0).flatMap(x => {
       return accountHttp.unconfirmedTransactions(this.address);
     });
@@ -61,7 +62,6 @@ export class HomePage implements OnInit {
   }
 
   private signTransaction(unconfirmedTransaction: UnconfirmedTransaction) {
-    const transactionHttp = new TransactionHttp({domain: 'bob.nem.ninja'});
     const account = new Account(this.address,
       '5d5d829644625eb6554273f70b1187d904761fab4c5c0e5f01666f6725e9278b',
       '');
@@ -74,8 +74,7 @@ export class HomePage implements OnInit {
       account.publicKey
     );
     const signedTransaction = account.signTransaction(multisigSignedTransaction);
-    console.log(multisigSignedTransaction);
-    transactionHttp.announceTransaction(signedTransaction).subscribe(x => {
+    this.transactionHttp.announceTransaction(signedTransaction).subscribe(x => {
         console.log(x);
       }
     );
