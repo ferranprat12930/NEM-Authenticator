@@ -8,6 +8,7 @@ import {MyApp} from "./app.component";
 import {HomePage} from "../pages/home/home";
 import {XEMPipe} from "../pipes/xem.pipe";
 import {TransactionModal} from "../pages/home/transaction.modal";
+import {IonicStorageModule} from "@ionic/storage";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {TransactionModal} from "../pages/home/transaction.modal";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
