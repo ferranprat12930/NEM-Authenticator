@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <img alt="logo" height="16" src="assets/img/icon.png"/>
+      NEM Authenticator setup
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="setup-page">
+  <form [formGroup]="form" (ngSubmit)="confirm()">
+    <ion-slides pager>
+      <ion-slide>
+        <ion-toolbar>
+        </ion-toolbar>
+        <img src="assets/img/icon.png" class="slide-image"/>
+        <h2 class="slide-title">Welcome to NEM Authenticator</h2>
+        <p>We need to setup your account first</p>
+      </ion-slide>
+      <ion-slide>
+        <ion-toolbar>
+        </ion-toolbar>
+        <img src="assets/img/unlock.svg" class="slide-image"/>
+        <h2 class="slide-title">This step is security critical</h2>
+        <p>We need your private key in plain mode just once</p>
+        <p>Remind, <span text-uppercase class="danger-text">only testnet accounts</span></p>
+      </ion-slide>
+      <ion-slide>
+        <ion-toolbar>
+        </ion-toolbar>
+        <img src="assets/img/unlock.svg" class="slide-image"/>
+        <h2 class="slide-title">Insert your private key</h2>
+        <ion-item>
+          <ion-label floating>private key</ion-label>
+          <ion-input type="password" formControlName="privateKey"></ion-input>
+        </ion-item>
+        <p>Remind, <span text-uppercase class="danger-text">only testnet accounts</span></p>
+        <p>Your private key must have a length of 64 or 66</p>
+      </ion-slide>
+      <ion-slide>
+        <ion-toolbar>
+        </ion-toolbar>
+        <img src="assets/img/padlock.svg" class="slide-image"/>
+        <h2 class="slide-title">Ready to use NEM?</h2>
+        <button ion-button large clear icon-right color="primary" type="submit" [disabled]="!form.valid">
+          Continue
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+        <p class="danger-text" *ngIf="!form.valid">Check the private key</p>
+      </ion-slide>
+    </ion-slides>
+  </form>
+</ion-content>

@@ -12,11 +12,13 @@ import {IonicStorageModule} from "@ionic/storage";
 import {AccountHttpInstance} from "../values/accounthttp.value";
 import {AccountHttp, TransactionHttp} from "nem-library";
 import {TransactionHttpInstance} from "../values/transactionhttp.value";
+import {SetupPage} from "../pages/setup/setup";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    SetupPage,
     XEMPipe,
     TransactionModal
   ],
@@ -29,7 +31,8 @@ import {TransactionHttpInstance} from "../values/transactionhttp.value";
   entryComponents: [
     MyApp,
     HomePage,
-    TransactionModal
+    TransactionModal,
+    SetupPage
   ],
   providers: [
     StatusBar,
