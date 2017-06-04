@@ -37,7 +37,7 @@
           <ion-label floating>private key</ion-label>
           <ion-input #input type="password" icon-right formControlName="privateKey"></ion-input>
         </ion-item>
-        <button ion-button clear color="primary" (click)="verifyAccount()">
+        <button ion-button clear color="primary" type="button" (click)="verifyAccount()">
           Verify
         </button>
         <p>Private key must have a length of 64 or 66</p>

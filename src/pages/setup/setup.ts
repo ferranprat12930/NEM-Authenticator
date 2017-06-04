@@ -1,7 +1,9 @@
 import {Component, ViewChild} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Slides, ToastController} from "ionic-angular";
+import {NavController, Slides, ToastController} from "ionic-angular";
 import {Account} from "nem-library";
+import {Storage} from "@ionic/storage";
+import {HomePage} from "../home/home";
 
 @Component({
   selector: 'page-setup',
@@ -12,8 +14,10 @@ export class SetupPage {
   @ViewChild(Slides) slides: Slides;
   account: Account;
 
-  constructor(private formBuilder: FormBuilder,
-              public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController,
+              private formBuilder: FormBuilder,
+              private toastCtrl: ToastController,
+              private storage: Storage) {
     this.form = formBuilder.group({
       privateKey: ['',
         Validators.compose([
@@ -25,7 +29,10 @@ export class SetupPage {
   }
 
   confirm() {
-
+    this.storage.set('PRIVATE_KEY', this.form.get('privateKey').value).then(x => {
+        this.navCtrl.setRoot(HomePage);
+      }
+    );
   }
 
   verifyAccount() {
