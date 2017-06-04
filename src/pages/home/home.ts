@@ -4,6 +4,7 @@ import {Account, AccountHttp, MultisigSignatureTransaction, TransactionHttp, Unc
 import {Observable} from "rxjs";
 import {TransactionModal} from "./transaction.modal";
 import {Storage} from "@ionic/storage";
+import {ReceiverAccount} from "nem-library/dist/src/models/ReceiverAccount";
 
 @Component({
   selector: 'page-home',
@@ -55,12 +56,12 @@ export class HomePage {
   }
 
   private signTransaction(unconfirmedTransaction: UnconfirmedTransaction) {
-    // TODO: Change hardcoded multisig account
+    const receiverAccount = ReceiverAccount.generateWithPublicKey(unconfirmedTransaction.transaction.otherTrans.signer);
     const multisigSignedTransaction = new MultisigSignatureTransaction(
       unconfirmedTransaction.transaction.timeStamp,
       unconfirmedTransaction.transaction.deadline,
       unconfirmedTransaction.transaction.fee,
-      'TBUAUC3VYKPP3PJPOH7A7BCB2C4I64XZAAOZBO6N',
+      receiverAccount.address,
       {data: unconfirmedTransaction.meta.data},
       this.account.publicKey
     );
