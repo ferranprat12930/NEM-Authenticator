@@ -9,7 +9,8 @@
 
 <ion-content class="setup-page">
   <form [formGroup]="form" (ngSubmit)="confirm()">
-    <ion-slides pager>
+    <ion-slides pager (ionSlideDidChange)="slideChanged()">
+      <!-- 0. Welcome slide -->
       <ion-slide>
         <ion-toolbar>
         </ion-toolbar>
@@ -17,6 +18,7 @@
         <h2 class="slide-title">Welcome to NEM Authenticator</h2>
         <p>We need to setup your account first</p>
       </ion-slide>
+      <!-- 1. Private key info slide-->
       <ion-slide>
         <ion-toolbar>
         </ion-toolbar>
@@ -25,6 +27,7 @@
         <p>We need your private key in plain mode just once</p>
         <p>Remind, <span text-uppercase class="danger-text">only testnet accounts</span></p>
       </ion-slide>
+      <!-- 2. Insert private key info slide -->
       <ion-slide>
         <ion-toolbar>
         </ion-toolbar>
@@ -32,11 +35,28 @@
         <h2 class="slide-title">Insert your private key</h2>
         <ion-item>
           <ion-label floating>private key</ion-label>
-          <ion-input type="password" formControlName="privateKey"></ion-input>
+          <ion-input #input type="password" icon-right formControlName="privateKey"></ion-input>
         </ion-item>
-        <p>Remind, <span text-uppercase class="danger-text">only testnet accounts</span></p>
-        <p>Your private key must have a length of 64 or 66</p>
+        <button ion-button clear color="primary" (click)="verifyAccount()">
+          Verify
+        </button>
+        <p>Private key must have a length of 64 or 66</p>
       </ion-slide>
+      <!-- 3. Verify account slide-->
+      <ion-slide>
+        <ion-toolbar>
+        </ion-toolbar>
+        <img src="assets/img/curriculum-vitae.svg" class="slide-image-little"/>
+        <h2>Address</h2>
+        <p>{{account?.address}}</p>
+        <h2>Public key</h2>
+        <p>{{account?.publicKey}}</p>
+        <ion-item>
+          <ion-label>It is my account</ion-label>
+          <ion-checkbox color="blue" formControlName="myAccount"></ion-checkbox>
+        </ion-item>
+      </ion-slide>
+      <!-- 4. Continue button side-->
       <ion-slide>
         <ion-toolbar>
         </ion-toolbar>
@@ -46,7 +66,7 @@
           Continue
           <ion-icon name="arrow-forward"></ion-icon>
         </button>
-        <p class="danger-text" *ngIf="!form.valid">Check the private key</p>
+        <p class="danger-text" *ngIf="!form.valid">Have you checked your account details?</p>
       </ion-slide>
     </ion-slides>
   </form>
