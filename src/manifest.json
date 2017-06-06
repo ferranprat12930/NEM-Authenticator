@@ -1,6 +1,6 @@
 {
   "name": "NEM Authenticator",
-  "short_name": "NEM Authenticator",
+  "short_name": "NEM Auth",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
