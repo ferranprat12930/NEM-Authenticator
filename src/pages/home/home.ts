@@ -1,10 +1,16 @@
 import {Component} from "@angular/core";
 import {Loading, LoadingController, ModalController, NavController, ToastController} from "ionic-angular";
-import {Account, AccountHttp, MultisigSignatureTransaction, TransactionHttp, UnconfirmedTransaction} from "nem-library";
+import {
+  Account,
+  AccountHttp,
+  MultisigSignatureTransaction,
+  TransactionHttp,
+  UnconfirmedTransaction,
+  UnconfirmedTransactions
+} from "nem-library";
 import {Observable} from "rxjs";
 import {TransactionModal} from "./transaction.modal";
 import {Storage} from "@ionic/storage";
-import {ReceiverAccount} from "nem-library/dist/src/models/ReceiverAccount";
 
 @Component({
   selector: 'page-home',
@@ -26,11 +32,11 @@ export class HomePage {
       this.account = Account.generateWithPrivateKey(privateKey);
       Observable.interval(5000).startWith(0).flatMap(x => {
         return accountHttp.unconfirmedTransactions(this.account.address);
+      }).map(x => {
+        return this.removeAllTransactionsThatAreNotMultisig(x)
       }).subscribe(
         value => {
-          this.unconfirmedTransactions = value.data.filter(x => {
-            return x.transaction.type == 4100;
-          });
+          this.unconfirmedTransactions = value;
           this.loader.dismiss();
         }
       );
@@ -56,14 +62,8 @@ export class HomePage {
   }
 
   private signTransaction(unconfirmedTransaction: UnconfirmedTransaction) {
-    const receiverAccount = ReceiverAccount.generateWithPublicKey(unconfirmedTransaction.transaction.otherTrans.signer);
-    const multisigSignedTransaction = new MultisigSignatureTransaction(
-      unconfirmedTransaction.transaction.timeStamp,
-      unconfirmedTransaction.transaction.deadline,
-      unconfirmedTransaction.transaction.fee,
-      receiverAccount.address,
-      {data: unconfirmedTransaction.meta.data},
-      this.account.publicKey
+    const multisigSignedTransaction = MultisigSignatureTransaction.createGivenUnconfirmedTransaction(
+      unconfirmedTransaction
     );
     const signedTransaction = this.account.signTransaction(multisigSignedTransaction);
     this.transactionHttp.announceTransaction(signedTransaction).subscribe(x => {
@@ -78,5 +78,11 @@ export class HomePage {
       duration: 3000
     });
     toast.present();
+  }
+
+  private removeAllTransactionsThatAreNotMultisig(unconfirmedTransactions: UnconfirmedTransactions): UnconfirmedTransaction[] {
+    return unconfirmedTransactions.data.filter(x => {
+      return x.transaction.type == 4100;
+    });
   }
 }
