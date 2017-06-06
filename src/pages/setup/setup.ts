@@ -13,6 +13,7 @@ export class SetupPage {
   form: FormGroup;
   @ViewChild(Slides) slides: Slides;
   account: Account;
+  privateKeyFocused: boolean = false;
 
   constructor(public navCtrl: NavController,
               private formBuilder: FormBuilder,

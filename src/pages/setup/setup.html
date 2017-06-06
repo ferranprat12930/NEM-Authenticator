@@ -9,7 +9,8 @@
 
 <ion-content class="setup-page">
   <form [formGroup]="form" (ngSubmit)="confirm()">
-    <ion-slides pager (ionSlideDidChange)="slideChanged()">
+    <ion-slides pager (ionSlideDidChange)="slideChanged()"
+                [style.height]="slides.getActiveIndex() == 2? 'auto' : '100%'">
       <!-- 0. Welcome slide -->
       <ion-slide>
         <ion-toolbar>
@@ -35,7 +36,8 @@
         <h2 class="slide-title">Insert your private key</h2>
         <ion-item>
           <ion-label floating>private key</ion-label>
-          <ion-input #input type="password" icon-right formControlName="privateKey"></ion-input>
+          <ion-input #input type="password" icon-right formControlName="privateKey" (focus)="privateKeyFocused = true"
+                     (blur)="privateKeyFocused = false"></ion-input>
         </ion-item>
         <button ion-button clear color="primary" type="button" (click)="verifyAccount()">
           Verify
