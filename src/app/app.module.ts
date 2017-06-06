@@ -13,6 +13,7 @@ import {AccountHttpInstance} from "../values/accounthttp.value";
 import {AccountHttp, TransactionHttp} from "nem-library";
 import {TransactionHttpInstance} from "../values/transactionhttp.value";
 import {SetupPage} from "../pages/setup/setup";
+import {SetupAccountModal} from "../pages/setup/setup-account.modal";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {SetupPage} from "../pages/setup/setup";
     HomePage,
     SetupPage,
     XEMPipe,
-    TransactionModal
+    TransactionModal,
+    SetupAccountModal
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import {SetupPage} from "../pages/setup/setup";
     MyApp,
     HomePage,
     TransactionModal,
-    SetupPage
+    SetupPage,
+    SetupAccountModal
   ],
   providers: [
     StatusBar,

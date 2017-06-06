@@ -9,8 +9,7 @@
 
 <ion-content class="setup-page">
   <form [formGroup]="form" (ngSubmit)="confirm()">
-    <ion-slides pager (ionSlideDidChange)="slideChanged()"
-                [style.height]="slides.getActiveIndex() == 2? 'auto' : '100%'">
+    <ion-slides pager (ionSlideDidChange)="slideChanged()">
       <!-- 0. Welcome slide -->
       <ion-slide>
         <ion-toolbar>
@@ -33,16 +32,10 @@
         <ion-toolbar>
         </ion-toolbar>
         <img src="assets/img/unlock.svg" class="slide-image"/>
-        <h2 class="slide-title">Insert your private key</h2>
-        <ion-item>
-          <ion-label floating>private key</ion-label>
-          <ion-input #input type="password" icon-right formControlName="privateKey" (focus)="privateKeyFocused = true"
-                     (blur)="privateKeyFocused = false"></ion-input>
-        </ion-item>
-        <button ion-button clear color="primary" type="button" (click)="verifyAccount()">
-          Verify
+        <h2 class="slide-title">Import your account</h2>
+        <button ion-button clear color="primary" type="button" (click)="openSetupAccountModal()">
+          Import
         </button>
-        <p>Private key must have a length of 64 or 66</p>
       </ion-slide>
       <!-- 3. Verify account slide-->
       <ion-slide>

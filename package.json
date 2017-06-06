@@ -1,8 +1,8 @@
 {
     "name": "NEM-Authenticator",
     "version": "0.0.1",
-    "author": "Aleix Morgadas <aleix@atraura.com>",
-    "homepage": "https://www.atraurablockchain.com",
+  "author": "Aleix Morgadas <aleixmorgadas@openmailbox.org>",
+  "homepage": "https://www.nemauthenticator.com",
     "private": true,
     "scripts": {
         "clean": "ionic-app-scripts clean",

@@ -1,9 +1,10 @@
 import {Component, ViewChild} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {NavController, Slides, ToastController} from "ionic-angular";
+import {ModalController, NavController, Slides, ToastController} from "ionic-angular";
 import {Account} from "nem-library";
 import {Storage} from "@ionic/storage";
 import {HomePage} from "../home/home";
+import {SetupAccountModal} from "./setup-account.modal";
 
 @Component({
   selector: 'page-setup',
@@ -13,41 +14,36 @@ export class SetupPage {
   form: FormGroup;
   @ViewChild(Slides) slides: Slides;
   account: Account;
-  privateKeyFocused: boolean = false;
+  privateKey: string;
 
   constructor(public navCtrl: NavController,
               private formBuilder: FormBuilder,
               private toastCtrl: ToastController,
+              public modalCtrl: ModalController,
               private storage: Storage) {
     this.form = formBuilder.group({
-      privateKey: ['',
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(64),
-          Validators.maxLength(66)])],
       myAccount: [false, Validators.requiredTrue]
     });
   }
 
   confirm() {
-    this.storage.set('PRIVATE_KEY', this.form.get('privateKey').value).then(x => {
+    this.storage.set('PRIVATE_KEY', this.privateKey).then(x => {
         this.navCtrl.setRoot(HomePage);
       }
     );
   }
 
-  verifyAccount() {
-    let privateKey: string = this.form.get('privateKey').value;
-    if ((privateKey.length !== <number>64) && (privateKey.length !== <number>66)) {
-      this.toastCtrl.create({
-        message: "Check your private key",
-        duration: 1000
-      }).present();
-    } else {
-      this.account = Account.generateWithPrivateKey(privateKey);
-      this.slides.lockSwipeToNext(false);
-      this.slides.slideNext(500);
-    }
+  openSetupAccountModal() {
+    let modal = this.modalCtrl.create(SetupAccountModal);
+    modal.onDidDismiss((privateKey) => {
+      if (privateKey != null) {
+        this.privateKey = privateKey;
+        this.account = Account.generateWithPrivateKey(privateKey);
+        this.slides.lockSwipeToNext(false);
+        this.slides.slideNext(500);
+      }
+    });
+    modal.present();
   }
 
   slideChanged() {
