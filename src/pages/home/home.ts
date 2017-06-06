@@ -44,6 +44,7 @@ export class HomePage {
   private account: Account;
   unconfirmedTransactions: UnconfirmedTransaction[];
   loader: Loading;
+  accountPulling: Observable<UnconfirmedTransaction[]>;
 
   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,
@@ -54,13 +55,21 @@ export class HomePage {
               private storage: Storage) {
     this.storage.get('PRIVATE_KEY').then(privateKey => {
       this.account = Account.generateWithPrivateKey(privateKey);
-      Observable.interval(5000).startWith(0).flatMap(x => {
+      this.accountPulling = Observable.interval(5000).startWith(0).flatMap(x => {
         return accountHttp.unconfirmedTransactions(this.account.address);
       }).map(x => {
         return this.removeAllTransactionsThatAreNotMultisig(x)
-      }).subscribe(
+      });
+      this.accountPulling.subscribe(
         value => {
           this.unconfirmedTransactions = value;
+          this.loader.dismiss();
+        },
+        error => {
+          this.toastCtrl.create({
+            message: "Check your Internet connection",
+            duration: 2000
+          }).present();
           this.loader.dismiss();
         }
       );
@@ -69,6 +78,21 @@ export class HomePage {
       content: "Please wait..."
     });
     this.loader.present();
+  }
+
+  doRefresh(refresher) {
+    this.accountPulling.subscribe(
+      value => {
+        this.unconfirmedTransactions = value;
+        refresher.complete();
+      }, error => {
+        this.toastCtrl.create({
+          message: "Check your Internet connection",
+          duration: 2000
+        }).present();
+        refresher.complete();
+      }
+    );
   }
 
   cosignTransaction(unconfirmedTransaction: UnconfirmedTransaction) {

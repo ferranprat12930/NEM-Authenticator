@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list *ngIf="unconfirmedTransactions?.length != 0" no-lines>
     <button ion-item no-padding
             *ngFor="let unconfirmedTransaction of unconfirmedTransactions"

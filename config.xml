@@ -2,7 +2,7 @@
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets">
     <name>NEM Auth</name>
     <description>NEM Authenticator for a 2-Factor Confirmation</description>
-  <author email="aleixmorgadas@openmailbox.org" href="http://ionicframework.com/">Ionic Framework Team</author>
+  <author email="aleixmorgadas@openmailbox.org" href="http://nemauthenticator.com/">NEM Authenticator</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
