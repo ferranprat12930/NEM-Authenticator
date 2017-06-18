@@ -1,25 +1,66 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# NEM Authenticator
 
-## How to use this template
+This is the official repository for NEM Authenticator.
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/driftyco/ionic2-app-base).
+## How to contribute
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/driftyco/ionic2-app-base).
+To contribute to the NEM Authenticator, please send us a [pull request](pull-request) from your fork of this repository.
 
-### With the Ionic CLI:
+In order to get in touch with other developers/contributors, join our [telegram group](telegram-group).
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+You can find the public road map published on [trello][trello-roadmap].
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
-```
+### Setup the project
 
-Then, to run it, cd into `myBlank` and run:
+Fork the project
 
 ```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
+$ git clone git@github.com:<YOUR_USERNAME>/NEM-Authenticator.git
+cd NEM-Authenticator
+```
+Install dependencies
+
+```bash
+$ npm install -g ionic cordova typescript @angular/cli
+$ npm install
 ```
 
-Substitute ios for android if not on a Mac.
+Run the project
+
+```bash
+$ ionic serve
+```
+
+### Reporting issues
+
+In order to improve the project, please take in consideration the next template to report your issue:
+
+**Expected Behaviour**\
+Short and expresive sentance explaining what the application should do.
+
+**Current Behaviour**\
+A short sentance explaning what the application does. Attach some screenshot if it helps to understant the issue.
+
+**Steps to reproduce**\
+For faster issue detection, we would need a step by step description do reproduce the issue. Example:\
+1. Insert the private key.
+2. Go to another application.
+3. Open again the application, the private key is blank.
+
+Open a new issue [here](github-issues).
+
+## Collaborators
+
+| username | Role |
+| --- | --- |
+| [@aleixmorgadas](https://github.com/aleixmorgadas) | Project lead |
+| [@guillemsole](https://github.com/guillemsole) | Developer |
+
+## License
+
+[MIT Licence](https://github.com/aleixmorgadas/NEM-Authenticator/blob/master/LICENSE)
+
+[pull-request]:https://help.github.com/articles/about-pull-requests/
+[telegram-group]:https://t.me/nemauth
+[trello-roadmap]:https://trello.com/b/5YctwWt7/nem-authenticator-public-roadmap
+[github-issues]:https://github.com/aleixmorgadas/NEM-Authenticator/issues
