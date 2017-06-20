@@ -4,11 +4,7 @@ This is the official repository for NEM Authenticator.
 
 ## How to contribute
 
-To contribute to the NEM Authenticator, please send us a [pull request](pull-request) from your fork of this repository.
-
-In order to get in touch with other developers/contributors, join our [telegram group](telegram-group).
-
-You can find the public road map published on [trello][trello-roadmap].
+Check [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ### Setup the project
 
