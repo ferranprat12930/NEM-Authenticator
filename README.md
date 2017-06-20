@@ -27,24 +27,6 @@ Run the project
 $ ionic serve
 ```
 
-### Reporting issues
-
-In order to improve the project, please take in consideration the next template to report your issue:
-
-**Expected Behaviour**\
-Short and expresive sentance explaining what the application should do.
-
-**Current Behaviour**\
-A short sentance explaning what the application does. Attach some screenshot if it helps to understant the issue.
-
-**Steps to reproduce**\
-For faster issue detection, we would need a step by step description do reproduce the issue. Example:\
-1. Insert the private key.
-2. Go to another application.
-3. Open again the application, the private key is blank.
-
-Open a new issue [here](github-issues).
-
 ## Collaborators
 
 | username | Role |
