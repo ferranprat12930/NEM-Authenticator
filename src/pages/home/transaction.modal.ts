@@ -27,7 +27,7 @@ import {UnconfirmedTransaction} from "nem-library";
 
 @Component({
   selector: 'transaction-modal',
-  templateUrl: 'transaction.modal.html'
+  templateUrl: './transaction.modal.html'
 })
 export class TransactionModal {
   unconfirmedTransaction: UnconfirmedTransaction;
