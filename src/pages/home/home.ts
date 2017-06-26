@@ -130,7 +130,7 @@ export class HomePage {
 
   private removeAllTransactionsThatAreNotMultisig(unconfirmedTransactions: UnconfirmedTransactions): UnconfirmedTransaction[] {
     return unconfirmedTransactions.data.filter(x => {
-      return x.transaction.type == 4100;
+      return x.transaction.type == 4100 && x.transaction.otherTrans.type == 257;
     });
   }
 }
