@@ -24,6 +24,9 @@
 
 import {Component} from "@angular/core";
 import {Loading, LoadingController, ModalController, NavController, ToastController} from "ionic-angular";
+import {Observable} from "rxjs";
+import {TransactionModal} from "./transaction.modal";
+import {Storage} from "@ionic/storage";
 import {
   Account,
   AccountHttp,
@@ -33,9 +36,6 @@ import {
   TransactionHttp,
   TransactionTypes
 } from "nem-library";
-import {Observable} from "rxjs";
-import {TransactionModal} from "./transaction.modal";
-import {Storage} from "@ionic/storage";
 
 @Component({
   selector: 'page-home',

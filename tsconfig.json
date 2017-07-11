@@ -12,7 +12,8 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "target": "es5",
-    "noStrictGenericChecks": true
+    "noStrictGenericChecks": true,
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*.ts"
