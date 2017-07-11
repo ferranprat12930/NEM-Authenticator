@@ -25,4 +25,4 @@
  */
 import {AccountHttp} from "nem-library";
 
-export const AccountHttpInstance = new AccountHttp({domain: "bob.nem.ninja"});
+export const AccountHttpInstance = new AccountHttp({domain: "23.228.67.85"});

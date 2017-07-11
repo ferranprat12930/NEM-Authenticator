@@ -25,4 +25,4 @@
  */
 import {TransactionHttp} from "nem-library";
 
-export const TransactionHttpInstance = new TransactionHttp({domain: "bob.nem.ninja"});
+export const TransactionHttpInstance = new TransactionHttp({domain: "23.228.67.85"});
