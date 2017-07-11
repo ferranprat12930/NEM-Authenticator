@@ -36,6 +36,7 @@ import {
   TransactionHttp,
   TransactionTypes
 } from "nem-library";
+import {TimeWindow} from "nem-library/dist/src/models/transaction/TimeWindow";
 
 @Component({
   selector: 'page-home',
@@ -112,8 +113,7 @@ export class HomePage {
 
   private signTransaction(unconfirmedTransaction: MultisigTransaction) {
     const multisigSignedTransaction = MultisigSignatureTransaction.create(
-    unconfirmedTransaction.timeStamp,
-      unconfirmedTransaction.deadline,
+      TimeWindow.createWithDeadline(),
       unconfirmedTransaction.signer,
       unconfirmedTransaction.hashData
     );
