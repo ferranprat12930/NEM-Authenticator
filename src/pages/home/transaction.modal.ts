@@ -23,14 +23,14 @@
  */
 import {Component} from "@angular/core";
 import {NavParams, ViewController} from "ionic-angular";
-import {UnconfirmedTransaction} from "nem-library";
+import {Transaction} from "nem-library";
 
 @Component({
   selector: 'transaction-modal',
   templateUrl: './transaction.modal.html'
 })
 export class TransactionModal {
-  unconfirmedTransaction: UnconfirmedTransaction;
+  unconfirmedTransaction: Transaction;
 
   constructor(params: NavParams,
               public viewCtrl: ViewController) {

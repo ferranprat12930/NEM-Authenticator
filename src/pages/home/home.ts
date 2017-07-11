@@ -28,9 +28,10 @@ import {
   Account,
   AccountHttp,
   MultisigSignatureTransaction,
+  MultisigTransaction,
+  Transaction,
   TransactionHttp,
-  UnconfirmedTransaction,
-  UnconfirmedTransactions
+  TransactionTypes
 } from "nem-library";
 import {Observable} from "rxjs";
 import {TransactionModal} from "./transaction.modal";
@@ -42,9 +43,9 @@ import {Storage} from "@ionic/storage";
 })
 export class HomePage {
   private account: Account;
-  unconfirmedTransactions: UnconfirmedTransaction[];
+  unconfirmedTransactions: Transaction[];
   loader: Loading;
-  accountPulling: Observable<UnconfirmedTransaction[]>;
+  accountPulling: Observable<Transaction[]>;
 
   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,
@@ -54,7 +55,7 @@ export class HomePage {
               public transactionHttp: TransactionHttp,
               private storage: Storage) {
     this.storage.get('PRIVATE_KEY').then(privateKey => {
-      this.account = Account.generateWithPrivateKey(privateKey);
+      this.account = Account.createTestnetWithPrivateKey(privateKey);
       this.accountPulling = Observable.interval(5000).startWith(0).flatMap(x => {
         return accountHttp.unconfirmedTransactions(this.account.address);
       }).map(x => {
@@ -95,8 +96,8 @@ export class HomePage {
     );
   }
 
-  cosignTransaction(unconfirmedTransaction: UnconfirmedTransaction) {
-    if (unconfirmedTransaction.transaction.signatures.length == 0) {
+  cosignTransaction(unconfirmedTransaction: MultisigTransaction) {
+    if (unconfirmedTransaction.signatures.length == 0) {
       let modal = this.modalCtrl.create(TransactionModal, {unconfirmedTransaction: unconfirmedTransaction});
       modal.onDidDismiss((agreed) => {
         if (agreed) {
@@ -109,9 +110,12 @@ export class HomePage {
     }
   }
 
-  private signTransaction(unconfirmedTransaction: UnconfirmedTransaction) {
-    const multisigSignedTransaction = MultisigSignatureTransaction.createGivenUnconfirmedTransaction(
-      unconfirmedTransaction
+  private signTransaction(unconfirmedTransaction: MultisigTransaction) {
+    const multisigSignedTransaction = MultisigSignatureTransaction.create(
+    unconfirmedTransaction.timeStamp,
+      unconfirmedTransaction.deadline,
+      unconfirmedTransaction.signer,
+      unconfirmedTransaction.hashData
     );
     const signedTransaction = this.account.signTransaction(multisigSignedTransaction);
     this.transactionHttp.announceTransaction(signedTransaction).subscribe(x => {
@@ -128,9 +132,9 @@ export class HomePage {
     toast.present();
   }
 
-  private removeAllTransactionsThatAreNotMultisig(unconfirmedTransactions: UnconfirmedTransactions): UnconfirmedTransaction[] {
-    return unconfirmedTransactions.data.filter(x => {
-      return x.transaction.type == 4100 && x.transaction.otherTrans.type == 257;
+  private removeAllTransactionsThatAreNotMultisig(unconfirmedTransactions: Transaction[]): Transaction[] {
+    return unconfirmedTransactions.filter(x => {
+      return x.type == TransactionTypes.MULTISIG;
     });
   }
 }

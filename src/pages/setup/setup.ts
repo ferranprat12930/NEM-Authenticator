@@ -28,6 +28,7 @@ import {Account} from "nem-library";
 import {Storage} from "@ionic/storage";
 import {HomePage} from "../home/home";
 import {SetupAccountModal} from "./setup-account.modal";
+import {AccountInfoDTO} from "nem-library/dist/src/infrastructure/account/AccountInfoDTO";
 
 @Component({
   selector: 'page-setup',
@@ -54,6 +55,7 @@ export class SetupPage {
         this.navCtrl.setRoot(HomePage);
       }
     );
+    const a: AccountInfoDTO = null;
   }
 
   openSetupAccountModal() {
@@ -61,7 +63,7 @@ export class SetupPage {
     modal.onDidDismiss((privateKey) => {
       if (privateKey != null) {
         this.privateKey = privateKey;
-        this.account = Account.generateWithPrivateKey(privateKey);
+        this.account = Account.createTestnetWithPrivateKey(privateKey);
         this.slides.lockSwipeToNext(false);
         this.slides.slideNext(500);
       }
