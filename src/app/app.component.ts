@@ -28,6 +28,8 @@ import {SplashScreen} from "@ionic-native/splash-screen";
 import {SetupPage} from "../pages/setup/setup";
 import {Storage} from "@ionic/storage";
 import {HomePage} from "../pages/home/home";
+import {NEMLibrary} from "nem-library/dist/src/NEMLibrary";
+import {NetworkTypes} from "nem-library";
 
 @Component({
   templateUrl: 'app.html'
@@ -40,6 +42,7 @@ export class MyApp {
               splashScreen: SplashScreen,
               private storage: Storage,
               public loadingCtrl: LoadingController) {
+    NEMLibrary.boostrap(NetworkTypes.TEST_NET);
     let loader = loadingCtrl.create({
       content: "Please wait..."
     });

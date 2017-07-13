@@ -56,7 +56,7 @@ export class HomePage {
               public transactionHttp: TransactionHttp,
               private storage: Storage) {
     this.storage.get('PRIVATE_KEY').then(privateKey => {
-      this.account = Account.createTestnetWithPrivateKey(privateKey);
+      this.account = Account.createWithPrivateKey(privateKey);
       this.accountPulling = Observable.interval(5000).startWith(0).flatMap(x => {
         return accountHttp.unconfirmedTransactions(this.account.address);
       }).map(x => {

@@ -61,7 +61,7 @@ export class SetupPage {
     modal.onDidDismiss((privateKey) => {
       if (privateKey != null) {
         this.privateKey = privateKey;
-        this.account = Account.createTestnetWithPrivateKey(privateKey);
+        this.account = Account.createWithPrivateKey(privateKey);
         this.slides.lockSwipeToNext(false);
         this.slides.slideNext(500);
       }
