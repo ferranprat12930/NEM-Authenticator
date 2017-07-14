@@ -9,11 +9,11 @@ import {HomePage} from "../pages/home/home";
 import {XEMPipe} from "../pipes/xem.pipe";
 import {TransactionModal} from "../pages/home/transaction.modal";
 import {IonicStorageModule} from "@ionic/storage";
-import {AccountHttpInstance} from "../values/accounthttp.value";
-import {AccountHttp, TransactionHttp} from "nem-library";
-import {TransactionHttpInstance} from "../values/transactionhttp.value";
 import {SetupPage} from "../pages/setup/setup";
 import {SetupAccountModal} from "../pages/setup/setup-account.modal";
+import {AccountHttp, TransactionHttp} from "nem-library";
+import {AccountHttpInstanceFactory} from "../values/accounthttp.value";
+import {TransactionHttpInstanceFactory} from "../values/transactionhttp.value";
 
 @NgModule({
   declarations: [
@@ -41,8 +41,8 @@ import {SetupAccountModal} from "../pages/setup/setup-account.modal";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: AccountHttp, useValue: AccountHttpInstance},
-    {provide: TransactionHttp, useValue: TransactionHttpInstance}
+    {provide: AccountHttp, useFactory: AccountHttpInstanceFactory},
+    {provide: TransactionHttp, useFactory: TransactionHttpInstanceFactory}
   ]
 })
 export class AppModule {}

@@ -1,6 +1,6 @@
 {
   "name": "NEM-Authenticator",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "author": "Aleix Morgadas <aleixmorgadas@openmailbox.org>",
   "homepage": "https://www.nemauthenticator.com",
   "private": true,
@@ -36,7 +36,7 @@
     "cordova-plugin-statusbar": "^2.2.3",
     "cordova-plugin-whitelist": "^1.3.2",
     "cordova-sqlite-storage": "^2.0.4",
-    "ionic-angular": "3.5.0",
+    "ionic-angular": "^3.5.0",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
     "nem-library": "^0.2.25",
@@ -46,15 +46,16 @@
     "request-promise-native": "^1.0.4",
     "rxjs": "^5.4.2",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.12"
+    "zone.js": "^0.8.12"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "2.0.1",
-    "@ionic/cli-plugin-cordova": "1.4.1",
-    "@ionic/cli-plugin-ionic-angular": "1.3.2",
+    "@ionic/app-scripts": "^2.0.1",
+    "@ionic/cli-plugin-cordova": "^1.4.1",
+    "@ionic/cli-plugin-ionic-angular": "^1.3.2",
+    "fs-extra": "^3.0.1",
     "nyc": "^11.0.3",
     "typescript": "^2.4.1",
-    "webpack": "^3.1.0"
+    "webpack": "^3.2.0"
   },
   "description": "NEM Authenticator project",
   "cordova": {
