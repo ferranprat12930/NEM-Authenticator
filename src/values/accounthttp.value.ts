@@ -25,6 +25,6 @@
  */
 import {AccountHttp} from "nem-library";
 
-export function AccountHttpInstanceFactory() {
+export function AccountHttpInstanceFactory(): AccountHttp {
   return new AccountHttp({domain: "104.128.226.60"});
 }

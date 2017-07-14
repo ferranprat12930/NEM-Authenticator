@@ -25,6 +25,6 @@
  */
 import {TransactionHttp} from "nem-library";
 
-export function TransactionHttpInstanceFactory() {
+export function TransactionHttpInstanceFactory(): TransactionHttp {
   return new TransactionHttp({domain: "104.128.226.60"});
 }

@@ -32,21 +32,22 @@ import {
   AccountHttp,
   MultisigSignatureTransaction,
   MultisigTransaction,
+  PublicAccount,
+  TimeWindow,
   Transaction,
   TransactionHttp,
   TransactionTypes
 } from "nem-library";
-import {TimeWindow} from "nem-library/dist/src/models/transaction/TimeWindow";
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: './home.html'
 })
 export class HomePage {
   private account: Account;
-  unconfirmedTransactions: Transaction[];
+  unconfirmedTransactions: MultisigTransaction[];
   loader: Loading;
-  accountPulling: Observable<Transaction[]>;
+  accountPulling: Observable<MultisigTransaction[]>;
 
   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,
@@ -114,7 +115,7 @@ export class HomePage {
   private signTransaction(unconfirmedTransaction: MultisigTransaction) {
     const multisigSignedTransaction = MultisigSignatureTransaction.create(
       TimeWindow.createWithDeadline(),
-      unconfirmedTransaction.signer,
+      PublicAccount.createWithPublicKey(unconfirmedTransaction.otherTransaction.signer).address,
       unconfirmedTransaction.hashData
     );
     const signedTransaction = this.account.signTransaction(multisigSignedTransaction);
@@ -132,9 +133,9 @@ export class HomePage {
     toast.present();
   }
 
-  private removeAllTransactionsThatAreNotMultisig(unconfirmedTransactions: Transaction[]): Transaction[] {
+  private removeAllTransactionsThatAreNotMultisig(unconfirmedTransactions: Transaction[]): MultisigTransaction[] {
     return unconfirmedTransactions.filter(x => {
       return x.type == TransactionTypes.MULTISIG;
-    });
+    }).map(x => <MultisigTransaction>x);
   }
 }

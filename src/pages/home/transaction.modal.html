@@ -16,15 +16,15 @@
     <ion-row>
       <ion-col col-12>
         <p>To</p>
-        <p>{{unconfirmedTransaction.transaction.otherTrans.recipient}}</p>
+        <p>{{unconfirmedTransaction.otherTransaction.recipient.plain()}}</p>
       </ion-col>
       <ion-col col-12>
         <p>Amount</p>
-        <p>{{unconfirmedTransaction.transaction.otherTrans.amount | xem}} XEM</p>
+        <p>{{unconfirmedTransaction.otherTransaction.amount | xem}} XEM</p>
       </ion-col>
       <ion-col col-12>
         <p>fee</p>
-        <p>{{unconfirmedTransaction.transaction.fee | xem}} XEM</p>
+        <p>{{unconfirmedTransaction.fee | xem}} XEM</p>
       </ion-col>
       <ion-col col-6>
         <button text-center ion-button full color="secondary" (click)="signTransaction()">SIGN TRANSACTION</button>

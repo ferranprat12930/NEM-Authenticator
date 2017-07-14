@@ -23,18 +23,18 @@
  */
 import {Component} from "@angular/core";
 import {NavParams, ViewController} from "ionic-angular";
-import {Transaction} from "nem-library";
+import {MultisigTransaction} from "nem-library";
 
 @Component({
   selector: 'transaction-modal',
   templateUrl: './transaction.modal.html'
 })
 export class TransactionModal {
-  unconfirmedTransaction: Transaction;
+  unconfirmedTransaction: MultisigTransaction;
 
   constructor(params: NavParams,
               public viewCtrl: ViewController) {
-    this.unconfirmedTransaction = params.get('unconfirmedTransaction');
+    this.unconfirmedTransaction = <MultisigTransaction>params.get('unconfirmedTransaction');
   }
 
   signTransaction() {

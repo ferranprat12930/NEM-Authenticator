@@ -44,3 +44,5 @@ $ ionic serve
 [telegram-group]:https://t.me/nemauth
 [trello-roadmap]:https://trello.com/b/5YctwWt7/nem-authenticator-public-roadmap
 [github-issues]:https://github.com/aleixmorgadas/NEM-Authenticator/issues
+
+ionic cordova plugin rm cordova-plugin-console

@@ -15,13 +15,13 @@
     <button ion-item no-padding
             *ngFor="let unconfirmedTransaction of unconfirmedTransactions"
             (click)="cosignTransaction(unconfirmedTransaction)">
-      <ion-card [ngClass]="{'signedTransaction': (unconfirmedTransaction.transaction.signatures.length != 0)}">
+      <ion-card [ngClass]="{'signedTransaction': (unconfirmedTransaction.signatures.length != 0)}">
         <ion-card-header>
-          Amount: {{unconfirmedTransaction.transaction.otherTrans.amount | xem}} XEM
+          Amount: {{unconfirmedTransaction.otherTransaction.amount | xem}} XEM
         </ion-card-header>
         <ion-card-content>
-          <p>To {{unconfirmedTransaction.transaction.otherTrans.recipient}}</p>
-          <h1 *ngIf="unconfirmedTransaction.transaction.signatures.length != 0"
+          <p>To {{unconfirmedTransaction.otherTransaction.recipient.plain()}}</p>
+          <h1 *ngIf="unconfirmedTransaction.signatures.length != 0"
               text-center
               class="signedTitle">SIGNED</h1>
         </ion-card-content>
