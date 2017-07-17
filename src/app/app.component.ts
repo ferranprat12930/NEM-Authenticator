@@ -42,7 +42,7 @@ export class MyApp {
               splashScreen: SplashScreen,
               private storage: Storage,
               public loadingCtrl: LoadingController) {
-    NEMLibrary.boostrap(NetworkTypes.TEST_NET);
+    NEMLibrary.bootstrap(NetworkTypes.TEST_NET);
     let loader = loadingCtrl.create({
       content: "Please wait..."
     });
