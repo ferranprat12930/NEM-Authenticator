@@ -38,7 +38,7 @@
     "ionic-angular": "^3.5.0",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
-    "nem-library": "^0.2.29",
+    "nem-library": "^0.2.32",
     "node-sass": "4.5.3",
     "request": "^2.81.0",
     "request-promise-core": "^1.1.1",
