@@ -20,7 +20,7 @@
           {{unconfirmedTransaction.otherTransaction.type | transactionType}} TRANSACTION
         </ion-card-header>
         <ion-card-content>
-          <p>To {{unconfirmedTransaction.otherTransaction.recipient.pretty()}}</p>
+          <p>Started by {{unconfirmedTransaction.signer.address.pretty()}}</p>
           <br/>
           <p>Transaction started at {{unconfirmedTransaction.timeWindow.timeStamp | localTimeParser}}</p>
           <p>Transaction deadline is at {{unconfirmedTransaction.timeWindow.deadline | localTimeParser}}</p>
