@@ -17,9 +17,10 @@
             (click)="cosignTransaction(unconfirmedTransaction)">
       <ion-card [ngClass]="{'signedTransaction': (unconfirmedTransaction.signatures.length != 0)}">
         <ion-card-header>
-          Amount: {{unconfirmedTransaction.otherTransaction.amount | xem}} XEM
+          {{unconfirmedTransaction.otherTransaction.type | transactionType}} TRANSACTION
         </ion-card-header>
         <ion-card-content>
+
           <p>To {{unconfirmedTransaction.otherTransaction.recipient.plain()}}</p>
           <h1 *ngIf="unconfirmedTransaction.signatures.length != 0"
               text-center
