@@ -30,13 +30,18 @@ import {Storage} from "@ionic/storage";
 import {
   Account,
   AccountHttp,
+  Address,
+  ConfirmedTransactionListener,
   MultisigSignatureTransaction,
   MultisigTransaction,
   TimeWindow,
   Transaction,
   TransactionHttp,
-  TransactionTypes
+  TransactionTypes,
+  UnconfirmedTransactionListener
 } from "nem-library";
+import {LocalDateTime} from "js-joda";
+import {MultisigTransactionInfo} from "nem-library/dist/src/models/transaction/TransactionInfo";
 
 @Component({
   selector: 'page-home',
@@ -44,9 +49,9 @@ import {
 })
 export class HomePage {
   private account: Account;
-  unconfirmedTransactions: MultisigTransaction[];
+  unconfirmedTransactions: MultisigTransactionPlusView[];
   loader: Loading;
-  accountPulling: Observable<MultisigTransaction[]>;
+  accountPulling: Observable<MultisigTransactionPlusView[]>;
 
   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,
@@ -55,51 +60,72 @@ export class HomePage {
               public accountHttp: AccountHttp,
               public transactionHttp: TransactionHttp,
               private storage: Storage) {
-    this.storage.get('PRIVATE_KEY').then(privateKey => {
-      this.account = Account.createWithPrivateKey(privateKey);
-      this.accountPulling = Observable.interval(5000).startWith(0).flatMap(x => {
-        return accountHttp.unconfirmedTransactions(this.account.address);
-      }).map(x => {
-        return this.removeAllTransactionsThatAreNotMultisig(x)
-      });
-      this.accountPulling.subscribe(
-        value => {
-          this.unconfirmedTransactions = value;
-          this.loader.dismiss();
-        },
-        error => {
-          this.toastCtrl.create({
-            message: "Check your Internet connection",
-            duration: 2000
-          }).present();
-          this.loader.dismiss();
-        }
-      );
-    });
     this.loader = loadingCtrl.create({
       content: "Please wait..."
     });
-    this.loader.present();
+    this.loader.present().then(() => {
+    });
+
+    this.storage.get('PRIVATE_KEY').then(privateKey => {
+      this.account = Account.createWithPrivateKey(privateKey);
+      this.accountPulling = accountHttp.unconfirmedTransactions(this.account.address)
+        .flatMap(_ => _)
+        .filter(transaction => transaction.type == TransactionTypes.MULTISIG)
+        .map(multisigTransaction => new MultisigTransactionPlusView(<MultisigTransaction> multisigTransaction, false, false))
+        .toArray();
+      this.fetchTransactions();
+
+      let multisig = new Address("TBUAUC3VYKPP3PJPOH7A7BCB2C4I64XZAAOZBO6N");
+      new UnconfirmedTransactionListener().given(multisig)
+        .subscribe(transaction => {
+          if (transaction.type == TransactionTypes.MULTISIG) {
+            this.unconfirmedTransactions.push(new MultisigTransactionPlusView(<MultisigTransaction>transaction, false, false));
+          }
+        });
+
+      new ConfirmedTransactionListener().given(multisig)
+        .subscribe(transaction => {
+          console.log("CONFIRMED TRANSACTION", transaction);
+          if (transaction.type == TransactionTypes.MULTISIG) {
+            this.unconfirmedTransactions = this.unconfirmedTransactions
+              .filter(x => {
+                const innerData = x.transaction.hashData.data;
+                const confirmedTransactionInnerData = (<MultisigTransactionInfo>(<MultisigTransaction>transaction).getTransactionInfo()).innerHash.data;
+                console.log("InnerData", innerData);
+                console.log("confirmedTransactionInnerData", confirmedTransactionInnerData);
+                return innerData != confirmedTransactionInnerData;
+              })
+          }
+        })
+    });
   }
 
-  doRefresh(refresher) {
+  fetchTransactions(refresher?: any) {
+    this.unconfirmedTransactions = [];
     this.accountPulling.subscribe(
       value => {
         this.unconfirmedTransactions = value;
-        refresher.complete();
-      }, error => {
+        this.loader.dismiss();
+        if (refresher) refresher.complete();
+      },
+      error => {
+        this.loader.dismiss();
         this.toastCtrl.create({
           message: "Check your Internet connection",
           duration: 2000
         }).present();
-        refresher.complete();
+        if (refresher) refresher.complete();
       }
     );
   }
 
-  cosignTransaction(unconfirmedTransaction: MultisigTransaction) {
-    if (unconfirmedTransaction.signatures.length == 0) {
-      let modal = this.modalCtrl.create(TransactionModal, {unconfirmedTransaction: unconfirmedTransaction});
+  doRefresh(refresher) {
+    this.fetchTransactions(refresher);
+  }
+
+  cosignTransaction(unconfirmedTransaction: MultisigTransactionPlusView) {
+    if (unconfirmedTransaction.transaction.signatures.length == 0) {
+      let modal = this.modalCtrl.create(TransactionModal, {unconfirmedTransaction: unconfirmedTransaction.transaction});
       modal.onDidDismiss((agreed) => {
         if (agreed) {
           this.signTransaction(unconfirmedTransaction);
@@ -111,15 +137,20 @@ export class HomePage {
     }
   }
 
-  private signTransaction(unconfirmedTransaction: MultisigTransaction) {
+  private signTransaction(unconfirmedTransaction: MultisigTransactionPlusView) {
     const multisigSignedTransaction = MultisigSignatureTransaction.create(
       TimeWindow.createWithDeadline(),
-      unconfirmedTransaction.otherTransaction.signer.address,
-      unconfirmedTransaction.hashData
+      unconfirmedTransaction.transaction.otherTransaction.signer.address,
+      unconfirmedTransaction.transaction.hashData
     );
+    unconfirmedTransaction.signing = true;
     const signedTransaction = this.account.signTransaction(multisigSignedTransaction);
     this.transactionHttp.announceTransaction(signedTransaction).subscribe(x => {
         console.log(x);
+        unconfirmedTransaction.signing = false;
+        unconfirmedTransaction.signed = true;
+      }, err => {
+        unconfirmedTransaction.signing = false;
       }
     );
   }
@@ -131,10 +162,31 @@ export class HomePage {
     });
     toast.present();
   }
+}
 
-  private removeAllTransactionsThatAreNotMultisig(unconfirmedTransactions: Transaction[]): MultisigTransaction[] {
-    return unconfirmedTransactions.filter(x => {
-      return x.type == TransactionTypes.MULTISIG;
-    }).map(x => <MultisigTransaction>x);
+class MultisigTransactionPlusView {
+  constructor(public transaction: MultisigTransaction,
+              public signing: boolean,
+              public signed: boolean) {
+  }
+
+  transactionType(): TransactionTypes {
+    return this.transaction.type;
+  }
+
+  signerAddress(): string {
+    return this.transaction.signer.address.pretty();
+  }
+
+  timeStamp(): LocalDateTime {
+    return this.transaction.timeWindow.timeStamp;
+  }
+
+  deadline(): LocalDateTime {
+    return this.transaction.timeWindow.deadline;
+  }
+
+  getTransactionData(): MultisigTransactionInfo {
+    return <MultisigTransactionInfo>this.transaction.getTransactionInfo();
   }
 }

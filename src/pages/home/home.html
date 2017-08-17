@@ -15,18 +15,23 @@
     <button ion-item no-padding
             *ngFor="let unconfirmedTransaction of unconfirmedTransactions"
             (click)="cosignTransaction(unconfirmedTransaction)">
-      <ion-card [ngClass]="{'signedTransaction': (unconfirmedTransaction.signatures.length != 0)}">
+      <ion-card [ngClass]="{'signedTransaction': (unconfirmedTransaction.signed)}">
         <ion-card-header>
-          {{unconfirmedTransaction.otherTransaction.type | transactionType}} TRANSACTION
+          {{unconfirmedTransaction.transactionType() | transactionType}} TRANSACTION
         </ion-card-header>
         <ion-card-content>
-          <p>Started by {{unconfirmedTransaction.signer.address.pretty()}}</p>
+          <p>Started by {{unconfirmedTransaction.signerAddress() }}</p>
           <br/>
-          <p>Transaction started at {{unconfirmedTransaction.timeWindow.timeStamp | localTimeParser}}</p>
-          <p>Transaction deadline is at {{unconfirmedTransaction.timeWindow.deadline | localTimeParser}}</p>
-          <h1 *ngIf="unconfirmedTransaction.signatures.length != 0"
+          <p>Transaction started at {{unconfirmedTransaction.timeStamp() | localTimeParser}}</p>
+          <p>Transaction deadline is at {{unconfirmedTransaction.deadline() | localTimeParser}}</p>
+
+          <div text-center margin-top *ngIf="unconfirmedTransaction.signing">
+            Signing Transaction <br/>
+            <ion-spinner></ion-spinner>
+          </div>
+          <h1 *ngIf="unconfirmedTransaction.signed"
               text-center
-              class="signedTitle">SIGNED</h1>
+              class="signedTitle">SIGNED (it gonna be included soon in a block)</h1>
         </ion-card-content>
       </ion-card>
     </button>
