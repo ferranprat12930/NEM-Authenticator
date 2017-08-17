@@ -28,7 +28,6 @@ import {LocalDateTime} from "js-joda";
 @Pipe({name: "localTimeParser"})
 export class LocalTimeParserPipe implements PipeTransform {
   transform(value: LocalDateTime, ...args: any[]): any {
-    console.log(value);
     return value.toLocalDate() + " " + value.toLocalTime();
   }
 
