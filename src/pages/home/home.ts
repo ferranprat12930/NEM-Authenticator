@@ -32,7 +32,6 @@ import {
   AccountHttp,
   MultisigSignatureTransaction,
   MultisigTransaction,
-  PublicAccount,
   TimeWindow,
   Transaction,
   TransactionHttp,
@@ -115,7 +114,7 @@ export class HomePage {
   private signTransaction(unconfirmedTransaction: MultisigTransaction) {
     const multisigSignedTransaction = MultisigSignatureTransaction.create(
       TimeWindow.createWithDeadline(),
-      PublicAccount.createWithPublicKey(unconfirmedTransaction.otherTransaction.signer).address,
+      unconfirmedTransaction.otherTransaction.signer.address,
       unconfirmedTransaction.hashData
     );
     const signedTransaction = this.account.signTransaction(multisigSignedTransaction);
