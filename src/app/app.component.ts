@@ -28,8 +28,7 @@ import {SplashScreen} from "@ionic-native/splash-screen";
 import {SetupPage} from "../pages/setup/setup";
 import {Storage} from "@ionic/storage";
 import {HomePage} from "../pages/home/home";
-import {NEMLibrary} from "nem-library/dist/src/NEMLibrary";
-import {NetworkTypes} from "nem-library";
+import {NEMLibrary, NetworkTypes} from "nem-library";
 
 @Component({
   templateUrl: 'app.html'
