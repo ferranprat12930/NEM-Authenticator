@@ -20,8 +20,10 @@
           {{unconfirmedTransaction.otherTransaction.type | transactionType}} TRANSACTION
         </ion-card-header>
         <ion-card-content>
-
-          <p>To {{unconfirmedTransaction.otherTransaction.recipient.plain()}}</p>
+          <p>To {{unconfirmedTransaction.otherTransaction.recipient.pretty()}}</p>
+          <br/>
+          <p>Transaction started at {{unconfirmedTransaction.timeWindow.timeStamp | localTimeParser}}</p>
+          <p>Transaction deadline is at {{unconfirmedTransaction.timeWindow.deadline | localTimeParser}}</p>
           <h1 *ngIf="unconfirmedTransaction.signatures.length != 0"
               text-center
               class="signedTitle">SIGNED</h1>

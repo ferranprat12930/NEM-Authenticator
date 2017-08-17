@@ -15,6 +15,7 @@ import {AccountHttp, TransactionHttp} from "nem-library";
 import {AccountHttpInstanceFactory} from "../values/accounthttp.value";
 import {TransactionHttpInstanceFactory} from "../values/transactionhttp.value";
 import {TransactionTypePipe} from "../pipes/transaction-type.pipe";
+import {LocalTimeParserPipe} from "../pipes/local-time-parser.pipe";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {TransactionTypePipe} from "../pipes/transaction-type.pipe";
     SetupPage,
     XEMPipe,
     TransactionTypePipe,
+    LocalTimeParserPipe,
     TransactionModal,
     SetupAccountModal
   ],
