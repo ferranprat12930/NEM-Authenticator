@@ -1,5 +1,8 @@
 {
   "name": "NEM-Authenticator",
   "app_id": "com.nemauthenticator.app",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }
