@@ -30,4 +30,5 @@ import {TransferTransaction} from "nem-library/dist/src/models/transaction/Trans
 })
 export class TransferTransactionComponent {
   @Input() transaction: TransferTransaction;
+
 }

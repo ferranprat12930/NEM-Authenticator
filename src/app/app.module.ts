@@ -12,10 +12,11 @@ import {IonicStorageModule} from "@ionic/storage";
 import {SetupPage} from "../pages/setup/setup";
 import {SetupAccountModal} from "../pages/setup/setup-account.modal";
 import {AccountHttp, TransactionHttp} from "nem-library";
-import {AccountHttpInstanceFactory} from "../values/accounthttp.value";
-import {TransactionHttpInstanceFactory} from "../values/transactionhttp.value";
+import {AccountHttpInstanceFactory} from "../values/account-http.value";
+import {TransactionHttpInstanceFactory} from "../values/transaction-http.value";
 import {TransactionTypePipe} from "../pipes/transaction-type.pipe";
 import {LocalTimeParserPipe} from "../pipes/local-time-parser.pipe";
+import {TransferTransactionComponent} from "../components/transfer-transaction/transfer-transaction.component";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {LocalTimeParserPipe} from "../pipes/local-time-parser.pipe";
     TransactionTypePipe,
     LocalTimeParserPipe,
     TransactionModal,
-    SetupAccountModal
+    SetupAccountModal,
+    TransferTransactionComponent
   ],
   imports: [
     BrowserModule,
