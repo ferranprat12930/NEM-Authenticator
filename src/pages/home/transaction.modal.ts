@@ -24,6 +24,7 @@
 import {Component} from "@angular/core";
 import {NavParams, ViewController} from "ionic-angular";
 import {MultisigTransaction} from "nem-library";
+import {TransactionTypes} from "nem-library/dist/src/models/transaction/TransactionTypes";
 
 @Component({
   selector: 'transaction-modal',
@@ -31,6 +32,7 @@ import {MultisigTransaction} from "nem-library";
 })
 export class TransactionModal {
   unconfirmedTransaction: MultisigTransaction;
+  TransactionTypes = TransactionTypes;
 
   constructor(params: NavParams,
               public viewCtrl: ViewController) {

@@ -21,12 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import {Component} from "@angular/core";
+import {Component, Input} from "@angular/core";
+import {TransferTransaction} from "nem-library/dist/src/models/transaction/TransferTransaction";
 
 @Component({
   selector: 'transfer-transaction-component',
   templateUrl: './transfer-transaction.component.html'
 })
 export class TransferTransactionComponent {
-
+  @Input() transaction: TransferTransaction;
 }
