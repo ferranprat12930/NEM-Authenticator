@@ -15,9 +15,29 @@
   <ion-grid>
     <ion-row>
       <transfer-transaction-component
-        *ngIf="unconfirmedTransaction.type == TransactionTypes.TRANSFER"
+        *ngIf="unconfirmedTransaction.otherTransaction.type == TransactionTypes.TRANSFER"
         [transaction]="unconfirmedTransaction">
       </transfer-transaction-component>
+      <provision-namespace-transaction-component
+        *ngIf="unconfirmedTransaction.otherTransaction.type == TransactionTypes.PROVISION_NAMESPACE"
+        [transaction]="unconfirmedTransaction">
+      </provision-namespace-transaction-component>
+      <multisig-aggregate-modification-transaction-component
+        *ngIf="unconfirmedTransaction.otherTransaction.type == TransactionTypes.MULTISIG_AGGREGATE_MODIFICATION"
+        [transaction]="unconfirmedTransaction">
+      </multisig-aggregate-modification-transaction-component>
+      <mosaic-supply-change-transaction-component
+        *ngIf="unconfirmedTransaction.otherTransaction.type == TransactionTypes.MOSAIC_SUPPLY_CHANGE"
+        [transaction]="unconfirmedTransaction">
+      </mosaic-supply-change-transaction-component>
+      <mosaic-definition-creation-transaction-component
+        *ngIf="unconfirmedTransaction.otherTransaction.type == TransactionTypes.MOSAIC_DEFINITION_CREATION"
+        [transaction]="unconfirmedTransaction">
+      </mosaic-definition-creation-transaction-component>
+      <importance-transfer-transaction-component
+        *ngIf="unconfirmedTransaction.otherTransaction.type == TransactionTypes.IMPORTANCE_TRANSFER"
+        [transaction]="unconfirmedTransaction">
+      </importance-transfer-transaction-component>
       <ion-col col-6>
         <button text-center ion-button full color="secondary" (click)="signTransaction()">SIGN TRANSACTION</button>
       </ion-col>

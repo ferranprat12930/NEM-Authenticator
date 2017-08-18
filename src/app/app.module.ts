@@ -17,6 +17,11 @@ import {TransactionHttpInstanceFactory} from "../values/transaction-http.value";
 import {TransactionTypePipe} from "../pipes/transaction-type.pipe";
 import {LocalTimeParserPipe} from "../pipes/local-time-parser.pipe";
 import {TransferTransactionComponent} from "../components/transfer-transaction/transfer-transaction.component";
+import {ProvisionNamespaceTransactionComponent} from "../components/provision-namespace-transaction/provision-namespace-transaction.component";
+import {MultisigAggregateModificationTransactionComponent} from "../components/multisig-aggregate-transaction/multisig-aggregate-modification-transaction.component";
+import {MosaicSupplyChangeTransactionComponent} from "../components/mosaic-supply-change-transaction/mosaic-supply-change-transaction.component";
+import {MosaicDefinitionCreationTransactionComponent} from "../components/mosaic-definition-transaction/mosaic-definition-creation-transaction.component";
+import {ImportanceTransferTransactionComponent} from "../components/importance-transaction/importance-transfer-transaction.component";
 
 @NgModule({
   declarations: [
@@ -28,7 +33,12 @@ import {TransferTransactionComponent} from "../components/transfer-transaction/t
     LocalTimeParserPipe,
     TransactionModal,
     SetupAccountModal,
-    TransferTransactionComponent
+    TransferTransactionComponent,
+    ProvisionNamespaceTransactionComponent,
+    MultisigAggregateModificationTransactionComponent,
+    MosaicSupplyChangeTransactionComponent,
+    MosaicDefinitionCreationTransactionComponent,
+    ImportanceTransferTransactionComponent
   ],
   imports: [
     BrowserModule,
