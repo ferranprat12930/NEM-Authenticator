@@ -171,7 +171,7 @@ class MultisigTransactionPlusView {
   }
 
   transactionType(): TransactionTypes {
-    return this.transaction.type;
+    return this.transaction.otherTransaction.type;
   }
 
   signerAddress(): string {

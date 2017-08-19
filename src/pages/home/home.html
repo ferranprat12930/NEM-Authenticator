@@ -17,7 +17,7 @@
             (click)="cosignTransaction(unconfirmedTransaction)">
       <ion-card [ngClass]="{'signedTransaction': (unconfirmedTransaction.signed)}">
         <ion-card-header>
-          {{unconfirmedTransaction.otherTransaction.transactionType() | transactionType}} TRANSACTION
+          {{unconfirmedTransaction.transactionType() | transactionType}} TRANSACTION
         </ion-card-header>
         <ion-card-content>
           <p>Started by {{unconfirmedTransaction.signerAddress() }}</p>
