@@ -1,1 +1,14 @@
-<ion-content></ion-content>
+<ion-col col-12>
+  <p>Mosaic edited</p>
+  <p>{{transaction.otherTransaction.mosaicId.description()}}</p>
+</ion-col>
+
+<ion-col col-12>
+  <p *ngIf="transaction.otherTransaction.supplyType == 1">Increase: {{transaction.otherTransaction.delta}} mosaics</p>
+  <p *ngIf="transaction.otherTransaction.supplyType == 2">Decrease: {{transaction.otherTransaction.delta}} mosaics</p>
+</ion-col>
+
+<ion-col col-12>
+  <p>fee</p>
+  <p>{{transaction.fee | xem}} XEM</p>
+</ion-col>

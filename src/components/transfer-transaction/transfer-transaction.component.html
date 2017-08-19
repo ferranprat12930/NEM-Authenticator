@@ -2,9 +2,19 @@
   <p>To</p>
   <p>{{transaction.otherTransaction.recipient.plain()}}</p>
 </ion-col>
-<ion-col col-12>
+<ion-col col-12 *ngIf="!transaction.otherTransaction.mosaics">
   <p>Amount</p>
   <p>{{transaction.otherTransaction.amount | xem}} XEM</p>
+</ion-col>
+<ion-col col-12 *ngIf="transaction.otherTransaction.mosaics">
+  <span *ngFor="let mosaic of transaction.otherTransaction.mosaics!">
+    <p>{{mosaic.quantity}} {{mosaic.mosaicId.description()}}</p>
+  </span>
+</ion-col>
+
+<ion-col col-12 *ngIf="transaction.otherTransaction.message">
+  <p>Message</p>
+  <p>{{transaction.otherTransaction.message.plain()}}</p>
 </ion-col>
 <ion-col col-12>
   <p>fee</p>

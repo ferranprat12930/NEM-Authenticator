@@ -1,1 +1,31 @@
-<ion-content></ion-content>
+<ion-col col-12>
+  <p>Name</p>
+  <p>{{transaction.otherTransaction.mosaicDefinition.id.description()}}</p>
+</ion-col>
+<ion-col col-12>
+  <p>Description</p>
+  <p>{{transaction.otherTransaction.mosaicDefinition.description}}</p>
+</ion-col>
+
+<ion-col col-12>
+  <p>Properties</p>
+  <p>Initial supply: {{transaction.otherTransaction.mosaicDefinition.properties.initialSupply}}</p>
+  <p>Divisibility: {{transaction.otherTransaction.mosaicDefinition.properties.divisibility}}</p>
+  <p>Transferable: {{transaction.otherTransaction.mosaicDefinition.properties.transferable}}</p>
+  <p>Supply mutable: {{transaction.otherTransaction.mosaicDefinition.properties.supplyMutable}}</p>
+</ion-col>
+
+<ion-col col-12 *ngIf="transaction.otherTransaction.mosaicDefinition.levy?.mosaicId">
+  <p>Levy</p>
+  <p>Mosaic: {{transaction.otherTransaction.mosaicDefinition.levy.mosaicId.description()}}</p>
+  <p>Levy type: </p>
+    <p *ngIf="transaction.otherTransaction.mosaicDefinition.levy.type == 1">Absolute</p>
+    <p *ngIf="transaction.otherTransaction.mosaicDefinition.levy.type == 2">Percentil</p>
+  <p>Fee: {{transaction.otherTransaction.mosaicDefinition.levy.fee}}</p>
+  <p>Recipient: {{transaction.otherTransaction.mosaicDefinition.levy.recipient.pretty()}}</p>
+</ion-col>
+
+<ion-col col-12>
+  <p>fee</p>
+  <p>{{transaction.fee | xem}} XEM</p>
+</ion-col>

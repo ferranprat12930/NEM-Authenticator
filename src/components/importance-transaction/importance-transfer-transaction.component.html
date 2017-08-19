@@ -1,1 +1,9 @@
-<ion-content></ion-content>
+<ion-col col-12>
+  <p *ngIf="transaction.otherTransaction.mode == 1">Activate harvesting</p>
+  <p *ngIf="transaction.otherTransaction.mode == 2">Deactivate harvesting</p>
+</ion-col>
+
+<ion-col col-12>
+  <p>Remote account: </p>
+  <p>{{transaction.otherTransaction.remoteAccount.address.pretty()}}</p>
+</ion-col>
