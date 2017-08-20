@@ -1,19 +1,22 @@
 <ion-col col-12>
-  <p>Multisig aggregate modification</p>
-</ion-col>
-
-<ion-col col-12>
-  <p>Relative changes</p>
+  <h5>Relative changes</h5>
   <p>{{transaction.otherTransaction.relativeChange}}</p>
 </ion-col>
 
 <ion-col col-12 *ngFor="let cosignatoryModification of modifications">
-  <p *ngIf="cosignatoryModification.action == 1">Add cosignatory</p>
-  <p *ngIf="cosignatoryModification.action == 2">Delete cosignatory</p>
-  <p>{{cosignatoryModification.cosignatoryAccount.address.pretty()}}</p>
+  <p *ngIf="cosignatoryModification.action == 1">Add cosignatory
+    <span>
+      {{cosignatoryModification.cosignatoryAccount.address.pretty()}}
+    </span>
+  </p>
+  <p *ngIf="cosignatoryModification.action == 2">Delete cosignatory
+    <span>
+      {{cosignatoryModification.cosignatoryAccount.address.pretty()}}
+  </span>
+  </p>
 </ion-col>
 
 <ion-col col-12>
-  <p>fee</p>
-  <p>{{transaction.fee | xem}} XEM</p>
+  <h5>Fee: </h5>
+  <p>{{(transaction.fee + transaction.otherTransaction.fee) | xem}} XEM</p>
 </ion-col>
