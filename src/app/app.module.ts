@@ -24,6 +24,7 @@ import {MosaicDefinitionCreationTransactionComponent} from "../components/mosaic
 import {ImportanceTransferTransactionComponent} from "../components/importance-transaction/importance-transfer-transaction.component";
 import {AccountService} from "../services/account.service";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
+import {LoginModal} from "../components/login-modal/login.modal";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
     LocalTimeParserPipe,
     TransactionModal,
     SetupAccountModal,
+    LoginModal,
     TransferTransactionComponent,
     ProvisionNamespaceTransactionComponent,
     MultisigAggregateModificationTransactionComponent,
@@ -53,7 +55,8 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
     HomePage,
     TransactionModal,
     SetupPage,
-    SetupAccountModal
+    SetupAccountModal,
+    LoginModal
   ],
   providers: [
     AccountService,

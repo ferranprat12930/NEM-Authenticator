@@ -43,7 +43,7 @@ export class SetupPage {
 
   constructor(public navCtrl: NavController,
               private formBuilder: FormBuilder,
-              public modalCtrl: ModalController,
+              private modalCtrl: ModalController,
               private storage: Storage,
               private accountService: AccountService) {
     this.form = formBuilder.group({
@@ -52,7 +52,7 @@ export class SetupPage {
   }
 
   confirm() {
-    this.storage.set('WALLET', this.wallet.writeWLTFile()).then(x => {
+    this.storage.set('WALLET', this.wallet.writeWLTFile()).then(_ => {
       this.accountService.setAccount(this.account);
       let networkType = this.account.address.network();
       NEMLibrary.bootstrap(networkType);
