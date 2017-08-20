@@ -21,8 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import {Component} from "@angular/core";
-import {AlertController, LoadingController, ModalController, Platform} from "ionic-angular";
+import {Component, ViewChild} from "@angular/core";
+import {AlertController, LoadingController, ModalController, Nav, Platform} from "ionic-angular";
 import {StatusBar} from "@ionic-native/status-bar";
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {SetupPage} from "../pages/setup/setup";
@@ -38,6 +38,7 @@ import {AccountPage} from "../pages/account/account.page";
   templateUrl: 'app.html'
 })
 export class MyApp {
+  @ViewChild(Nav) navCtrl: Nav;
   rootPage: any;
 
   constructor(platform: Platform,
@@ -84,11 +85,11 @@ export class MyApp {
   }
 
   viewTransactions() {
-    this.rootPage = HomePage;
+    this.navCtrl.setRoot(HomePage);
   }
 
   viewAccountDetails() {
-    this.rootPage = AccountPage;
+    this.navCtrl.setRoot(AccountPage);
   }
 
   removeAccount() {
@@ -106,12 +107,12 @@ export class MyApp {
           text: 'Agree',
           handler: () => {
             this.storage.clear().then(_ => {
-              this.rootPage = SetupPage;
+              this.navCtrl.setRoot(SetupPage);
             })
           }
         }
       ]
-    });
+    }).present();
   }
 }
 

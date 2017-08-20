@@ -26,7 +26,6 @@ import {Component} from "@angular/core";
 import {Loading, LoadingController, ModalController, NavController, ToastController} from "ionic-angular";
 import {Observable} from "rxjs";
 import {TransactionModal} from "./transaction.modal";
-import {Storage} from "@ionic/storage";
 import {
   Account,
   AccountHttp,
@@ -64,8 +63,7 @@ export class HomePage {
               public toastCtrl: ToastController,
               public accountHttp: AccountHttp,
               private accountService: AccountService,
-              public transactionHttp: TransactionHttp,
-              private storage: Storage) {
+              public transactionHttp: TransactionHttp) {
     this.loader = loadingCtrl.create({
       content: "Please wait..."
     });

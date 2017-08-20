@@ -8,10 +8,10 @@
   </ion-header>
   <ion-content>
     <ion-list no-lines>
-      <button ion-item (click)="viewTransactions()">Transactions</button>
-      <button ion-item (click)="viewAccountDetails()">Account</button>
+      <button ion-item menuClose (click)="viewTransactions()">Transactions</button>
+      <button ion-item menuClose (click)="viewAccountDetails()">Account</button>
       <ion-item-divider></ion-item-divider>
-      <button ion-item (click)="removeAccount()">Remove Account</button>
+      <button ion-item menuClose (click)="removeAccount()">Remove Account</button>
     </ion-list>
   </ion-content>
 </ion-menu>

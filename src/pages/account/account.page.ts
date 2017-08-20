@@ -22,11 +22,25 @@
  * SOFTWARE.
  */
 import {Component} from "@angular/core";
+import {Account, Address, NEMLibrary, NetworkTypes} from "nem-library"
+import {AccountService} from "../../services/account.service";
+import {NavController} from "ionic-angular";
 
 @Component({
   selector: 'account-page',
   templateUrl: 'account.page.html'
 })
 export class AccountPage {
+  // View
+  NEMLibrary = NEMLibrary;
+  NetworkTypes = NetworkTypes;
 
+  account: Account;
+  multisig: Address;
+
+  constructor(public navCtrl: NavController,
+              private accountService: AccountService) {
+    this.account = accountService.getAccount();
+    this.multisig = accountService.getMultisig();
+  }
 }
