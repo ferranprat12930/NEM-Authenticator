@@ -39,7 +39,7 @@ export class SetupAccountModal {
               private formBuilder: FormBuilder,
               private toastCtrl: ToastController,
               private barcodeScanner: BarcodeScanner,
-              public viewCtrl: ViewController) {
+              private viewCtrl: ViewController) {
     this.form = formBuilder.group({
       password: ['',
         Validators.compose([Validators.required])]

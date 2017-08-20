@@ -24,7 +24,7 @@
 import {Component, ViewChild} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ModalController, NavController, Slides} from "ionic-angular";
-import {Account} from "nem-library";
+import {Account, NEMLibrary} from "nem-library";
 import {Storage} from "@ionic/storage";
 import {HomePage} from "../home/home";
 import {SetupAccountModal} from "./setup-account.modal";
@@ -54,6 +54,8 @@ export class SetupPage {
   confirm() {
     this.storage.set('WALLET', this.wallet.writeWLTFile()).then(x => {
       this.accountService.setAccount(this.account);
+      let networkType = this.account.address.network();
+      NEMLibrary.bootstrap(networkType);
         this.navCtrl.setRoot(HomePage);
       }
     );
