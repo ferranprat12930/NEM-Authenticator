@@ -49,7 +49,7 @@ export class MyApp {
               private accountService: AccountService,
               private storage: Storage,
               private alertCtrl: AlertController,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController,
               private translateService: TranslateService) {
 
     let loader = loadingCtrl.create({
