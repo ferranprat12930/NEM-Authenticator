@@ -1,32 +1,32 @@
 <ion-col col-12>
-  <h5>Name</h5>
+  <h5>{{'NAME' | translate}}</h5>
   <p>{{transaction.otherTransaction.mosaicDefinition.id.description()}}</p>
 </ion-col>
 <ion-col col-12>
-  <h5>Description</h5>
+  <h5>{{'DESCRIPTION' | translate}}</h5>
   <p>{{transaction.otherTransaction.mosaicDefinition.description}}</p>
 </ion-col>
 
 <ion-col col-12>
-  <h5>Properties</h5>
-  <p>Initial supply: {{transaction.otherTransaction.mosaicDefinition.properties.initialSupply}}</p>
-  <p>Divisibility: {{transaction.otherTransaction.mosaicDefinition.properties.divisibility}}</p>
-  <p>Transferable: {{transaction.otherTransaction.mosaicDefinition.properties.transferable}}</p>
-  <p>Supply mutable: {{transaction.otherTransaction.mosaicDefinition.properties.supplyMutable}}</p>
+  <h5>{{'PROPERTIES' | translate}}:</h5>
+  <p>{{'INITIAL_SUPPLY' | translate}}: {{transaction.otherTransaction.mosaicDefinition.properties.initialSupply}}</p>
+  <p>{{'DIVISIBILITY' | translate}}: {{transaction.otherTransaction.mosaicDefinition.properties.divisibility}}</p>
+  <p>{{'TRANSFERABLE' | translate}}: {{transaction.otherTransaction.mosaicDefinition.properties.transferable}}</p>
+  <p>{{'SUPPLY_MUTABLE' | translate}}: {{transaction.otherTransaction.mosaicDefinition.properties.supplyMutable}}</p>
 </ion-col>
 
 <ion-col col-12 *ngIf="transaction.otherTransaction.mosaicDefinition.levy?.mosaicId">
-  <h5>Levy</h5>
-  <p>Mosaic: {{transaction.otherTransaction.mosaicDefinition.levy.mosaicId.description()}}</p>
-  <p>Levy type:
-    <span *ngIf="transaction.otherTransaction.mosaicDefinition.levy.type == 1">Absolute</span>
-    <span *ngIf="transaction.otherTransaction.mosaicDefinition.levy.type == 2">Percentil</span>
+  <h5>{{'LEVY' | translate}}</h5>
+  <p>{{'MOSAIC' | translate}}: {{transaction.otherTransaction.mosaicDefinition.levy.mosaicId.description()}}</p>
+  <p>{{'TYPE' | translate}}:
+    <span *ngIf="transaction.otherTransaction.mosaicDefinition.levy.type == 1">{{'LEVY_TYPE_ABSOLUTE' | translate}}</span>
+    <span *ngIf="transaction.otherTransaction.mosaicDefinition.levy.type == 2">{{'LEVY_TYPE_PERCENTIL' | translate}}</span>
   </p>
-  <p>Fee: {{transaction.otherTransaction.mosaicDefinition.levy.fee}}</p>
-  <p>Recipient: {{transaction.otherTransaction.mosaicDefinition.levy.recipient.pretty()}}</p>
+  <p>{{ 'FEE' | translate}}: {{transaction.otherTransaction.mosaicDefinition.levy.fee}}</p>
+  <p>{{ 'RECIPIENT' | translate}}: {{transaction.otherTransaction.mosaicDefinition.levy.recipient.pretty()}}</p>
 </ion-col>
 
 <ion-col col-12>
-  <h5>Fee: </h5>
+  <h5>{{ 'FEE' | translate}}: </h5>
   <p>{{(transaction.fee + transaction.otherTransaction.fee) | xem}} XEM</p>
 </ion-col>

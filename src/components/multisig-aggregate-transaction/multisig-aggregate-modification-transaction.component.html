@@ -1,15 +1,15 @@
 <ion-col col-12>
-  <h5>Relative changes</h5>
+  <h5>{{'RELATIVE_CHANGES' | translate}}</h5>
   <p>{{transaction.otherTransaction.relativeChange}}</p>
 </ion-col>
 
 <ion-col col-12 *ngFor="let cosignatoryModification of modifications">
-  <p *ngIf="cosignatoryModification.action == 1">Add cosignatory
+  <p *ngIf="cosignatoryModification.action == 1">{{'ADD_COSIGNATORY' | translate}}
     <span>
       {{cosignatoryModification.cosignatoryAccount.address.pretty()}}
     </span>
   </p>
-  <p *ngIf="cosignatoryModification.action == 2">Delete cosignatory
+  <p *ngIf="cosignatoryModification.action == 2">{{'ADD_COSIGNATORY' | translate}}
     <span>
       {{cosignatoryModification.cosignatoryAccount.address.pretty()}}
   </span>
@@ -17,6 +17,6 @@
 </ion-col>
 
 <ion-col col-12>
-  <h5>Fee: </h5>
+  <h5>{{'FEE' | translate}}: </h5>
   <p>{{(transaction.fee + transaction.otherTransaction.fee) | xem}} XEM</p>
 </ion-col>

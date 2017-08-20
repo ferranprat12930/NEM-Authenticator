@@ -29,6 +29,8 @@ import {SetupPage} from "../pages/setup/setup";
 import {Storage} from "@ionic/storage";
 import {HomePage} from "../pages/home/home";
 import {NEMLibrary, NetworkTypes} from "nem-library";
+import {TranslateService} from "@ngx-translate/core";
+
 
 @Component({
   templateUrl: 'app.html'
@@ -40,12 +42,16 @@ export class MyApp {
               statusBar: StatusBar,
               splashScreen: SplashScreen,
               private storage: Storage,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              private translateService: TranslateService) {
+
     NEMLibrary.bootstrap(NetworkTypes.TEST_NET);
     let loader = loadingCtrl.create({
       content: "Please wait..."
     });
+
     loader.present();
+
     storage.get('PRIVATE_KEY').then(privateKey => {
       loader.dismiss();
       if (privateKey !== null) {
@@ -54,9 +60,17 @@ export class MyApp {
         this.rootPage = SetupPage;
       }
     });
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+
+      let availableLanguages = ['en', 'es'];
+
+      //i18n configuration
+      this.translateService.setDefaultLang('en');
+      this.translateService.use('en');
+
       statusBar.styleDefault();
       splashScreen.hide();
     });

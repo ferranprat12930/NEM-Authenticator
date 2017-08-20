@@ -17,21 +17,21 @@
             (click)="cosignTransaction(unconfirmedTransaction)">
       <ion-card [ngClass]="{'signedTransaction': (unconfirmedTransaction.signed)}">
         <ion-card-header>
-          {{unconfirmedTransaction.transactionType() | transactionType}} TRANSACTION
+          {{unconfirmedTransaction.transactionType() | transactionType}} {{ 'TRANSACTION' | translate}}
         </ion-card-header>
         <ion-card-content>
-          <p>Started by {{unconfirmedTransaction.signerAddress() }}</p>
+          <p>{{ 'STARTED_BY' | translate}} {{unconfirmedTransaction.signerAddress() }}</p>
           <br/>
-          <p>Transaction started at {{unconfirmedTransaction.timeStamp() | localTimeParser}}</p>
-          <p>Transaction deadline is at {{unconfirmedTransaction.deadline() | localTimeParser}}</p>
+          <p>{{ 'TRANSACTION_TIMESTAMP' | translate}} {{unconfirmedTransaction.timeStamp() | localTimeParser}}</p>
+          <p>{{ 'TRANSACTION_DEADLINE' | translate}} {{unconfirmedTransaction.deadline() | localTimeParser}}</p>
 
           <div text-center margin-top *ngIf="unconfirmedTransaction.signing">
-            Signing Transaction <br/>
+            {{ 'SIGNING_TRANSACTION' | translate}} <br/>
             <ion-spinner></ion-spinner>
           </div>
           <h1 *ngIf="unconfirmedTransaction.signed"
               text-center
-              class="signedTitle">SIGNED (it gonna be included soon in a block)</h1>
+              class="signedTitle">{{ 'TRANSACTION_SIGNED' | translate}}</h1>
         </ion-card-content>
       </ion-card>
     </button>
@@ -41,7 +41,7 @@
       <ion-col>
         <h1 class="smile-face">:)</h1>
         <br/>
-        <h3>You have no pending transactions</h3>
+        <h3>{{ 'NO_PENDING_TRANSACTIONS' | translate}}</h3>
       </ion-col>
     </ion-row>
   </ion-grid>

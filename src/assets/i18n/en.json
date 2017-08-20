@@ -1,0 +1,60 @@
+{
+  "TRANSFER": "TRANSFER",
+  "IMPORTANCE_TRANSFER": "IMPORTANCE",
+  "MULTISIG_AGGREGATE_MODIFICATION": "MULTISIG AGGREGATE MODIFICATION",
+  "PROVISION_NAMESPACE": "PROVISION NAMESPACE",
+  "MOSAIC_DEFINITION_CREATION": "MOSAIC DEFINITION CREATION",
+  "MOSAIC_SUPPLY_CHANGE": "MOSAIC SUPPLY CHANGE",
+
+  // HOME SCREEN
+  "TRANSACTION": "TRANSACTION",
+  "STARTED_BY": "Started by",
+  "TRANSACTION_TIMESTAMP": "Transaction started at",
+  "TRANSACTION_DEADLINE": "Transaction deadline is at",
+  "SIGNING_TRANSACTION": "Signing Transaction",
+  "TRANSACTION_SIGNED": "SIGNED (it gonna be included soon in a block)",
+  "NO_PENDING_TRANSACTIONS": "You have no pending transactions",
+
+  // SETUP
+  "SETUP": "setup",
+  "SLIDE_1_TITLE": "Welcome to ",
+  "SLIDE_1_DESCRIPTION": "We need to setup your account first",
+  "SLIDE_2_TITLE": "This step is security critical",
+  "SLIDE_2_DESCRIPTION": "We need your private key in plain mode just once",
+  "SLIDE_2_DESCRIPTION_2": "Remind, ",
+  "SLIDE_2_DESCRIPTION_3": "only testnet accounts",
+
+  // TRANSACTION COMPONENETS
+  "AMOUNT": "Amount",
+  "RECIPIENT": "Recipient",
+  "MESSAGE": "Message",
+  "FEE": "Fee",
+  "ENCRYPTED_MESSAGE": "Encrypted message",
+  "ADD_COSIGNATORY": "Add cosignatory",
+  "DELETE_COSIGNATORY": "Delete cosignatory",
+  "RELATIVE_CHANGES": "Relative changes",
+  "SUPPLY_INCREASE": "Increase",
+  "SUPPLY_DECREASE": "Decrease",
+
+  "NAME": "Name",
+  "DESCRIPTION": "Description",
+  "PROPERTIES": "Properties",
+  "INITIAL_SUPPLY": "Initial supply",
+  "DIVISIBILITY": "Divisibility",
+  "TRANSFERABLE": "Transferable",
+  "SUPPLY_MUTABLE": "Supply mutable",
+  "LEVY": "Levy",
+  "TYPE": "Type",
+  "LEVY_TYPE_ABSOLUTE": "Absolute",
+  "LEVY_TYPE_PERCENTIL": "Percentil",
+  "ACTIVATE_HARVESTING": "Activate harvesting",
+  "DEACTIVATE_HARVESTING": "Deactivate harvesting",
+  "REMOVE_ACCOUNT": "Remote account",
+
+  "NAMESPACE": "Namespace",
+  "SUBNAMESPACE_OF": "Subnamespace of",
+
+  "MOSAIC": "Mosaic",
+  "MOSAICS": "Mosaics"
+
+}

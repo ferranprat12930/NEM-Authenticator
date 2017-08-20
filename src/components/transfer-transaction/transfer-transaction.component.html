@@ -1,24 +1,24 @@
 <ion-col col-12>
-  <h5>To:</h5>
+  <h5>{{'RECIPIENT' | translate}}:</h5>
   <p>{{transaction.otherTransaction.recipient.plain()}}</p>
 </ion-col>
 <ion-col col-12 *ngIf="!transaction.otherTransaction.mosaics">
-  <h5>Amount: </h5>
+  <h5>{{'AMOUNT' | translate}}: </h5>
   <p>{{transaction.otherTransaction.amount | xem}} XEM</p>
 </ion-col>
 <ion-col col-12 *ngIf="transaction.otherTransaction.mosaics">
-  <h5>Mosaics: </h5>
+  <h5>{{ 'MOSAICS' | translate}}: </h5>
   <p *ngFor="let mosaic of transaction.otherTransaction.mosaics!">
     {{mosaic.quantity}} {{mosaic.mosaicId.description()}}
   </p>
 </ion-col>
 
 <ion-col col-12 *ngIf="transaction.otherTransaction.message">
-  <h5>Message:</h5>
+  <h5>{{'MESSAGE' | translate}}:</h5>
   <p *ngIf="!transaction.otherTransaction.message.isEncrypted()">{{transaction.otherTransaction.message.plain()}}</p>
-  <p *ngIf="transaction.otherTransaction.message.isEncrypted()">Encrypted message</p>
+  <p *ngIf="transaction.otherTransaction.message.isEncrypted()">{{ 'ENCRYPTED_MESSAGE' | translate}}</p>
 </ion-col>
 <ion-col col-12>
-  <h5>Fee: </h5>
+  <h5>{{'FEE' | translate}}: </h5>
   <p>{{(transaction.fee + transaction.otherTransaction.fee) | xem}} XEM</p>
 </ion-col>
