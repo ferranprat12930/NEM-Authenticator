@@ -6,7 +6,6 @@
   "MOSAIC_DEFINITION_CREATION": "MOSAIC DEFINITION CREATION",
   "MOSAIC_SUPPLY_CHANGE": "MOSAIC SUPPLY CHANGE",
 
-  // HOME SCREEN
   "TRANSACTION": "TRANSACTION",
   "STARTED_BY": "Started by",
   "TRANSACTION_TIMESTAMP": "Transaction started at",
@@ -15,7 +14,6 @@
   "TRANSACTION_SIGNED": "SIGNED (it gonna be included soon in a block)",
   "NO_PENDING_TRANSACTIONS": "You have no pending transactions",
 
-  // SETUP
   "SETUP": "setup",
   "SLIDE_1_TITLE": "Welcome to ",
   "SLIDE_1_DESCRIPTION": "We need to setup your account first",
@@ -24,7 +22,6 @@
   "SLIDE_2_DESCRIPTION_2": "Remind, ",
   "SLIDE_2_DESCRIPTION_3": "only testnet accounts",
 
-  // TRANSACTION COMPONENETS
   "AMOUNT": "Amount",
   "RECIPIENT": "Recipient",
   "MESSAGE": "Message",

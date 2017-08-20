@@ -27,7 +27,7 @@
         "@ionic-native/status-bar": "4.0.0",
         "@ionic/storage": "^2.0.1",
         "@ngx-translate/core": "^7.2.0",
-        "@ngx-translate/http-loader": "^1.0.2",
+        "@ngx-translate/http-loader": "^0.1.0",
         "@types/request": "0.0.45",
         "@types/request-promise-native": "^1.0.6",
         "cordova-android": "^6.2.3",

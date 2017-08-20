@@ -25,8 +25,7 @@ import {Component} from "@angular/core";
 import {NavParams, ToastController, ViewController} from "ionic-angular";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
-import {NEMLibrary, Password, QRService, SimpleWallet} from "nem-library";
-import {NetworkTypes} from "nem-library/dist/src/models/node/NetworkTypes";
+import {NEMLibrary, Password, QRService, SimpleWallet, NetworkTypes} from "nem-library";
 
 @Component({
   selector: 'setup-account-modal',
