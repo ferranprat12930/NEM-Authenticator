@@ -24,6 +24,9 @@
 import {Component} from "@angular/core";
 import {NavParams, ToastController, ViewController} from "ionic-angular";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {BarcodeScanner} from "@ionic-native/barcode-scanner";
+import {NEMLibrary, Password, QRService, SimpleWallet} from "nem-library";
+import {NetworkTypes} from "nem-library/dist/src/models/node/NetworkTypes";
 
 @Component({
   selector: 'setup-account-modal',
@@ -31,29 +34,46 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class SetupAccountModal {
   form: FormGroup;
+  walletQRText;
 
   constructor(params: NavParams,
               private formBuilder: FormBuilder,
               private toastCtrl: ToastController,
-              public viewCtrl: ViewController) {
+              private barcodeScanner: BarcodeScanner,
+              private viewCtrl: ViewController) {
     this.form = formBuilder.group({
-      privateKey: ['',
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(64),
-          Validators.maxLength(66)])]
+      password: ['',
+        Validators.compose([Validators.required])]
+    });
+    NEMLibrary.reset();
+  }
+
+  scanWalletQR() {
+    this.barcodeScanner.scan().then(barcode => {
+      this.walletQRText = JSON.parse(barcode.text);
     });
   }
 
   verifyAccount() {
-    let privateKey: string = this.form.get('privateKey').value;
-    if ((privateKey.length !== <number>64) && (privateKey.length !== <number>66)) {
+    let password = new Password(this.form.get('password').value);
+    try {
+      let qrService = new QRService();
+      if (this.walletQRText.v == 1) {
+        NEMLibrary.bootstrap(NetworkTypes.TEST_NET);
+      } else if (this.walletQRText.v == 2) {
+        NEMLibrary.bootstrap(NetworkTypes.MAIN_NET);
+      }
+      let privateKey = qrService.decryptWalletQRText(password, this.walletQRText);
+      let simpleWallet = SimpleWallet.createWithPrivateKey("NEM Auth Account", password, privateKey);
+      this.viewCtrl.dismiss({
+        wallet: simpleWallet,
+        account: simpleWallet.open(password)
+      })
+    } catch (e) {
       this.toastCtrl.create({
-        message: "Check your private key",
+        message: "Check your password",
         duration: 1000
       }).present();
-    } else {
-      this.viewCtrl.dismiss(privateKey);
     }
   }
 

@@ -30,7 +30,6 @@ import {Storage} from "@ionic/storage";
 import {
   Account,
   AccountHttp,
-  Address,
   ConfirmedTransactionListener,
   MultisigSignatureTransaction,
   MultisigTransaction,
@@ -44,6 +43,7 @@ import {
 import {LocalDateTime} from "js-joda";
 import {MultisigTransactionInfo} from "nem-library/dist/src/models/transaction/TransactionInfo";
 import {NetworkTypes} from "nem-library/dist/src/models/node/NetworkTypes";
+import {AccountService} from "../../services/account.service";
 
 @Component({
   selector: 'page-home',
@@ -63,6 +63,7 @@ export class HomePage {
               public modalCtrl: ModalController,
               public toastCtrl: ToastController,
               public accountHttp: AccountHttp,
+              private accountService: AccountService,
               public transactionHttp: TransactionHttp,
               private storage: Storage) {
     this.loader = loadingCtrl.create({
@@ -71,34 +72,32 @@ export class HomePage {
     this.loader.present().then(() => {
     });
 
-    this.storage.get('PRIVATE_KEY').then(privateKey => {
-      this.account = Account.createWithPrivateKey(privateKey);
-      this.accountPulling = accountHttp.unconfirmedTransactions(this.account.address)
-        .flatMap(_ => _)
-        .filter(transaction => transaction.type == TransactionTypes.MULTISIG)
-        .map(multisigTransaction => new MultisigTransactionPlusView(<MultisigTransaction> multisigTransaction, false, false))
-        .toArray();
-      this.fetchTransactions();
+    this.account = this.accountService.getAccount();
+    this.accountPulling = accountHttp.unconfirmedTransactions(this.account.address)
+      .flatMap(_ => _)
+      .filter(transaction => transaction.type == TransactionTypes.MULTISIG)
+      .map(multisigTransaction => new MultisigTransactionPlusView(<MultisigTransaction> multisigTransaction, false, false))
+      .toArray();
+    this.fetchTransactions();
 
-      let multisig = new Address("TBUAUC3VYKPP3PJPOH7A7BCB2C4I64XZAAOZBO6N");
-      new UnconfirmedTransactionListener().given(multisig)
-        .delay(1000)
-        .subscribe(_ => {
-          this.fetchTransactions();
-        });
+    let multisig = accountService.getMultisig();
+    new UnconfirmedTransactionListener().given(multisig)
+      .delay(1000)
+      .subscribe(_ => {
+        this.fetchTransactions();
+      });
 
-      new ConfirmedTransactionListener().given(multisig)
-        .subscribe(transaction => {
-          if (transaction.type == TransactionTypes.MULTISIG) {
-            this.unconfirmedTransactions = this.unconfirmedTransactions
-              .filter(x => {
-                const innerData = x.transaction.hashData.data;
-                const confirmedTransactionInnerData = (<MultisigTransactionInfo>(<MultisigTransaction>transaction).getTransactionInfo()).innerHash.data;
-                return innerData != confirmedTransactionInnerData;
-              })
-          }
-        })
-    });
+    new ConfirmedTransactionListener().given(multisig)
+      .subscribe(transaction => {
+        if (transaction.type == TransactionTypes.MULTISIG) {
+          this.unconfirmedTransactions = this.unconfirmedTransactions
+            .filter(x => {
+              const innerData = x.transaction.hashData.data;
+              const confirmedTransactionInnerData = (<MultisigTransactionInfo>(<MultisigTransaction>transaction).getTransactionInfo()).innerHash.data;
+              return innerData != confirmedTransactionInnerData;
+            })
+        }
+      })
   }
 
   fetchTransactions(refresher?: any) {

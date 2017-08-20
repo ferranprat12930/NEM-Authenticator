@@ -24,46 +24,71 @@
 import {Component, ViewChild} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ModalController, NavController, Slides, ToastController} from "ionic-angular";
-import {Account} from "nem-library";
+import {Account, AccountHttp, Address, NEMLibrary, NetworkTypes, SimpleWallet} from "nem-library";
 import {Storage} from "@ionic/storage";
 import {HomePage} from "../home/home";
 import {SetupAccountModal} from "./setup-account.modal";
+import {AccountService} from "../../services/account.service";
 
 @Component({
   selector: 'page-setup',
   templateUrl: 'setup.html'
 })
 export class SetupPage {
+  // Visual
+  NEMLibrary = NEMLibrary;
+  NetworkTypes = NetworkTypes;
+
   form: FormGroup;
   @ViewChild(Slides) slides: Slides;
   account: Account;
-  privateKey: string;
+  wallet: SimpleWallet;
+  multisigAddress: Address;
 
   constructor(public navCtrl: NavController,
               private formBuilder: FormBuilder,
               private toastCtrl: ToastController,
-              public modalCtrl: ModalController,
-              private storage: Storage) {
+              private modalCtrl: ModalController,
+              private storage: Storage,
+              private accountService: AccountService) {
     this.form = formBuilder.group({
       myAccount: [false, Validators.requiredTrue]
     });
   }
 
   confirm() {
-    this.storage.set('PRIVATE_KEY', this.privateKey).then(x => {
+    let saveWalletPromise = this.storage.set('WALLET', this.wallet.writeWLTFile()).then(_ => {
+      this.storage.set('MULTISIG_ADDRESS', this.multisigAddress.plain()).then(_ => {
+        this.accountService.setAccount(this.account);
         this.navCtrl.setRoot(HomePage);
-      }
-    );
+      })
+    });
   }
 
   openSetupAccountModal() {
     let modal = this.modalCtrl.create(SetupAccountModal);
-    modal.onDidDismiss((privateKey) => {
-      if (privateKey != null) {
-        this.privateKey = privateKey;
-        this.account = Account.createWithPrivateKey(privateKey);
-        this.slides.lockSwipeToNext(false);
-        this.slides.slideNext(500);
+    modal.onDidDismiss((wallet: { wallet: SimpleWallet, account: Account }) => {
+      if (wallet != null) {
+        this.wallet = wallet.wallet;
+        this.account = wallet.account;
+        new AccountHttp().getFromAddress(this.account.address).subscribe(accountMetaData => {
+          // Check that the account is Cosignatory of just one account
+          if (accountMetaData.cosignatoryOf.length != 1) {
+            this.toastCtrl.create({
+              message: "The account imported is not cosignatory of a multisig account",
+              duration: 2000
+            }).present();
+          } else {
+            this.multisigAddress = accountMetaData.cosignatoryOf[0].publicAccount.address;
+          }
+          this.slides.lockSwipeToNext(false);
+          this.slides.slideNext(500);
+        }, err => {
+          this.toastCtrl.create({
+            message: "You are offline, start the process again when you have network",
+            duration: 2000
+          }).present()
+        });
       }
     });
     modal.present();

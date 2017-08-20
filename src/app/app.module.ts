@@ -26,6 +26,9 @@ import {MultisigAggregateModificationTransactionComponent} from "../components/m
 import {MosaicSupplyChangeTransactionComponent} from "../components/mosaic-supply-change-transaction/mosaic-supply-change-transaction.component";
 import {MosaicDefinitionCreationTransactionComponent} from "../components/mosaic-definition-transaction/mosaic-definition-creation-transaction.component";
 import {ImportanceTransferTransactionComponent} from "../components/importance-transaction/importance-transfer-transaction.component";
+import {AccountService} from "../services/account.service";
+import {BarcodeScanner} from "@ionic-native/barcode-scanner";
+import {LoginModal} from "../components/login-modal/login.modal";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -41,6 +44,7 @@ export function createTranslateLoader(http: Http) {
     LocalTimeParserPipe,
     TransactionModal,
     SetupAccountModal,
+    LoginModal,
     TransferTransactionComponent,
     ProvisionNamespaceTransactionComponent,
     MultisigAggregateModificationTransactionComponent,
@@ -67,9 +71,12 @@ export function createTranslateLoader(http: Http) {
     HomePage,
     TransactionModal,
     SetupPage,
-    SetupAccountModal
+    SetupAccountModal,
+    LoginModal
   ],
   providers: [
+    AccountService,
+    BarcodeScanner,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
