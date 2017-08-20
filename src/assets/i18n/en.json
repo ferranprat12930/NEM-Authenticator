@@ -15,12 +15,23 @@
   "NO_PENDING_TRANSACTIONS": "You have no pending transactions",
 
   "SETUP": "setup",
-  "SLIDE_1_TITLE": "Welcome to ",
-  "SLIDE_1_DESCRIPTION": "We need to setup your account first",
-  "SLIDE_2_TITLE": "This step is security critical",
-  "SLIDE_2_DESCRIPTION": "We need your private key in plain mode just once",
-  "SLIDE_2_DESCRIPTION_2": "Remind, ",
-  "SLIDE_2_DESCRIPTION_3": "only testnet accounts",
+  "SETUP_SLIDE_1_TITLE": "Welcome to NEM Authenticator",
+  "SETUP_SLIDE_1_DESCRIPTION": "We need to setup your account first",
+  "SETUP_SLIDE_2_TITLE": "This step is security critical",
+  "SETUP_SLIDE_2_DESCRIPTION": "We need to import your NEM Authenticator Account via the QR code generated at",
+  "SETUP_SLIDE_3_TITLE": "Import your account",
+  "SETUP_SLIDE_3_DESCRIPTION": "Import",
+  "SETUP_SLIDE_4_TITLE" : "NEM Authenticator address",
+  "SETUP_SLIDE_4_TITLE_2" : "Cosignatory of Multisig Account",
+  "SETUP_SLIDE_4_TITLE_3" : "It is my account",
+
+  "SETUP_SLIDE_5_TITLE" : "Ready to use NEM?",
+  "SETUP_SLIDE_5_TITLE_2" : "Continue",
+  "SETUP_SLIDE_5_DESCRIPTION": "Have you checked your account details?",
+
+  "SETUP_ACCOUNT_TITLE": "Import your account",
+  "SETUP_ACCOUNT_TITLE": "",
+
 
   "AMOUNT": "Amount",
   "RECIPIENT": "Recipient",
