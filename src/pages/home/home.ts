@@ -77,22 +77,18 @@ export class HomePage {
 
       let multisig = new Address("TBUAUC3VYKPP3PJPOH7A7BCB2C4I64XZAAOZBO6N");
       new UnconfirmedTransactionListener().given(multisig)
-        .subscribe(transaction => {
-          if (transaction.type == TransactionTypes.MULTISIG) {
-            this.unconfirmedTransactions.push(new MultisigTransactionPlusView(<MultisigTransaction>transaction, false, false));
-          }
+        .delay(1000)
+        .subscribe(_ => {
+          this.fetchTransactions();
         });
 
       new ConfirmedTransactionListener().given(multisig)
         .subscribe(transaction => {
-          console.log("CONFIRMED TRANSACTION", transaction);
           if (transaction.type == TransactionTypes.MULTISIG) {
             this.unconfirmedTransactions = this.unconfirmedTransactions
               .filter(x => {
                 const innerData = x.transaction.hashData.data;
                 const confirmedTransactionInnerData = (<MultisigTransactionInfo>(<MultisigTransaction>transaction).getTransactionInfo()).innerHash.data;
-                console.log("InnerData", innerData);
-                console.log("confirmedTransactionInnerData", confirmedTransactionInnerData);
                 return innerData != confirmedTransactionInnerData;
               })
           }
@@ -146,7 +142,6 @@ export class HomePage {
     unconfirmedTransaction.signing = true;
     const signedTransaction = this.account.signTransaction(multisigSignedTransaction);
     this.transactionHttp.announceTransaction(signedTransaction).subscribe(x => {
-        console.log(x);
         unconfirmedTransaction.signing = false;
         unconfirmedTransaction.signed = true;
       }, err => {
