@@ -1,14 +1,14 @@
 <ion-col col-12>
-  <p>Name</p>
+  <h5>Name</h5>
   <p>{{transaction.otherTransaction.mosaicDefinition.id.description()}}</p>
 </ion-col>
 <ion-col col-12>
-  <p>Description</p>
+  <h5>Description</h5>
   <p>{{transaction.otherTransaction.mosaicDefinition.description}}</p>
 </ion-col>
 
 <ion-col col-12>
-  <p>Properties</p>
+  <h5>Properties</h5>
   <p>Initial supply: {{transaction.otherTransaction.mosaicDefinition.properties.initialSupply}}</p>
   <p>Divisibility: {{transaction.otherTransaction.mosaicDefinition.properties.divisibility}}</p>
   <p>Transferable: {{transaction.otherTransaction.mosaicDefinition.properties.transferable}}</p>
@@ -16,16 +16,17 @@
 </ion-col>
 
 <ion-col col-12 *ngIf="transaction.otherTransaction.mosaicDefinition.levy?.mosaicId">
-  <p>Levy</p>
+  <h5>Levy</h5>
   <p>Mosaic: {{transaction.otherTransaction.mosaicDefinition.levy.mosaicId.description()}}</p>
-  <p>Levy type: </p>
-    <p *ngIf="transaction.otherTransaction.mosaicDefinition.levy.type == 1">Absolute</p>
-    <p *ngIf="transaction.otherTransaction.mosaicDefinition.levy.type == 2">Percentil</p>
+  <p>Levy type:
+    <span *ngIf="transaction.otherTransaction.mosaicDefinition.levy.type == 1">Absolute</span>
+    <span *ngIf="transaction.otherTransaction.mosaicDefinition.levy.type == 2">Percentil</span>
+  </p>
   <p>Fee: {{transaction.otherTransaction.mosaicDefinition.levy.fee}}</p>
   <p>Recipient: {{transaction.otherTransaction.mosaicDefinition.levy.recipient.pretty()}}</p>
 </ion-col>
 
 <ion-col col-12>
-  <p>fee</p>
-  <p>{{transaction.fee | xem}} XEM</p>
+  <h5>Fee: </h5>
+  <p>{{(transaction.fee + transaction.otherTransaction.fee) | xem}} XEM</p>
 </ion-col>

@@ -1,12 +1,12 @@
 <ion-col col-12>
-  <p>Namespace</p>
+  <h5>Namespace: </h5>
   <p>{{transaction.otherTransaction.newPart}}</p>
 </ion-col>
 <ion-col col-12 *ngIf="transaction.otherTransaction.parent?.toString()">
-  <p>Subnamespace of</p>
+  <h5>Subnamespace of: </h5>
   <p>{{transaction.otherTransaction.parent}}</p>
 </ion-col>
 <ion-col col-12>
-  <p>fee</p>
-  <p>{{transaction.fee | xem}} XEM</p>
+  <h5>Fee: </h5>
+  <p>{{(transaction.fee + transaction.otherTransaction.fee) | xem}} XEM</p>
 </ion-col>

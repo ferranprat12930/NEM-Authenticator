@@ -1,14 +1,15 @@
 <ion-col col-12>
-  <p>Mosaic edited</p>
+  <h5>Mosaic: </h5>
   <p>{{transaction.otherTransaction.mosaicId.description()}}</p>
 </ion-col>
 
 <ion-col col-12>
-  <p *ngIf="transaction.otherTransaction.supplyType == 1">Increase: {{transaction.otherTransaction.delta}} mosaics</p>
-  <p *ngIf="transaction.otherTransaction.supplyType == 2">Decrease: {{transaction.otherTransaction.delta}} mosaics</p>
+  <h5 *ngIf="transaction.otherTransaction.supplyType == 1">Increase:</h5>
+  <h5 *ngIf="transaction.otherTransaction.supplyType == 2">Decrease:</h5>
+  <p>{{transaction.otherTransaction.delta}} mosaics</p>
 </ion-col>
 
 <ion-col col-12>
-  <p>fee</p>
-  <p>{{transaction.fee | xem}} XEM</p>
+  <h5>Fee: </h5>
+  <p>{{(transaction.fee + transaction.otherTransaction.fee) | xem}} XEM</p>
 </ion-col>
