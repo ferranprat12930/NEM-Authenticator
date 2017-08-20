@@ -30,7 +30,6 @@ import {Storage} from "@ionic/storage";
 import {
   Account,
   AccountHttp,
-  Address,
   ConfirmedTransactionListener,
   MultisigSignatureTransaction,
   MultisigTransaction,
@@ -81,7 +80,7 @@ export class HomePage {
       .toArray();
     this.fetchTransactions();
 
-    let multisig = new Address("TBUAUC3VYKPP3PJPOH7A7BCB2C4I64XZAAOZBO6N");
+    let multisig = accountService.getMultisig();
     new UnconfirmedTransactionListener().given(multisig)
       .delay(1000)
       .subscribe(_ => {

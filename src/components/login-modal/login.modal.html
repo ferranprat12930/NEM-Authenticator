@@ -14,6 +14,8 @@
           <img src="assets/img/icon.png" class="slide-image"/>
           <p>NEM Authenticator Account</p>
           <code>{{wallet.address.pretty()}}</code>
+          <p>Cosignatory of Multisig</p>
+          <code>{{multisig?.pretty()}}</code>
           <ion-item>
             <ion-label floating>Insert your password</ion-label>
             <ion-input #input type="text" icon-right formControlName="password"></ion-input>

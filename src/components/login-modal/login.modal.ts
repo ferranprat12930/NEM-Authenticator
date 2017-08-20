@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {ModalController, NavParams, ToastController, ViewController} from "ionic-angular";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
-import {NEMLibrary, NetworkTypes, SimpleWallet} from "nem-library";
+import {Address, NEMLibrary, NetworkTypes, SimpleWallet} from "nem-library";
 import {Password} from "nem-library/dist/src/models/wallet/Password";
 
 @Component({
@@ -15,6 +15,7 @@ export class LoginModal {
 
   form: FormGroup;
   wallet: SimpleWallet;
+  multisig: Address;
 
   constructor(params: NavParams,
               private formBuilder: FormBuilder,
@@ -27,6 +28,7 @@ export class LoginModal {
         Validators.compose([Validators.required])]
     });
     this.wallet = <SimpleWallet>params.get('wallet');
+    this.multisig = <Address>params.get('multisig');
   }
 
   login() {

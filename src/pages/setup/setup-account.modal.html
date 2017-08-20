@@ -23,12 +23,14 @@
             </span>
       </ion-col>
       <ion-col col-12>
+        <p>Wallet name: {{walletQRText?.data.name}}</p>
         <form [formGroup]="form" (ngSubmit)="verifyAccount()">
           <ion-item>
             <ion-label floating>Insert your NEM Auth account password</ion-label>
             <ion-input #input type="text" icon-right formControlName="password"></ion-input>
           </ion-item>
-          <button ion-button large clear color="primary" type="button" (click)="verifyAccount()">
+          <button ion-button large clear color="primary" type="button" (click)="verifyAccount()"
+                  [disabled]="walletQRText == null">
             Import
           </button>
         </form>

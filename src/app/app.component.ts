@@ -28,7 +28,7 @@ import {SplashScreen} from "@ionic-native/splash-screen";
 import {SetupPage} from "../pages/setup/setup";
 import {Storage} from "@ionic/storage";
 import {HomePage} from "../pages/home/home";
-import {Account, NEMLibrary, NetworkTypes} from "nem-library";
+import {Account, Address, NEMLibrary, NetworkTypes} from "nem-library";
 import {LoginModal} from "../components/login-modal/login.modal";
 import {AccountService} from "../services/account.service";
 import {SimpleWallet} from "nem-library/dist/src/models/wallet/SimpleWallet";
@@ -57,17 +57,23 @@ export class MyApp {
       splashScreen.hide();
 
       loader.present();
-      storage.get('WALLET').then(walletFile => {
+      this.storage.get('WALLET').then(walletFile => {
         loader.dismiss();
         if (walletFile !== null) {
           let wallet = SimpleWallet.readFromWLT(walletFile);
-          NEMLibrary.bootstrap(wallet.network);
-          let modal = this.modalCtrl.create(LoginModal, {wallet: wallet});
-          modal.onDidDismiss((account: Account) => {
-            this.accountService.setAccount(account);
-            this.rootPage = HomePage;
+          this.storage.get('MULTISIG_ADDRESS').then(multisig => {
+            NEMLibrary.bootstrap(wallet.network);
+            let modal = this.modalCtrl.create(LoginModal, {
+              wallet: wallet,
+              multisig: new Address(multisig)
+            });
+            modal.onDidDismiss((account: Account) => {
+              this.accountService.setAccount(account);
+              this.accountService.setMultisig(new Address(multisig));
+              this.rootPage = HomePage;
+            });
+            modal.present();
           });
-          modal.present();
         } else {
           this.rootPage = SetupPage;
         }

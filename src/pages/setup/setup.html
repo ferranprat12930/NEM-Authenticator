@@ -40,10 +40,11 @@
       <!-- 3. Verify account slide-->
       <ion-slide>
         <img src="assets/img/curriculum-vitae.svg" class="slide-image-little"/>
-        <h3>Address</h3>
-        <p>{{account?.address.plain()}}</p>
-        <h3>Public key</h3>
-        <p>{{account?.publicKey}}</p>
+        <p>NEM Authenticator Address</p>
+        <code>{{account?.address.pretty()}}</code>
+        <br/>
+        <p>Cosignatory of Multisig Account</p>
+        <p>{{multisigAddress?.pretty()}}</p>
         <ion-item>
           <ion-label>It is my account</ion-label>
           <ion-checkbox color="blue" formControlName="myAccount"></ion-checkbox>

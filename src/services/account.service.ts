@@ -22,11 +22,12 @@
  * SOFTWARE.
  */
 import {Injectable} from "@angular/core";
-import {Account} from "nem-library";
+import {Account, Address} from "nem-library";
 
 @Injectable()
 export class AccountService {
   private account: Account;
+  private multisig: Address;
 
   setAccount(account: Account) {
     this.account = account;
@@ -34,5 +35,13 @@ export class AccountService {
 
   getAccount(): Account {
     return this.account;
+  }
+
+  setMultisig(multisig: Address) {
+    this.multisig = multisig;
+  }
+
+  getMultisig(): Address {
+    return this.multisig;
   }
 }
