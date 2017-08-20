@@ -22,6 +22,8 @@ import {MultisigAggregateModificationTransactionComponent} from "../components/m
 import {MosaicSupplyChangeTransactionComponent} from "../components/mosaic-supply-change-transaction/mosaic-supply-change-transaction.component";
 import {MosaicDefinitionCreationTransactionComponent} from "../components/mosaic-definition-transaction/mosaic-definition-creation-transaction.component";
 import {ImportanceTransferTransactionComponent} from "../components/importance-transaction/importance-transfer-transaction.component";
+import {AccountService} from "../services/account.service";
+import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import {ImportanceTransferTransactionComponent} from "../components/importance-t
     SetupAccountModal
   ],
   providers: [
+    AccountService,
+    BarcodeScanner,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

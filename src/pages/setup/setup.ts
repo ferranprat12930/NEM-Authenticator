@@ -23,11 +23,13 @@
  */
 import {Component, ViewChild} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ModalController, NavController, Slides, ToastController} from "ionic-angular";
+import {ModalController, NavController, Slides} from "ionic-angular";
 import {Account} from "nem-library";
 import {Storage} from "@ionic/storage";
 import {HomePage} from "../home/home";
 import {SetupAccountModal} from "./setup-account.modal";
+import {SimpleWallet} from "nem-library/dist/src/models/wallet/SimpleWallet";
+import {AccountService} from "../../services/account.service";
 
 @Component({
   selector: 'page-setup',
@@ -37,20 +39,21 @@ export class SetupPage {
   form: FormGroup;
   @ViewChild(Slides) slides: Slides;
   account: Account;
-  privateKey: string;
+  wallet: SimpleWallet;
 
   constructor(public navCtrl: NavController,
               private formBuilder: FormBuilder,
-              private toastCtrl: ToastController,
               public modalCtrl: ModalController,
-              private storage: Storage) {
+              private storage: Storage,
+              private accountService: AccountService) {
     this.form = formBuilder.group({
       myAccount: [false, Validators.requiredTrue]
     });
   }
 
   confirm() {
-    this.storage.set('PRIVATE_KEY', this.privateKey).then(x => {
+    this.storage.set('WALLET', this.wallet.writeWLTFile()).then(x => {
+      this.accountService.setAccount(this.account);
         this.navCtrl.setRoot(HomePage);
       }
     );
@@ -58,10 +61,10 @@ export class SetupPage {
 
   openSetupAccountModal() {
     let modal = this.modalCtrl.create(SetupAccountModal);
-    modal.onDidDismiss((privateKey) => {
-      if (privateKey != null) {
-        this.privateKey = privateKey;
-        this.account = Account.createWithPrivateKey(privateKey);
+    modal.onDidDismiss((wallet: { wallet: SimpleWallet, account: Account }) => {
+      if (wallet != null) {
+        this.wallet = wallet.wallet;
+        this.account = wallet.account;
         this.slides.lockSwipeToNext(false);
         this.slides.slideNext(500);
       }

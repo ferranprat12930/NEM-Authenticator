@@ -46,7 +46,7 @@ export class MyApp {
       content: "Please wait..."
     });
     loader.present();
-    storage.get('PRIVATE_KEY').then(privateKey => {
+    storage.get('WALLET').then(privateKey => {
       loader.dismiss();
       if (privateKey !== null) {
         this.rootPage = HomePage;

@@ -15,25 +15,23 @@
   <ion-grid>
     <ion-row text-center>
       <ion-col col-12>
-        <h3>Insert your private key</h3>
+        <h3>Scan the QR Code</h3>
+      </ion-col>
+      <ion-col col-12>
+        <span (click)="scanWalletQR()">
+                <ion-icon name="qr-scanner"></ion-icon> SCAN QR Code
+            </span>
       </ion-col>
       <ion-col col-12>
         <form [formGroup]="form" (ngSubmit)="verifyAccount()">
           <ion-item>
-            <ion-label floating>private key</ion-label>
-            <ion-input #input type="text" icon-right formControlName="privateKey"></ion-input>
+            <ion-label floating>Insert your NEM Auth account password</ion-label>
+            <ion-input #input type="text" icon-right formControlName="password"></ion-input>
           </ion-item>
           <button ion-button large clear color="primary" type="button" (click)="verifyAccount()">
             Import
           </button>
         </form>
-      </ion-col>
-      <ion-col col-12>
-        <p>Remind, <span text-uppercase class="danger-text">ONLY testnet accounts</span></p>
-        <p>Development info:</p>
-        <p>
-          The application will use a QR to scan the account configuration from NanoWallet 2FA Module.
-        </p>
       </ion-col>
     </ion-row>
   </ion-grid>
