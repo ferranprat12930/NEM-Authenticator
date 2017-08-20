@@ -34,6 +34,7 @@ import {
   ConfirmedTransactionListener,
   MultisigSignatureTransaction,
   MultisigTransaction,
+  NEMLibrary,
   TimeWindow,
   Transaction,
   TransactionHttp,
@@ -42,12 +43,16 @@ import {
 } from "nem-library";
 import {LocalDateTime} from "js-joda";
 import {MultisigTransactionInfo} from "nem-library/dist/src/models/transaction/TransactionInfo";
+import {NetworkTypes} from "nem-library/dist/src/models/node/NetworkTypes";
 
 @Component({
   selector: 'page-home',
   templateUrl: './home.html'
 })
 export class HomePage {
+  NEMLibrary = NEMLibrary;
+  NetworkTypes = NetworkTypes;
+
   private account: Account;
   unconfirmedTransactions: MultisigTransactionPlusView[];
   loader: Loading;

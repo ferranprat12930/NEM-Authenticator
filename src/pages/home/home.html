@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar [color]="NEMLibrary.getNetworkType() == NetworkTypes.MAIN_NET ? 'mainnet': 'testnet'">
     <ion-title>
       <img alt="logo" height="16" src="assets/img/icon.png"/>
       NEM Authenticator
