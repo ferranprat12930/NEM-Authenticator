@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 import {Component} from "@angular/core";
-import {LoadingController, ModalController, Platform} from "ionic-angular";
+import {AlertController, LoadingController, ModalController, Platform} from "ionic-angular";
 import {StatusBar} from "@ionic-native/status-bar";
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {SetupPage} from "../pages/setup/setup";
@@ -32,6 +32,7 @@ import {Account, Address, NEMLibrary, NetworkTypes} from "nem-library";
 import {LoginModal} from "../components/login-modal/login.modal";
 import {AccountService} from "../services/account.service";
 import {SimpleWallet} from "nem-library/dist/src/models/wallet/SimpleWallet";
+import {AccountPage} from "../pages/account/account.page";
 
 @Component({
   templateUrl: 'app.html'
@@ -45,6 +46,7 @@ export class MyApp {
               private modalCtrl: ModalController,
               private accountService: AccountService,
               private storage: Storage,
+              private alertCtrl: AlertController,
               private loadingCtrl: LoadingController) {
     let loader = loadingCtrl.create({
       content: "Please wait..."
@@ -78,6 +80,37 @@ export class MyApp {
           this.rootPage = SetupPage;
         }
       });
+    });
+  }
+
+  viewTransactions() {
+    this.rootPage = HomePage;
+  }
+
+  viewAccountDetails() {
+    this.rootPage = AccountPage;
+  }
+
+  removeAccount() {
+    this.alertCtrl.create({
+      title: 'REMOVE ACCOUNT',
+      message: 'NEM Authenticator will erase the account and you will not be able to login again. Are you sure?',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            this.storage.clear().then(_ => {
+              this.rootPage = SetupPage;
+            })
+          }
+        }
+      ]
     });
   }
 }

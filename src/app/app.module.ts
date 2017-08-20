@@ -25,12 +25,14 @@ import {ImportanceTransferTransactionComponent} from "../components/importance-t
 import {AccountService} from "../services/account.service";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {LoginModal} from "../components/login-modal/login.modal";
+import {AccountPage} from "../pages/account/account.page";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     SetupPage,
+    AccountPage,
     XEMPipe,
     TransactionTypePipe,
     LocalTimeParserPipe,
@@ -53,6 +55,7 @@ import {LoginModal} from "../components/login-modal/login.modal";
   entryComponents: [
     MyApp,
     HomePage,
+    AccountPage,
     TransactionModal,
     SetupPage,
     SetupAccountModal,
