@@ -27,8 +27,9 @@ import {StatusBar} from "@ionic-native/status-bar";
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {SetupPage} from "../pages/setup/setup";
 import {Storage} from "@ionic/storage";
+import {TranslateService} from '@ngx-translate/core';
 import {HomePage} from "../pages/home/home";
-import {Account, Address, NEMLibrary, NetworkTypes} from "nem-library";
+import {Account, Address, NEMLibrary} from "nem-library";
 import {LoginModal} from "../components/login-modal/login.modal";
 import {AccountService} from "../services/account.service";
 import {SimpleWallet} from "nem-library/dist/src/models/wallet/SimpleWallet";
@@ -49,6 +50,8 @@ export class MyApp {
               private storage: Storage,
               private alertCtrl: AlertController,
               private loadingCtrl: LoadingController) {
+              private translateService: TranslateService) {
+
     let loader = loadingCtrl.create({
       content: "Please wait..."
     });
@@ -56,6 +59,12 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+
+      //i18n configuration
+      this.translateService.setDefaultLang('en');
+      this.translateService.use('en');
+      console.log(this.translateService);
+
       statusBar.styleDefault();
       splashScreen.hide();
 

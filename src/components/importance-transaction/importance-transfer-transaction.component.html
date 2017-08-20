@@ -1,11 +1,11 @@
 <ion-col col-12>
-  <h3 *ngIf="transaction.otherTransaction.mode == 1">Activate harvesting</h3>
-  <h3 *ngIf="transaction.otherTransaction.mode == 2">Deactivate harvesting</h3>
-  <h5>Remote account: </h5>
+  <h3 *ngIf="transaction.otherTransaction.mode == 1">{{ 'ACTIVATE_HARVESTING' | translate}}</h3>
+  <h3 *ngIf="transaction.otherTransaction.mode == 2">{{ 'DEACTIVATE_HARVESTING' | translate}}</h3>
+  <h5>{{ 'REMOVE_ACCOUNT' | translate}}: </h5>
   <p>{{transaction.otherTransaction.remoteAccount.address.pretty()}}</p>
 </ion-col>
 
 <ion-col col-12>
-  <h5>Fee: </h5>
+  <h5>{{ 'FEE' | translate}}: </h5>
   <p>{{(transaction.fee + transaction.otherTransaction.fee) | xem}} XEM</p>
 </ion-col>

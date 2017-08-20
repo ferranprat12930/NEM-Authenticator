@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-title>
       <img alt="logo" height="16" src="assets/img/icon.png"/>
-      NEM Authenticator setup
+      NEM Authenticator {{'SETUP' | translate}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -15,16 +15,16 @@
         <ion-toolbar>
         </ion-toolbar>
         <img src="assets/img/icon.png" class="slide-image"/>
-        <h2 class="slide-title">Welcome to NEM Authenticator</h2>
-        <p>We need to setup your account first</p>
+        <h2 class="slide-title">{{ 'SETUP_SLIDE_1_TITLE' | translate }}</h2>
+        <p>{{ 'SETUP_SLIDE_1_DESCRIPTION' | translate }}</p>
       </ion-slide>
       <!-- 1. Private key info slide-->
       <ion-slide>
         <ion-toolbar>
         </ion-toolbar>
         <img src="assets/img/unlock.svg" class="slide-image"/>
-        <h2 class="slide-title">This step is security critical</h2>
-        <p>We need to import your NEM Authenticator Account via the QR code generated at <code>https://nemauthenticator.com</code>
+        <h2 class="slide-title">{{ 'SETUP_SLIDE_2_TITLE' | translate }}</h2>
+        <p>{{ 'SETUP_SLIDE_2_DESCRIPTION' | translate }} <code>https://nemauthenticator.com</code>
         </p>
       </ion-slide>
       <!-- 2. Insert private key info slide -->
@@ -32,21 +32,21 @@
         <ion-toolbar>
         </ion-toolbar>
         <img src="assets/img/unlock.svg" class="slide-image"/>
-        <h2 class="slide-title">Import your account</h2>
+        <h2 class="slide-title">{{ 'SETUP_SLIDE_3_TITLE' | translate }}</h2>
         <button ion-button clear color="primary" type="button" (click)="openSetupAccountModal()">
-          Import
+          {{ 'SETUP_SLIDE_3_DESCRIPTION' | translate }}
         </button>
       </ion-slide>
       <!-- 3. Verify account slide-->
       <ion-slide>
         <img src="assets/img/curriculum-vitae.svg" class="slide-image-little"/>
-        <p>NEM Authenticator Address</p>
+        <p>{{ 'SETUP_SLIDE_4_TITLE' | translate }}</p>
         <code>{{account?.address.pretty()}}</code>
         <br/>
-        <p>Cosignatory of Multisig Account</p>
+        <p>{{ 'SETUP_SLIDE_4_TITLE_2' | translate }}</p>
         <p>{{multisigAddress?.pretty()}}</p>
         <ion-item>
-          <ion-label>It is my account</ion-label>
+          <ion-label>{{ 'SETUP_SLIDE_4_TITLE_3' | translate }}</ion-label>
           <ion-checkbox color="blue" formControlName="myAccount"></ion-checkbox>
         </ion-item>
       </ion-slide>
@@ -55,12 +55,12 @@
         <ion-toolbar>
         </ion-toolbar>
         <img src="assets/img/padlock.svg" class="slide-image"/>
-        <h2 class="slide-title">Ready to use NEM?</h2>
+        <h2 class="slide-title">{{ 'SETUP_SLIDE_5_TITLE' | translate }}</h2>
         <button ion-button large clear icon-right color="primary" type="submit" [disabled]="!form.valid">
-          Continue
+          {{ 'SETUP_SLIDE_5_TITLE_2' | translate }}
           <ion-icon name="arrow-forward"></ion-icon>
         </button>
-        <p class="danger-text" *ngIf="!form.valid">Have you checked your account details?</p>
+        <p class="danger-text" *ngIf="!form.valid">{{ 'SETUP_SLIDE_5_DESCRIPTION' | translate }}</p>
       </ion-slide>
     </ion-slides>
   </form>
