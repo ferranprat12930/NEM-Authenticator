@@ -23,7 +23,7 @@
  */
 import {Component, ViewChild} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ModalController, NavController, Slides, ToastController} from "ionic-angular";
+import {LoadingController, ModalController, NavController, Slides, ToastController} from "ionic-angular";
 import {Account, AccountHttp, Address, NEMLibrary, NetworkTypes, SimpleWallet} from "nem-library";
 import {Storage} from "@ionic/storage";
 import {HomePage} from "../home/home";
@@ -49,6 +49,7 @@ export class SetupPage {
               private formBuilder: FormBuilder,
               private toastCtrl: ToastController,
               private modalCtrl: ModalController,
+              private loadingCtrl: LoadingController,
               private storage: Storage,
               private accountService: AccountService) {
     this.form = formBuilder.group({
@@ -71,6 +72,10 @@ export class SetupPage {
       if (wallet != null) {
         this.wallet = wallet.wallet;
         this.account = wallet.account;
+        let loader = this.loadingCtrl.create({
+          content: "Fetching Account Info"
+        });
+        loader.present();
         new AccountHttp().getFromAddress(this.account.address).subscribe(accountMetaData => {
           // Check that the account is Cosignatory of just one account
           if (accountMetaData.cosignatoryOf.length != 1) {
@@ -81,9 +86,11 @@ export class SetupPage {
           } else {
             this.multisigAddress = accountMetaData.cosignatoryOf[0].publicAccount.address;
           }
+          loader.dismiss();
           this.slides.lockSwipeToNext(false);
           this.slides.slideNext(500);
         }, err => {
+          loader.dismiss();
           this.toastCtrl.create({
             message: "You are offline, start the process again when you have network",
             duration: 2000
