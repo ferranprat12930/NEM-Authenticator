@@ -55,7 +55,7 @@ export class SetupAccountModal {
     });
   }
 
-  async verifyAccount() {
+  verifyAccount() {
     let password = new Password(this.form.get('password').value);
     try {
       let qrService = new QRService();
@@ -71,10 +71,12 @@ export class SetupAccountModal {
         account: simpleWallet.open(password)
       })
     } catch (e) {
-      this.toastCtrl.create({
-        message: await this.translateService.get("ERROR_CHECK_PASSWORD").toPromise(),
-        duration: 1000
-      }).present();
+      this.translateService.get("ERROR_CHECK_PASSWORD").subscribe(value => {
+        this.toastCtrl.create({
+          message: value,
+          duration: 1000
+        }).present();
+      });
     }
   }
 

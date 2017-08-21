@@ -104,7 +104,6 @@ export class HomePage {
   }
 
   async fetchTransactions(refresher?: any) {
-    let noInternetMessage = await this.translateService.get("ERROR_NO_INTERNET").toPromise();
     this.unconfirmedTransactions = [];
     this.accountPulling.subscribe(
       value => {
@@ -114,11 +113,13 @@ export class HomePage {
       },
       error => {
         this.loader.dismiss();
-        this.toastCtrl.create({
-          message: noInternetMessage,
-          duration: 2000
-        }).present();
-        if (refresher) refresher.complete();
+        this.translateService.get("ERROR_NO_INTERNET").subscribe(value => {
+          this.toastCtrl.create({
+            message: value,
+            duration: 2000
+          }).present();
+          if (refresher) refresher.complete();
+        });
       }
     );
   }
@@ -158,12 +159,14 @@ export class HomePage {
     );
   }
 
-  private async showAlreadyConfirmedTransactionToast() {
-    let toast = this.toastCtrl.create({
-      message: await this.translateService.get("ERROR_TRANSACTION_SIGNED").toPromise(),
-      duration: 3000
+  private showAlreadyConfirmedTransactionToast() {
+    this.translateService.get("ERROR_TRANSACTION_SIGNED").subscribe(value => {
+      let toast = this.toastCtrl.create({
+        message: value,
+        duration: 3000
+      });
+      toast.present();
     });
-    toast.present();
   }
 }
 

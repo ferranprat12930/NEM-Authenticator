@@ -39,10 +39,12 @@ export class LoginModal {
       let account = this.wallet.open(password);
       this.viewCtrl.dismiss(account);
     } catch (e) {
-      this.toastCtrl.create({
-        message: await this.translateService.get("ERROR_PASSWORD").toPromise(),
-        duration: 2000
-      }).present();
+      this.translateService.get("ERROR_PASSWORD").subscribe(value => {
+        this.toastCtrl.create({
+          message: value,
+          duration: 2000
+        }).present();
+      });
     }
   }
 }
