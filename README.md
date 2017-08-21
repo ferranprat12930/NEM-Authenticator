@@ -1,31 +1,23 @@
 # NEM Authenticator
 
-This is the official repository for NEM Authenticator.
+![NEM Authenticator Logo](github/logo-extended-1200x335-white-bg.png)
+
+NEM Authenticator is a 100% decentralized 2 Factor Confirmation system to secure your account assets from being stolen using the NEM Blockchain native features.
+The system consists in two applications:
+
+- Web Page: Generates and manages the NEM Authenticator accounts to secure the assets via a clean and easy to use interface.
+- Mobile Application: Lists all pending transactions to be confirmed by the account owner, displaying all the critical information of each transaction before the transaction is signed.
+
+NEM Authenticator system is aimed to prevent the user to loose its assets when a device is compromised and it gives a easy way to remove the compromised account when the private key is stolen by a evil user. So, the evil user cannot move your assets without the confirmation of the second device, making it a robust system to manage your assets and a easy method to operate with them without compromise the security.
+
+The system works for NEM MainNet and TestNet.
+
+Keywords: NEM, 2 Factor Confirmation, 2 Factor Authentication, Multisig Account, Security, Mobile Application
+
 
 ## How to contribute
 
 Check [CONTRIBUTING.md](CONTRIBUTING.md)
-
-### Setup the project
-
-Fork the project
-
-```bash
-$ git clone git@github.com:<YOUR_USERNAME>/NEM-Authenticator.git
-cd NEM-Authenticator
-```
-Install dependencies
-
-```bash
-$ npm install -g ionic cordova typescript @angular/cli
-$ npm install
-```
-
-Run the project
-
-```bash
-$ ionic cordova run android
-```
 
 ## Collaborators
 

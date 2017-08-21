@@ -16,6 +16,27 @@ and helping you finalize your pull requests.
 Please, **don't use the issue tracker for support questions**. 
 Join telegram group [https://t.me/nemprojects](telegram-group) for community support.
 
+### Setup the project
+
+Fork the project
+
+```bash
+$ git clone git@github.com:<YOUR_USERNAME>/NEM-Authenticator.git
+cd NEM-Authenticator
+```
+Install dependencies
+
+```bash
+$ npm install -g ionic cordova typescript @angular/cli
+$ npm install
+```
+
+Run the project
+
+```bash
+$ ionic cordova run android
+```
+
 ## Bug reports
 
 If you think you have found a bug in NEM Authenticator, first make sure that you 
