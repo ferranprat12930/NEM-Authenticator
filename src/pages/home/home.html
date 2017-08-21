@@ -18,14 +18,16 @@
             *ngFor="let unconfirmedTransaction of unconfirmedTransactions"
             (click)="cosignTransaction(unconfirmedTransaction)">
       <ion-card [ngClass]="{'signedTransaction': (unconfirmedTransaction.signed)}">
-        <ion-card-header>
+        <ion-card-header text-wrap>
           {{unconfirmedTransaction.transactionType() | transactionType | translate}} {{ 'TRANSACTION' | translate}}
         </ion-card-header>
         <ion-card-content>
           <p text-wrap>{{ 'STARTED_BY' | translate}} {{unconfirmedTransaction.signerAddress() }}</p>
           <br/>
-          <p>{{ 'TRANSACTION_TIMESTAMP' | translate}} {{unconfirmedTransaction.timeStamp() | localTimeParser}}</p>
-          <p>{{ 'TRANSACTION_DEADLINE' | translate}} {{unconfirmedTransaction.deadline() | localTimeParser}}</p>
+          <p text-wrap>{{ 'TRANSACTION_TIMESTAMP' | translate}} {{unconfirmedTransaction.timeStamp() |
+            localTimeParser}}</p>
+          <p text-wrap>{{ 'TRANSACTION_DEADLINE' | translate}} {{unconfirmedTransaction.deadline() |
+            localTimeParser}}</p>
 
           <div text-center margin-top *ngIf="unconfirmedTransaction.signing">
             {{ 'SIGNING_TRANSACTION' | translate}} <br/>

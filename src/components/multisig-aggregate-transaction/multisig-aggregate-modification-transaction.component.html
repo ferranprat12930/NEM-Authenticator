@@ -2,10 +2,10 @@
 
 <ion-item-group>
   <ion-item-divider color="light">{{'RELATIVE_CHANGES' | translate}}</ion-item-divider>
-  <ion-item>
+  <ion-item *ngIf="transaction.relativeChange">
     {{transaction.relativeChange}}
   </ion-item>
-  <ion-item text-wrap *ngFor="let cosignatoryModification of modifications">
+  <ion-item text-wrap *ngFor="let cosignatoryModification of transaction.modifications">
     <span *ngIf="cosignatoryModification.action == 1">{{'ADD_COSIGNATORY' | translate}}
       {{cosignatoryModification.cosignatoryAccount.address.pretty()}}
     </span>
