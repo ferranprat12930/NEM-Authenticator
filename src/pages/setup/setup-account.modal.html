@@ -18,9 +18,10 @@
         <h3>{{ 'SETUP_ACCOUNT_SCAN_THE_QR' | translate}}</h3>
       </ion-col>
       <ion-col col-12>
-        <span (click)="scanWalletQR()">
-                <ion-icon name="qr-scanner"></ion-icon> {{ 'SETUP_ACCOUNT_SCAN_QR' | translate}}
-            </span>
+        <button ion-button outline color="primary" type="button" (click)="scanWalletQR()">
+          <ion-icon name="qr-scanner" margin-end></ion-icon>
+          {{ 'SETUP_ACCOUNT_SCAN_QR' | translate}}
+        </button>
       </ion-col>
       <ion-col col-12>
         <p>{{ 'SETUP_ACCOUNT_WALLET_NAME' | translate}}: {{walletQRText?.data.name}}</p>
