@@ -33,7 +33,7 @@ export class LoginModal {
     this.multisig = <Address>params.get('multisig');
   }
 
-  async login() {
+  login() {
     try {
       let password = new Password(this.form.get('password').value);
       let account = this.wallet.open(password);

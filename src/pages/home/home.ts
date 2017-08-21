@@ -103,7 +103,7 @@ export class HomePage {
       })
   }
 
-  async fetchTransactions(refresher?: any) {
+  fetchTransactions(refresher?: any) {
     this.unconfirmedTransactions = [];
     this.accountPulling.subscribe(
       value => {
