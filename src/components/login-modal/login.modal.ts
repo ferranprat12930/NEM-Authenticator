@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {Address, NEMLibrary, NetworkTypes, SimpleWallet} from "nem-library";
 import {Password} from "nem-library/dist/src/models/wallet/Password";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'login-modal',
@@ -22,7 +23,8 @@ export class LoginModal {
               private toastCtrl: ToastController,
               private modalCtrl: ModalController,
               private barcodeScanner: BarcodeScanner,
-              private viewCtrl: ViewController) {
+              private viewCtrl: ViewController,
+              private translateService: TranslateService) {
     this.form = formBuilder.group({
       password: ['',
         Validators.compose([Validators.required])]
@@ -31,14 +33,14 @@ export class LoginModal {
     this.multisig = <Address>params.get('multisig');
   }
 
-  login() {
+  async login() {
     try {
       let password = new Password(this.form.get('password').value);
       let account = this.wallet.open(password);
       this.viewCtrl.dismiss(account);
     } catch (e) {
       this.toastCtrl.create({
-        message: "The password is invalid",
+        message: await this.translateService.get("ERROR_PASSWORD").toPromise(),
         duration: 2000
       }).present();
     }

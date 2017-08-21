@@ -93,5 +93,14 @@
   "REMOVE_ACCOUNT_TITLE": "REMOVE ACCOUNT",
   "REMOVE_ACCOUNT_MESSAGE": "NEM Authenticator will erase the account and you will not be able to login again. Are you sure?",
   "REMOVE_ACCOUNT_AGREE": "Yes",
-  "REMOVE_ACCOUNT_DISMISS": "No"
+  "REMOVE_ACCOUNT_DISMISS": "No",
+
+  "ERROR_NO_COSIG": "The account imported is not cosignatory of a multisig account",
+  "ERROR_OFFLINE": "You are offline, start the process again when you have network",
+  "ERROR_PASSWORD": "The password is invalid",
+  "ERROR_NO_INTERNET": "Check your Internet connection",
+  "ERROR_TRANSACTION_SIGNED": "transaction already signed, pending to be included in a block",
+  "ERROR_CHECK_PASSWORD": "Check your password",
+  "LOADING_WAIT_TEXT":  "Please wait...",
+  "LOADING_FETCHING_TEXT": "Fetching Account Info"
 }

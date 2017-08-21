@@ -29,6 +29,7 @@ import {Storage} from "@ionic/storage";
 import {HomePage} from "../home/home";
 import {SetupAccountModal} from "./setup-account.modal";
 import {AccountService} from "../../services/account.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'page-setup',
@@ -51,7 +52,8 @@ export class SetupPage {
               private modalCtrl: ModalController,
               private loadingCtrl: LoadingController,
               private storage: Storage,
-              private accountService: AccountService) {
+              private accountService: AccountService,
+              private translateService: TranslateService) {
     this.form = formBuilder.group({
       myAccount: [false, Validators.requiredTrue]
     });
@@ -67,21 +69,25 @@ export class SetupPage {
     });
   }
 
-  openSetupAccountModal() {
+  async openSetupAccountModal() {
+    let loaderTitle = await this.translateService.get("LOADING_FETCHING_TEXT").toPromise();
+    let errorNoCosignatoryMatchMessage = await this.translateService.get("ERROR_NO_COSIG").toPromise();
+    let errorOfflineMessage = await this.translateService.get("ERROR_OFFLINE").toPromise();
+
     let modal = this.modalCtrl.create(SetupAccountModal);
     modal.onDidDismiss((wallet: { wallet: SimpleWallet, account: Account }) => {
       if (wallet != null) {
         this.wallet = wallet.wallet;
         this.account = wallet.account;
         let loader = this.loadingCtrl.create({
-          content: "Fetching Account Info"
+          content: loaderTitle
         });
         loader.present();
         new AccountHttp().getFromAddress(this.account.address).subscribe(accountMetaData => {
           // Check that the account is Cosignatory of just one account
           if (accountMetaData.cosignatoryOf.length != 1) {
             this.toastCtrl.create({
-              message: "The account imported is not cosignatory of a multisig account",
+              message: errorNoCosignatoryMatchMessage,
               duration: 2000
             }).present();
           } else {
@@ -93,7 +99,7 @@ export class SetupPage {
         }, err => {
           loader.dismiss();
           this.toastCtrl.create({
-            message: "You are offline, start the process again when you have network",
+            message: errorOfflineMessage,
             duration: 2000
           }).present()
         });

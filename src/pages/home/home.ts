@@ -43,6 +43,7 @@ import {LocalDateTime} from "js-joda";
 import {MultisigTransactionInfo} from "nem-library/dist/src/models/transaction/TransactionInfo";
 import {NetworkTypes} from "nem-library/dist/src/models/node/NetworkTypes";
 import {AccountService} from "../../services/account.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'page-home',
@@ -57,18 +58,22 @@ export class HomePage {
   loader: Loading;
   accountPulling: Observable<MultisigTransactionPlusView[]>;
 
-  constructor(public navCtrl: NavController,
+   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,
               public modalCtrl: ModalController,
               public toastCtrl: ToastController,
               public accountHttp: AccountHttp,
               private accountService: AccountService,
-              public transactionHttp: TransactionHttp) {
-    this.loader = loadingCtrl.create({
-      content: "Please wait..."
-    });
-    this.loader.present().then(() => {
-    });
+              public transactionHttp: TransactionHttp,
+              private translateService: TranslateService) {
+     this.translateService.get("LOADING_WAIT_TEXT").subscribe(value => {
+       this.loader = loadingCtrl.create({
+         content: value
+       });
+       this.loader.present().then(() => {
+       });
+
+     });
 
     this.account = this.accountService.getAccount();
     this.accountPulling = accountHttp.unconfirmedTransactions(this.account.address)
@@ -98,7 +103,8 @@ export class HomePage {
       })
   }
 
-  fetchTransactions(refresher?: any) {
+  async fetchTransactions(refresher?: any) {
+    let noInternetMessage = await this.translateService.get("ERROR_NO_INTERNET").toPromise();
     this.unconfirmedTransactions = [];
     this.accountPulling.subscribe(
       value => {
@@ -109,7 +115,7 @@ export class HomePage {
       error => {
         this.loader.dismiss();
         this.toastCtrl.create({
-          message: "Check your Internet connection",
+          message: noInternetMessage,
           duration: 2000
         }).present();
         if (refresher) refresher.complete();
@@ -152,9 +158,9 @@ export class HomePage {
     );
   }
 
-  private showAlreadyConfirmedTransactionToast() {
+  private async showAlreadyConfirmedTransactionToast() {
     let toast = this.toastCtrl.create({
-      message: "transaction already signed, pending to be included in a block",
+      message: await this.translateService.get("ERROR_TRANSACTION_SIGNED").toPromise(),
       duration: 3000
     });
     toast.present();

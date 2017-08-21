@@ -26,6 +26,7 @@ import {NavParams, ToastController, ViewController} from "ionic-angular";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {NEMLibrary, Password, QRService, SimpleWallet, NetworkTypes} from "nem-library";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'setup-account-modal',
@@ -39,7 +40,8 @@ export class SetupAccountModal {
               private formBuilder: FormBuilder,
               private toastCtrl: ToastController,
               private barcodeScanner: BarcodeScanner,
-              private viewCtrl: ViewController) {
+              private viewCtrl: ViewController,
+              private translateService: TranslateService) {
     this.form = formBuilder.group({
       password: ['',
         Validators.compose([Validators.required])]
@@ -53,7 +55,7 @@ export class SetupAccountModal {
     });
   }
 
-  verifyAccount() {
+  async verifyAccount() {
     let password = new Password(this.form.get('password').value);
     try {
       let qrService = new QRService();
@@ -70,7 +72,7 @@ export class SetupAccountModal {
       })
     } catch (e) {
       this.toastCtrl.create({
-        message: "Check your password",
+        message: await this.translateService.get("ERROR_CHECK_PASSWORD").toPromise(),
         duration: 1000
       }).present();
     }
