@@ -63,7 +63,6 @@ export class MyApp {
       //i18n configuration
       this.translateService.setDefaultLang('en');
       this.translateService.use('en');
-      console.log(this.translateService);
 
       statusBar.styleDefault();
       splashScreen.hide();
@@ -101,19 +100,19 @@ export class MyApp {
     this.navCtrl.setRoot(AccountPage);
   }
 
-  removeAccount() {
+  async removeAccount() {
     this.alertCtrl.create({
-      title: 'REMOVE ACCOUNT',
-      message: 'NEM Authenticator will erase the account and you will not be able to login again. Are you sure?',
+      title: await this.translateService.get('REMOVE_ACCOUNT_TITLE').toPromise(),
+      message: await this.translateService.get('REMOVE_ACCOUNT_MESSAGE').toPromise(),
       buttons: [
         {
-          text: 'Disagree',
+          text: await this.translateService.get('REMOVE_ACCOUNT_DISMISS').toPromise(),
           handler: () => {
-            console.log('Disagree clicked');
+            console.log('Dismiss clicked');
           }
         },
         {
-          text: 'Agree',
+          text: await this.translateService.get('REMOVE_ACCOUNT_AGREE').toPromise(),
           handler: () => {
             this.storage.clear().then(_ => {
               this.navCtrl.setRoot(SetupPage);

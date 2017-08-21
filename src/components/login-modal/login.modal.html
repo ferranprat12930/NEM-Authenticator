@@ -2,7 +2,7 @@
   <ion-toolbar [color]="NEMLibrary.getNetworkType() == NetworkTypes.MAIN_NET ? 'mainnet': 'testnet'">
     <ion-title>
       <img alt="logo" height="16" src="assets/img/icon.png"/>
-      Unlock NEM Authenticator
+      {{ 'LOGIN_TITLE_UNLOCK' | translate }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,16 +12,16 @@
       <ion-col col-12>
         <form [formGroup]="form" (ngSubmit)="verifyAccount()">
           <img src="assets/img/icon.png" class="slide-image"/>
-          <p>NEM Authenticator Account</p>
+          <p>{{ 'ACCOUNT' | translate }}</p>
           <code>{{wallet.address.pretty()}}</code>
-          <p>Cosignatory of Multisig</p>
+          <p>{{ 'COSIG_OF_MULTISIG' | translate }}</p>
           <code>{{multisig?.pretty()}}</code>
           <ion-item>
-            <ion-label floating>Insert your password</ion-label>
+            <ion-label floating>{{ 'LOGIN_PASSWORD' | translate }}</ion-label>
             <ion-input #input type="text" icon-right formControlName="password"></ion-input>
           </ion-item>
           <button ion-button large clear color="primary" type="button" (click)="login()">
-            Unlock
+            {{ 'LOGIN_BUTTON_UNLOCK' | translate }}
           </button>
         </form>
       </ion-col>

@@ -2,16 +2,16 @@
   <ion-header>
     <ion-toolbar color="primary">
       <ion-title>
-        MENU
+        {{ 'MENU_TITLE' | translate}}
       </ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list no-lines>
-      <button ion-item menuClose (click)="viewTransactions()">Transactions</button>
-      <button ion-item menuClose (click)="viewAccountDetails()">Account</button>
+      <button ion-item menuClose (click)="viewTransactions()">{{ 'MENU_TRANSACTIONS' | translate}}</button>
+      <button ion-item menuClose (click)="viewAccountDetails()">{{ 'MENU_ACCOUNT' | translate}}</button>
       <ion-item-divider></ion-item-divider>
-      <button ion-item menuClose (click)="removeAccount()">Remove Account</button>
+      <button ion-item menuClose (click)="removeAccount()">{{ 'MENU_REMOVE_ACCOUNT' | translate}}</button>
     </ion-list>
   </ion-content>
 </ion-menu>
