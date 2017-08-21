@@ -11,12 +11,12 @@
   "TRANSACTION_TIMESTAMP": "Transaction started at",
   "TRANSACTION_DEADLINE": "Transaction deadline is at",
   "SIGNING_TRANSACTION": "Signing Transaction",
-  "TRANSACTION_SIGNED": "SIGNED (it gonna be included soon in a block)",
+  "TRANSACTION_SIGNED": "SIGNED (it's going be included soon in a block)",
   "NO_PENDING_TRANSACTIONS": "You have no pending transactions",
 
   "SETUP": "setup",
   "SETUP_SLIDE_1_TITLE": "Welcome to NEM Authenticator",
-  "SETUP_SLIDE_1_DESCRIPTION": "We need to setup your account first",
+  "SETUP_SLIDE_1_DESCRIPTION": "We need first to setup your account",
   "SETUP_SLIDE_2_TITLE": "This step is security critical",
   "SETUP_SLIDE_2_DESCRIPTION": "We need to import your NEM Authenticator Account via the QR code generated at",
   "SETUP_SLIDE_3_TITLE": "Import your account",
@@ -92,6 +92,6 @@
 
   "REMOVE_ACCOUNT_TITLE": "REMOVE ACCOUNT",
   "REMOVE_ACCOUNT_MESSAGE": "NEM Authenticator will erase the account and you will not be able to login again. Are you sure?",
-  "REMOVE_ACCOUNT_AGREE": "Agree",
-  "REMOVE_ACCOUNT_DISMISS": "Dismiss"
+  "REMOVE_ACCOUNT_AGREE": "Yes",
+  "REMOVE_ACCOUNT_DISMISS": "No"
 }
