@@ -2,7 +2,7 @@
 
 <ion-item-group>
   <ion-item-divider color="light">{{'RECIPIENT' | translate}}</ion-item-divider>
-  <ion-item>{{transaction.recipient.pretty()}}</ion-item>
+  <ion-item text-wrap>{{transaction.recipient.pretty()}}</ion-item>
 </ion-item-group>
 
 <ion-item-group *ngIf="!transaction.mosaics">

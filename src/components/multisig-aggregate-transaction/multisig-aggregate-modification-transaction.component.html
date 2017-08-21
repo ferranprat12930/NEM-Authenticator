@@ -5,7 +5,7 @@
   <ion-item>
     {{transaction.relativeChange}}
   </ion-item>
-  <ion-item *ngFor="let cosignatoryModification of modifications">
+  <ion-item text-wrap *ngFor="let cosignatoryModification of modifications">
     <span *ngIf="cosignatoryModification.action == 1">{{'ADD_COSIGNATORY' | translate}}
       {{cosignatoryModification.cosignatoryAccount.address.pretty()}}
     </span>

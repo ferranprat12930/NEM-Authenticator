@@ -22,7 +22,7 @@
           {{unconfirmedTransaction.transactionType() | transactionType | translate}} {{ 'TRANSACTION' | translate}}
         </ion-card-header>
         <ion-card-content>
-          <p>{{ 'STARTED_BY' | translate}} {{unconfirmedTransaction.signerAddress() }}</p>
+          <p text-wrap>{{ 'STARTED_BY' | translate}} {{unconfirmedTransaction.signerAddress() }}</p>
           <br/>
           <p>{{ 'TRANSACTION_TIMESTAMP' | translate}} {{unconfirmedTransaction.timeStamp() | localTimeParser}}</p>
           <p>{{ 'TRANSACTION_DEADLINE' | translate}} {{unconfirmedTransaction.deadline() | localTimeParser}}</p>
