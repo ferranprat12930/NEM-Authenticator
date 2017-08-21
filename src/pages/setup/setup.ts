@@ -69,27 +69,28 @@ export class SetupPage {
     });
   }
 
-  async openSetupAccountModal() {
-    let loaderTitle = await this.translateService.get("LOADING_FETCHING_TEXT").toPromise();
-    let errorNoCosignatoryMatchMessage = await this.translateService.get("ERROR_NO_COSIG").toPromise();
-    let errorOfflineMessage = await this.translateService.get("ERROR_OFFLINE").toPromise();
-
+  openSetupAccountModal() {
     let modal = this.modalCtrl.create(SetupAccountModal);
     modal.onDidDismiss((wallet: { wallet: SimpleWallet, account: Account }) => {
       if (wallet != null) {
+        let loader;
         this.wallet = wallet.wallet;
         this.account = wallet.account;
-        let loader = this.loadingCtrl.create({
-          content: loaderTitle
+        this.translateService.get("LOADING_FETCHING_TEXT").subscribe(value => {
+          loader = this.loadingCtrl.create({
+            content: value
+          });
+          loader.present();
         });
-        loader.present();
         new AccountHttp().getFromAddress(this.account.address).subscribe(accountMetaData => {
           // Check that the account is Cosignatory of just one account
           if (accountMetaData.cosignatoryOf.length != 1) {
-            this.toastCtrl.create({
-              message: errorNoCosignatoryMatchMessage,
-              duration: 2000
-            }).present();
+            this.translateService.get("ERROR_NO_COSIG").subscribe(value => {
+              this.toastCtrl.create({
+                message: value,
+                duration: 2000
+              }).present();
+            });
           } else {
             this.multisigAddress = accountMetaData.cosignatoryOf[0].publicAccount.address;
           }
@@ -98,10 +99,12 @@ export class SetupPage {
           this.slides.slideNext(500);
         }, err => {
           loader.dismiss();
-          this.toastCtrl.create({
-            message: errorOfflineMessage,
-            duration: 2000
-          }).present()
+          this.translateService.get("ERROR_OFFLINE").subscribe(value => {
+            this.toastCtrl.create({
+              message: value,
+              duration: 2000
+            }).present()
+          });
         });
       }
     });
