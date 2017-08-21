@@ -44,8 +44,6 @@
   "CANCEL": "Cancel",
   "DISMISS": "Dismiss",
 
-
-
   "AMOUNT": "Amount",
   "RECIPIENT": "Recipient",
   "MESSAGE": "Message",
@@ -76,6 +74,24 @@
   "SUBNAMESPACE_OF": "Subnamespace of",
 
   "MOSAIC": "Mosaic",
-  "MOSAICS": "Mosaics"
+  "MOSAICS": "Mosaics",
 
+  "ACCOUNT": "NEM Authenticator Account",
+  "COSIG_OF_MULTISIG": "Cosignatory of Multisig",
+
+
+  "MENU_TITLE": "Menu",
+  "MENU_TRANSACTIONS": "Transactions",
+  "MENU_ACCOUNT": "Account",
+  "MENU_REMOVE_ACCOUNT": "Remove Account",
+
+
+  "LOGIN_TITLE_UNLOCK": "Unlock NEM Authenticator",
+  "LOGIN_PASSWORD": "Insert your password",
+  "LOGIN_BUTTON_UNLOCK": "Unlock",
+
+  "REMOVE_ACCOUNT_TITLE": "REMOVE ACCOUNT",
+  "REMOVE_ACCOUNT_MESSAGE": "NEM Authenticator will erase the account and you will not be able to login again. Are you sure?",
+  "REMOVE_ACCOUNT_AGREE": "Agree",
+  "REMOVE_ACCOUNT_DISMISS": "Dismiss"
 }
