@@ -24,7 +24,7 @@ $ npm install
 Run the project
 
 ```bash
-$ ionic serve
+$ ionic cordova run android
 ```
 
 ## Collaborators
