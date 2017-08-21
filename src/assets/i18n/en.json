@@ -30,7 +30,20 @@
   "SETUP_SLIDE_5_DESCRIPTION": "Have you checked your account details?",
 
   "SETUP_ACCOUNT_TITLE": "Import your account",
-  "SETUP_ACCOUNT_TITLE": "",
+  "SETUP_ACCOUNT_SCAN_THE_QR": "Scan the QR Code",
+  "SETUP_ACCOUNT_SCAN_QR": "SCAN QR Code",
+  "SETUP_ACCOUNT_WALLET_NAME": "Wallet name",
+  "SETUP_ACCOUNT_PASSWORD": "Insert your NEM Auth account password",
+  "SETUP_ACCOUNT_IMPORT": "Import",
+
+  "TRANSACTION_MODAL_TITLE": "Transaction details",
+  "SIGN_TRANSACTION": "SIGN TRANSACTION",
+  "TRANSACTION_MODAL_DESCRIPTION": "Notice that, when you dismiss the transaction it will appear until the deadline transaction is reached",
+
+
+  "CANCEL": "Cancel",
+  "DISMISS": "Dismiss",
+
 
 
   "AMOUNT": "Amount",
