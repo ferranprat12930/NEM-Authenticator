@@ -122,7 +122,7 @@ export class HomePage {
   }
 
   cosignTransaction(unconfirmedTransaction: MultisigTransactionPlusView) {
-    if (unconfirmedTransaction.transaction.signatures.length == 0) {
+    if (!unconfirmedTransaction.signed) {
       let modal = this.modalCtrl.create(TransactionModal, {unconfirmedTransaction: unconfirmedTransaction.transaction});
       modal.onDidDismiss((agreed) => {
         if (agreed) {
@@ -165,6 +165,7 @@ class MultisigTransactionPlusView {
   constructor(public transaction: MultisigTransaction,
               public signing: boolean,
               public signed: boolean) {
+    this.signed = this.transaction.signatures.length == 1;
   }
 
   transactionType(): TransactionTypes {

@@ -31,9 +31,9 @@
             {{ 'SIGNING_TRANSACTION' | translate}} <br/>
             <ion-spinner></ion-spinner>
           </div>
-          <h1 *ngIf="unconfirmedTransaction.signed"
-              text-center
-              class="signedTitle">{{ 'TRANSACTION_SIGNED' | translate}}</h1>
+          <div *ngIf="unconfirmedTransaction.signed" text-center>
+            {{ 'TRANSACTION_SIGNED' | translate}}
+          </div>
         </ion-card-content>
       </ion-card>
     </button>

@@ -34,7 +34,7 @@ $ ionic serve
 | [@aleixmorgadas](https://github.com/aleixmorgadas) | Project lead |
 | [@guillemsole](https://github.com/guillemsole) | Developer |
 | [@gerardbe](https://t.me/GerardBe) | QA |
-| [Jordi](https://www.behance.net/JordiBrandia) | Designer |
+| [Jordi](https://www.behance.net/JordiBrandia) | Logo Designer |
 
 ## License
 
