@@ -29,11 +29,11 @@
   "SETUP_SLIDE_5_TITLE_2" : "Continuar",
   "SETUP_SLIDE_5_DESCRIPTION": "¿Ha comprobado los datos de su cuenta?",
 
-  "SETUP_ACCOUNT_TITLE": "Importa tu cuenta",
+  "SETUP_ACCOUNT_TITLE": "Importe su cuenta",
   "SETUP_ACCOUNT_SCAN_THE_QR": "Escanea el código QR",
   "SETUP_ACCOUNT_SCAN_QR": "ESCANEAR Código QR",
   "SETUP_ACCOUNT_WALLET_NAME": "Nombre de la cartera",
-  "SETUP_ACCOUNT_PASSWORD": "Introduce la contraseña de tu cuneta NEM Auth",
+  "SETUP_ACCOUNT_PASSWORD": "Introduce la contraseña de su cuneta NEM Auth",
   "SETUP_ACCOUNT_IMPORT": "Importar",
 
   "TRANSACTION_MODAL_TITLE": "Detalles de la transacción",
@@ -88,7 +88,7 @@
 
 
   "LOGIN_TITLE_UNLOCK": "Desbloquear NEM Authenticator",
-  "LOGIN_PASSWORD": "Introduce tu contraseña",
+  "LOGIN_PASSWORD": "Introduzca su contraseña",
   "LOGIN_BUTTON_UNLOCK": "Desbloquear",
 
   "REMOVE_ACCOUNT_TITLE": "ELIMINAR CUENTA",
