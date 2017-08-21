@@ -17,7 +17,7 @@
   </ion-item>
 </ion-item-group>
 
-<ion-item-group *ngIf="transaction.message.payload != ''">
+<ion-item-group *ngIf="transaction.message.isPlain() && transaction.message.plain() != ''">
   <ion-item-divider color="light">{{'MESSAGE' | translate}}</ion-item-divider>
   <ion-item>
     {{transaction.message.plain()}}
