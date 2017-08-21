@@ -61,6 +61,7 @@ export class SetupPage {
     let saveWalletPromise = this.storage.set('WALLET', this.wallet.writeWLTFile()).then(_ => {
       this.storage.set('MULTISIG_ADDRESS', this.multisigAddress.plain()).then(_ => {
         this.accountService.setAccount(this.account);
+        this.accountService.setMultisig(this.multisigAddress);
         this.navCtrl.setRoot(HomePage);
       })
     });
