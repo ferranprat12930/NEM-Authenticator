@@ -29,6 +29,7 @@ import {ImportanceTransferTransactionComponent} from "../components/importance-t
 import {AccountService} from "../services/account.service";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {LoginModal} from "../components/login-modal/login.modal";
+import {AccountPage} from "../pages/account/account.page";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -39,6 +40,7 @@ export function createTranslateLoader(http: Http) {
     MyApp,
     HomePage,
     SetupPage,
+    AccountPage,
     XEMPipe,
     TransactionTypePipe,
     LocalTimeParserPipe,
@@ -69,6 +71,7 @@ export function createTranslateLoader(http: Http) {
   entryComponents: [
     MyApp,
     HomePage,
+    AccountPage,
     TransactionModal,
     SetupPage,
     SetupAccountModal,

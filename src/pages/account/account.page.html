@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar [color]="NEMLibrary.getNetworkType() == NetworkTypes.MAIN_NET ? 'mainnet': 'testnet'">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      NEM Authenticator
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row text-center>
+      <ion-col col-12>
+        <img src="assets/img/icon.png" class="slide-image"/>
+        <p>NEM Authenticator Account</p>
+        <code>{{account.address.pretty()}}</code>
+        <p>Cosignatory of Multisig</p>
+        <code>{{multisig.pretty()}}</code>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

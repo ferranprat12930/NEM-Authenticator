@@ -21,8 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import {Component} from "@angular/core";
-import {LoadingController, ModalController, Platform} from "ionic-angular";
+import {Component, ViewChild} from "@angular/core";
+import {AlertController, LoadingController, ModalController, Nav, Platform} from "ionic-angular";
 import {StatusBar} from "@ionic-native/status-bar";
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {SetupPage} from "../pages/setup/setup";
@@ -33,11 +33,13 @@ import {Account, Address, NEMLibrary} from "nem-library";
 import {LoginModal} from "../components/login-modal/login.modal";
 import {AccountService} from "../services/account.service";
 import {SimpleWallet} from "nem-library/dist/src/models/wallet/SimpleWallet";
+import {AccountPage} from "../pages/account/account.page";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+  @ViewChild(Nav) navCtrl: Nav;
   rootPage: any;
 
   constructor(platform: Platform,
@@ -46,6 +48,7 @@ export class MyApp {
               private modalCtrl: ModalController,
               private accountService: AccountService,
               private storage: Storage,
+              private alertCtrl: AlertController,
               private loadingCtrl: LoadingController,
               private translateService: TranslateService) {
 
@@ -88,6 +91,37 @@ export class MyApp {
         }
       });
     });
+  }
+
+  viewTransactions() {
+    this.navCtrl.setRoot(HomePage);
+  }
+
+  viewAccountDetails() {
+    this.navCtrl.setRoot(AccountPage);
+  }
+
+  removeAccount() {
+    this.alertCtrl.create({
+      title: 'REMOVE ACCOUNT',
+      message: 'NEM Authenticator will erase the account and you will not be able to login again. Are you sure?',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            this.storage.clear().then(_ => {
+              this.navCtrl.setRoot(SetupPage);
+            })
+          }
+        }
+      ]
+    }).present();
   }
 }
 
