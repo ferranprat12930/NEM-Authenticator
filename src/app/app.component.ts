@@ -34,6 +34,7 @@ import {LoginModal} from "../components/login-modal/login.modal";
 import {AccountService} from "../services/account.service";
 import {SimpleWallet} from "nem-library/dist/src/models/wallet/SimpleWallet";
 import {AccountPage} from "../pages/account/account.page";
+import {Globalization} from "@ionic-native/globalization";
 
 @Component({
   templateUrl: 'app.html'
@@ -50,7 +51,8 @@ export class MyApp {
               private storage: Storage,
               private alertCtrl: AlertController,
               private loadingCtrl: LoadingController,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              private globalization: Globalization) {
 
     let loader = loadingCtrl.create({
       content: "Please wait..."
@@ -60,9 +62,34 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
 
+
+      let availableLanguages = ['en'];
+
+
       //i18n configuration
       this.translateService.setDefaultLang('en');
-      this.translateService.use('en');
+      if (platform.is('cordova')) {
+        this.globalization.getPreferredLanguage()
+          .then(language => {
+            //if the file is available
+            if (language.value in availableLanguages) {
+              this.translateService.use(language.value);
+            }
+            //else, try with the first substring
+            else{
+              for (var lang of availableLanguages){
+                if(language.value.split("-")[0] == lang){
+                  this.translateService.use(lang);
+                  break;
+                }
+              }
+            }
+          })
+          .catch(e => console.log(e));
+      }
+      else{
+        this.translateService.use('en');
+      }
 
       statusBar.styleDefault();
       splashScreen.hide();

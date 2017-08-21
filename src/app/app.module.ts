@@ -6,6 +6,7 @@ import {StatusBar} from "@ionic-native/status-bar";
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {Http, HttpModule} from "@angular/http";
+import { Globalization } from '@ionic-native/globalization';
 
 import {MyApp} from "./app.component";
 import {HomePage} from "../pages/home/home";
@@ -82,6 +83,7 @@ export function createTranslateLoader(http: Http) {
     BarcodeScanner,
     StatusBar,
     SplashScreen,
+    Globalization,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: AccountHttp, useFactory: AccountHttpInstanceFactory},
     {provide: TransactionHttp, useFactory: TransactionHttpInstanceFactory}
