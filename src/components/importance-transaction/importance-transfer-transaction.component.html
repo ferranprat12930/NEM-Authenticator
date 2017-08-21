@@ -1,11 +1,19 @@
-<ion-col col-12>
-  <h3 *ngIf="transaction.otherTransaction.mode == 1">{{ 'ACTIVATE_HARVESTING' | translate}}</h3>
-  <h3 *ngIf="transaction.otherTransaction.mode == 2">{{ 'DEACTIVATE_HARVESTING' | translate}}</h3>
-  <h5>{{ 'REMOVE_ACCOUNT' | translate}}: </h5>
-  <p>{{transaction.otherTransaction.remoteAccount.address.pretty()}}</p>
-</ion-col>
+<h1>{{transaction.type | transactionType | translate}}</h1>
 
-<ion-col col-12>
-  <h5>{{ 'FEE' | translate}}: </h5>
-  <p>{{(transaction.fee + transaction.otherTransaction.fee) | xem}} XEM</p>
-</ion-col>
+<ion-item-group>
+  <ion-item-divider color="light">{{'HARVESTING' | translate}}</ion-item-divider>
+  <ion-item *ngIf="transaction.mode == 1">{{ 'ACTIVATE_HARVESTING' | translate}}</ion-item>
+  <ion-item *ngIf="transaction.mode == 2">{{ 'DEACTIVATE_HARVESTING' | translate}}</ion-item>
+</ion-item-group>
+
+<ion-item-group>
+  <ion-item-divider color="light">{{'REMOVE_ACCOUNT' | translate}}</ion-item-divider>
+  <ion-item>{{transaction.remoteAccount.address.pretty()}}</ion-item>
+</ion-item-group>
+
+<ion-item-group>
+  <ion-item-divider color="light">{{'FEE' | translate}}</ion-item-divider>
+  <ion-item>
+    {{(300000 + transaction.fee) | xem}} XEM
+  </ion-item>
+</ion-item-group>

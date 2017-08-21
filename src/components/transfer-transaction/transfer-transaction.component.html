@@ -1,24 +1,32 @@
-<ion-col col-12>
-  <h5>{{'RECIPIENT' | translate}}:</h5>
-  <p>{{transaction.otherTransaction.recipient.plain()}}</p>
-</ion-col>
-<ion-col col-12 *ngIf="!transaction.otherTransaction.mosaics">
-  <h5>{{'AMOUNT' | translate}}: </h5>
-  <p>{{transaction.otherTransaction.amount | xem}} XEM</p>
-</ion-col>
-<ion-col col-12 *ngIf="transaction.otherTransaction.mosaics">
-  <h5>{{ 'MOSAICS' | translate}}: </h5>
-  <p *ngFor="let mosaic of transaction.otherTransaction.mosaics!">
-    {{mosaic.quantity}} {{mosaic.mosaicId.description()}}
-  </p>
-</ion-col>
+<h1>{{transaction.type | transactionType | translate}}</h1>
 
-<ion-col col-12 *ngIf="transaction.otherTransaction.message">
-  <h5>{{'MESSAGE' | translate}}:</h5>
-  <p *ngIf="!transaction.otherTransaction.message.isEncrypted()">{{transaction.otherTransaction.message.plain()}}</p>
-  <p *ngIf="transaction.otherTransaction.message.isEncrypted()">{{ 'ENCRYPTED_MESSAGE' | translate}}</p>
-</ion-col>
-<ion-col col-12>
-  <h5>{{'FEE' | translate}}: </h5>
-  <p>{{(transaction.fee + transaction.otherTransaction.fee) | xem}} XEM</p>
-</ion-col>
+<ion-item-group>
+  <ion-item-divider color="light">{{'RECIPIENT' | translate}}</ion-item-divider>
+  <ion-item>{{transaction.recipient.pretty()}}</ion-item>
+</ion-item-group>
+
+<ion-item-group *ngIf="!transaction.mosaics">
+  <ion-item-divider color="light">{{'AMOUNT' | translate}}</ion-item-divider>
+  <ion-item>{{transaction.amount}}</ion-item>
+</ion-item-group>
+
+<ion-item-group *ngIf="transaction.mosaics">
+  <ion-item-divider color="light">{{'MOSAICS' | translate}}</ion-item-divider>
+  <ion-item *ngFor="let mosaic of transaction.mosaics">
+    {{mosaic.quantity}} {{mosaic.mosaicId.description()}}
+  </ion-item>
+</ion-item-group>
+
+<ion-item-group *ngIf="transaction.message.payload != ''">
+  <ion-item-divider color="light">{{'MESSAGE' | translate}}</ion-item-divider>
+  <ion-item>
+    {{transaction.message.plain()}}
+  </ion-item>
+</ion-item-group>
+
+<ion-item-group>
+  <ion-item-divider color="light">{{'FEE' | translate}}</ion-item-divider>
+  <ion-item>
+    {{(300000 + transaction.fee) | xem}} XEM
+  </ion-item>
+</ion-item-group>

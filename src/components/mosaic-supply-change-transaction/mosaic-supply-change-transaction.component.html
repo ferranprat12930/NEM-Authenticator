@@ -1,15 +1,25 @@
-<ion-col col-12>
-  <h5>{{ 'MOSAIC' | translate}}: </h5>
-  <p>{{transaction.otherTransaction.mosaicId.description()}}</p>
-</ion-col>
+<h1>{{transaction.type | transactionType | translate}}</h1>
 
-<ion-col col-12>
-  <h5 *ngIf="transaction.otherTransaction.supplyType == 1">{{'SUPPLY_INCREASE' | translate}}:</h5>
-  <h5 *ngIf="transaction.otherTransaction.supplyType == 2">{{'SUPPLY_DECREASE' | translate}}:</h5>
-  <p>{{transaction.otherTransaction.delta}} {{ 'MOSAICS' | translate}}</p>
-</ion-col>
+<ion-item-group>
+  <ion-item-divider color="light">{{'MOSAIC' | translate}}</ion-item-divider>
+  <ion-item>
+    {{transaction.mosaicId.description()}}
+  </ion-item>
+</ion-item-group>
 
-<ion-col col-12>
-  <h5>{{'FEE' | translate}}: </h5>
-  <p>{{(transaction.fee + transaction.otherTransaction.fee) | xem}} XEM</p>
-</ion-col>
+<ion-item-group>
+  <ion-item-divider color="light" *ngIf="transaction.supplyType == 1">{{'SUPPLY_INCREASE' | translate}}
+  </ion-item-divider>
+  <ion-item-divider color="light" *ngIf="transaction.supplyType == 2">{{'SUPPLY_DECREASE' | translate}}
+  </ion-item-divider>
+  <ion-item>
+    {{transaction.delta}} {{ 'MOSAICS' | translate}}
+  </ion-item>
+</ion-item-group>
+
+<ion-item-group>
+  <ion-item-divider color="light">{{'FEE' | translate}}</ion-item-divider>
+  <ion-item>
+    {{(300000 + transaction.fee) | xem}} XEM
+  </ion-item>
+</ion-item-group>

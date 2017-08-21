@@ -68,6 +68,7 @@
   "LEVY_TYPE_PERCENTIL": "Percentil",
   "ACTIVATE_HARVESTING": "Activate harvesting",
   "DEACTIVATE_HARVESTING": "Deactivate harvesting",
+  "HARVESTING": "Harvesting",
   "REMOVE_ACCOUNT": "Remote account",
 
   "NAMESPACE": "Namespace",

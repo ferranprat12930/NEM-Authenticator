@@ -17,27 +17,27 @@
       <ion-col col-12>
         <transfer-transaction-component
           *ngIf="unconfirmedTransaction.otherTransaction.type == TransactionTypes.TRANSFER"
-          [transaction]="unconfirmedTransaction">
+          [transaction]="unconfirmedTransaction.otherTransaction">
         </transfer-transaction-component>
         <provision-namespace-transaction-component
           *ngIf="unconfirmedTransaction.otherTransaction.type == TransactionTypes.PROVISION_NAMESPACE"
-          [transaction]="unconfirmedTransaction">
+          [transaction]="unconfirmedTransaction.otherTransaction">
         </provision-namespace-transaction-component>
         <multisig-aggregate-modification-transaction-component
           *ngIf="unconfirmedTransaction.otherTransaction.type == TransactionTypes.MULTISIG_AGGREGATE_MODIFICATION"
-          [transaction]="unconfirmedTransaction">
+          [transaction]="unconfirmedTransaction.otherTransaction">
         </multisig-aggregate-modification-transaction-component>
         <mosaic-supply-change-transaction-component
           *ngIf="unconfirmedTransaction.otherTransaction.type == TransactionTypes.MOSAIC_SUPPLY_CHANGE"
-          [transaction]="unconfirmedTransaction">
+          [transaction]="unconfirmedTransaction.otherTransaction">
         </mosaic-supply-change-transaction-component>
         <mosaic-definition-creation-transaction-component
           *ngIf="unconfirmedTransaction.otherTransaction.type == TransactionTypes.MOSAIC_DEFINITION_CREATION"
-          [transaction]="unconfirmedTransaction">
+          [transaction]="unconfirmedTransaction.otherTransaction">
         </mosaic-definition-creation-transaction-component>
         <importance-transfer-transaction-component
           *ngIf="unconfirmedTransaction.otherTransaction.type == TransactionTypes.IMPORTANCE_TRANSFER"
-          [transaction]="unconfirmedTransaction">
+          [transaction]="unconfirmedTransaction.otherTransaction">
         </importance-transfer-transaction-component>
       </ion-col>
       <ion-col col-6>
