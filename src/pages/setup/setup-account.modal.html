@@ -31,7 +31,7 @@
             <ion-input #input type="text" icon-right formControlName="password"></ion-input>
           </ion-item>
           <button ion-button large clear color="primary" type="button" (click)="verifyAccount()"
-                  [disabled]="walletQRText == null">
+                  [disabled]="walletQRText == null || !form.valid">
             {{'SETUP_ACCOUNT_IMPORT' | translate}}
           </button>
         </form>
