@@ -10,7 +10,7 @@
   <ion-grid>
     <ion-row text-center>
       <ion-col col-12>
-        <form [formGroup]="form" (ngSubmit)="verifyAccount()">
+        <form [formGroup]="form" (ngSubmit)="login()">
           <img src="assets/img/icon.png" class="slide-image"/>
           <p>NEM Authenticator Account</p>
           <code>{{wallet.address.pretty()}}</code>
