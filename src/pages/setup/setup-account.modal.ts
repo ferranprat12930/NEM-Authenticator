@@ -25,7 +25,7 @@ import {Component} from "@angular/core";
 import {NavParams, ToastController, ViewController} from "ionic-angular";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
-import {NEMLibrary, Password, QRService, SimpleWallet, NetworkTypes} from "nem-library";
+import {NEMLibrary, NetworkTypes, Password, QRService, SimpleWallet} from "nem-library";
 import {TranslateService} from "@ngx-translate/core";
 
 @Component({
@@ -50,22 +50,23 @@ export class SetupAccountModal {
   }
 
   scanWalletQR() {
+    NEMLibrary.reset();
     this.barcodeScanner.scan().then(barcode => {
       this.walletQRText = JSON.parse(barcode.text);
-    });
-  }
-
-  verifyAccount() {
-    let password = new Password(this.form.get('password').value);
-    try {
-      let qrService = new QRService();
       if (this.walletQRText.v == 1) {
         NEMLibrary.bootstrap(NetworkTypes.TEST_NET);
       } else if (this.walletQRText.v == 2) {
         NEMLibrary.bootstrap(NetworkTypes.MAIN_NET);
       }
-      let privateKey = qrService.decryptWalletQRText(password, this.walletQRText);
-      let simpleWallet = SimpleWallet.createWithPrivateKey("NEM Auth Account", password, privateKey);
+    });
+  }
+
+  verifyAccount() {
+    try {
+      const password = new Password(this.form.get('password').value);
+      const qrService = new QRService();
+      const privateKey = qrService.decryptWalletQRText(password, this.walletQRText);
+      const simpleWallet = SimpleWallet.createWithPrivateKey("NEM Auth Account", password, privateKey);
       this.viewCtrl.dismiss({
         wallet: simpleWallet,
         account: simpleWallet.open(password)

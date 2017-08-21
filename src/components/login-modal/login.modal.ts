@@ -35,8 +35,8 @@ export class LoginModal {
 
   login() {
     try {
-      let password = new Password(this.form.get('password').value);
-      let account = this.wallet.open(password);
+      const password = new Password(this.form.get('password').value);
+      const account = this.wallet.open(password);
       this.viewCtrl.dismiss(account);
     } catch (e) {
       this.translateService.get("ERROR_PASSWORD").subscribe(value => {
