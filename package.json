@@ -1,6 +1,6 @@
 {
     "name": "NEM-Authenticator",
-    "version": "0.0.6",
+  "version": "0.1.0",
     "author": "Aleix Morgadas <aleixmorgadas@openmailbox.org>",
     "homepage": "https://www.nemauthenticator.com",
     "private": true,
