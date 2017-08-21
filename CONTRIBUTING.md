@@ -14,7 +14,7 @@ they should reciprocate that respect in addressing your issue, assessing changes
 and helping you finalize your pull requests.
 
 Please, **don't use the issue tracker for support questions**. 
-Join telegram group [https://t.me/nemauth](telegram-group) for community support.
+Join telegram group [https://t.me/nemprojects](telegram-group) for community support.
 
 ## Bug reports
 
@@ -86,7 +86,7 @@ Then sit back and wait. There will probably be discussion about the pull request
 
 ## Contributing to the NEM Authenticator codebase
 
-**TODO**
+**TODO** Contact [@aleix_mp](https://t.me/aleix_mp) or [@guillemsc](https://t.me/guillemsc)
 
 
 
@@ -94,4 +94,4 @@ Then sit back and wait. There will probably be discussion about the pull request
 and [elasticsearch/CONTRIGUTING](https://github.com/elastic/elasticsearch/blob/master/CONTRIBUTING.md)
 
 [pull-request]:https://help.github.com/articles/about-pull-requests/
-[telegram-group]:https://t.me/nemauth
+[telegram-group]:https://t.me/nemprojects

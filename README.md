@@ -36,13 +36,12 @@ $ ionic serve
 | [@gerardbe](https://t.me/GerardBe) | QA |
 | [Jordi](https://www.behance.net/JordiBrandia) | Logo Designer |
 
+Telegram Group: [https://t.me/nemprojects][telegram-group]
+
 ## License
 
 [MIT Licence](https://github.com/aleixmorgadas/NEM-Authenticator/blob/master/LICENSE)
 
 [pull-request]:https://help.github.com/articles/about-pull-requests/
-[telegram-group]:https://t.me/nemauth
-[trello-roadmap]:https://trello.com/b/5YctwWt7/nem-authenticator-public-roadmap
+[telegram-group]:https://t.me/nemprojects
 [github-issues]:https://github.com/aleixmorgadas/NEM-Authenticator/issues
-
-ionic cordova plugin rm cordova-plugin-console
