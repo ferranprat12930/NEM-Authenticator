@@ -41,10 +41,12 @@
         </importance-transfer-transaction-component>
       </ion-col>
       <ion-col col-6>
-        <button text-center ion-button full color="secondary" (click)="signTransaction()">{{  'SIGN_TRANSACTION' | translate }}</button>
+        <button text-center ion-button full color="danger" (click)="dismiss()">{{ 'DISMISS' | translate }}</button>
       </ion-col>
       <ion-col col-6>
-        <button text-center ion-button full color="danger" (click)="dismiss()">{{  'DISMISS' | translate }}</button>
+        <button text-center ion-button full color="sign" (click)="signTransaction()">{{ 'SIGN_TRANSACTION' | translate
+          }}
+        </button>
       </ion-col>
       <ion-col col-12>
         <p>{{  'TRANSACTION_MODAL_DESCRIPTION' | translate }}</p>
