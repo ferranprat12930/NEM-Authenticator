@@ -92,7 +92,7 @@
   "LOGIN_BUTTON_UNLOCK": "Desbloquear",
 
   "REMOVE_ACCOUNT_TITLE": "ELIMINAR CUENTA",
-  "REMOVE_ACCOUNT_MESSAGE": "NEM Authenticator eliminar la cuenta y no podrá iniciar sesión de nuevo. ¿Está seguro?",
+  "REMOVE_ACCOUNT_MESSAGE": "NEM Authenticator eliminará la cuenta y no podrá iniciar sesión de nuevo. ¿Está seguro?",
   "REMOVE_ACCOUNT_AGREE": "Sí",
   "REMOVE_ACCOUNT_DISMISS": "No",
 
