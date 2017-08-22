@@ -7,6 +7,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {Http, HttpModule} from "@angular/http";
 import { Globalization } from '@ionic-native/globalization';
+import { Keyboard } from '@ionic-native/keyboard';
 
 import {MyApp} from "./app.component";
 import {HomePage} from "../pages/home/home";
@@ -81,6 +82,7 @@ export function createTranslateLoader(http: Http) {
   providers: [
     AccountService,
     BarcodeScanner,
+    Keyboard,
     StatusBar,
     SplashScreen,
     Globalization,

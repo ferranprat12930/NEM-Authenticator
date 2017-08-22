@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {ModalController, NavParams, ToastController, ViewController} from "ionic-angular";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {BarcodeScanner} from "@ionic-native/barcode-scanner";
+import { Keyboard } from '@ionic-native/keyboard';
 import {Address, NEMLibrary, NetworkTypes, SimpleWallet} from "nem-library";
 import {Password} from "nem-library/dist/src/models/wallet/Password";
 import {TranslateService} from "@ngx-translate/core";
@@ -21,9 +21,8 @@ export class LoginModal {
   constructor(params: NavParams,
               private formBuilder: FormBuilder,
               private toastCtrl: ToastController,
-              private modalCtrl: ModalController,
-              private barcodeScanner: BarcodeScanner,
               private viewCtrl: ViewController,
+              private keyboard: Keyboard,
               private translateService: TranslateService) {
     this.form = formBuilder.group({
       password: ['',
@@ -34,6 +33,8 @@ export class LoginModal {
   }
 
   login() {
+
+    this.keyboard.close();
     try {
       const password = new Password(this.form.get('password').value);
       const account = this.wallet.open(password);
