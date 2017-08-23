@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
-import {ModalController, NavParams, ToastController, ViewController} from "ionic-angular";
+import {NavParams, ToastController, ViewController} from "ionic-angular";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { Keyboard } from '@ionic-native/keyboard';
+import {Keyboard} from '@ionic-native/keyboard';
 import {Address, NEMLibrary, NetworkTypes, SimpleWallet} from "nem-library";
 import {Password} from "nem-library/dist/src/models/wallet/Password";
 import {TranslateService} from "@ngx-translate/core";

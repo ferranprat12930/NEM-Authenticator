@@ -51,6 +51,7 @@ export class SetupAccountModal {
 
   scanWalletQR() {
     NEMLibrary.reset();
+    this.walletQRText = null;
     this.barcodeScanner.scan().then(barcode => {
       this.walletQRText = JSON.parse(barcode.text);
       if (this.walletQRText.v == 1) {

@@ -24,7 +24,7 @@
         </button>
       </ion-col>
       <ion-col col-12>
-        <p>{{ 'SETUP_ACCOUNT_WALLET_NAME' | translate}}: {{walletQRText?.data.name}}</p>
+        <p *ngIf="walletQRText">{{ 'SETUP_ACCOUNT_WALLET_NAME' | translate}}: {{walletQRText?.data.name}}</p>
         <form [formGroup]="form" (ngSubmit)="verifyAccount()">
           <ion-item>
             <ion-label floating>{{ 'SETUP_ACCOUNT_PASSWORD' | translate}}</ion-label>
