@@ -1,0 +1,107 @@
+{
+  "TRANSFER": "TRANSFERIR",
+  "IMPORTANCE_TRANSFER": "IMPORTANCIA",
+  "MULTISIG_AGGREGATE_MODIFICATION": "MODIFICAR MULTIFIRMA AGREGADA",
+  "PROVISION_NAMESPACE": "PROVISIÓN DE ESPACIO DE NOMBRES",
+  "MOSAIC_DEFINITION_CREATION": "CREACIÓN DEDEFINICIÓN DE MOSAICO",
+  "MOSAIC_SUPPLY_CHANGE": "CAMBIAR SUMINISTRO DEL MOSAICO",
+
+  "TRANSACTION": "TRANSACCIÓN",
+  "STARTED_BY": "Empezada por",
+  "TRANSACTION_TIMESTAMP": "Transacción empezada en",
+  "TRANSACTION_DEADLINE": "Fecha límite de la transacción en",
+  "SIGNING_TRANSACTION": "Firmando transacción",
+  "TRANSACTION_SIGNED": "FIRMADA (será incluida pronto en un bloque)",
+  "NO_PENDING_TRANSACTIONS": "No tienes transacciones pendientes",
+
+  "SETUP": "configurar",
+  "SETUP_SLIDE_1_TITLE": "Bienvenido a NEM Authenticator",
+  "SETUP_SLIDE_1_DESCRIPTION": "Primero necesita configurar su cuenta",
+  "SETUP_SLIDE_2_TITLE": "Este paso es crítico para garantizar la seguridad",
+  "SETUP_SLIDE_2_DESCRIPTION": "Necesitamos que importe su cuenta de NEM Authenticator Account mediante el QR generado en",
+  "SETUP_SLIDE_3_TITLE": "Importar cuenta",
+  "SETUP_SLIDE_3_DESCRIPTION": "Importar",
+  "SETUP_SLIDE_4_TITLE" : "Dirección de NEM Authenticator",
+  "SETUP_SLIDE_4_TITLE_2" : "Consignatario de la Cuenta Multifirma",
+  "SETUP_SLIDE_4_TITLE_3" : "Es mi cuenta",
+
+  "SETUP_SLIDE_5_TITLE" : "¿Preparado para utilizar NEM?",
+  "SETUP_SLIDE_5_TITLE_2" : "Continuar",
+  "SETUP_SLIDE_5_DESCRIPTION": "¿Ha comprobado los datos de su cuenta?",
+
+  "SETUP_ACCOUNT_TITLE": "Importe su cuenta",
+  "SETUP_ACCOUNT_SCAN_THE_QR": "Escanea el código QR",
+  "SETUP_ACCOUNT_SCAN_QR": "ESCANEAR Código QR",
+  "SETUP_ACCOUNT_WALLET_NAME": "Nombre de la cartera",
+  "SETUP_ACCOUNT_PASSWORD": "Introduce la contraseña de su cuneta NEM Auth",
+  "SETUP_ACCOUNT_IMPORT": "Importar",
+
+  "TRANSACTION_MODAL_TITLE": "Detalles de la transacción",
+  "SIGN_TRANSACTION": "FIRMAR TRANSACCIÓN",
+  "TRANSACTION_MODAL_DESCRIPTION": "Tenga en cuenta que, cuando rechaza la transacción, aparecerá hasta que expire fecha límite de la transacción",
+
+
+  "CANCEL": "Cancelar",
+  "DISMISS": "Rechazar",
+
+  "AMOUNT": "Cantidad",
+  "RECIPIENT": "Receptor",
+  "MESSAGE": "Mensaje",
+  "FEE": "Comisión",
+  "ENCRYPTED_MESSAGE": "Mensaje encriptado",
+  "ADD_COSIGNATORY": "Añadir consignatario",
+  "DELETE_COSIGNATORY": "Eliminar consignatario",
+  "RELATIVE_CHANGES": "Cambios relativos",
+  "SUPPLY_INCREASE": "Incrementar",
+  "SUPPLY_DECREASE": "Disminuir",
+
+  "NAME": "Nombre",
+  "DESCRIPTION": "Descripción",
+  "PROPERTIES": "Propiedades",
+  "INITIAL_SUPPLY": "Suministro inicial",
+  "DIVISIBILITY": "Divisibilidad",
+  "TRANSFERABLE": "Transferible",
+  "SUPPLY_MUTABLE": "Suministro mutable",
+  "LEVY": "Impuesto",
+  "TYPE": "Tipo",
+  "LEVY_TYPE_ABSOLUTE": "Absoluto",
+  "LEVY_TYPE_PERCENTIL": "Percentil",
+  "ACTIVATE_HARVESTING": "Activar cosecha",
+  "DEACTIVATE_HARVESTING": "Desactivar cosecha",
+  "HARVESTING": "Cosecha",
+  "REMOVE_ACCOUNT": "Cuenta remota",
+
+  "NAMESPACE": "Espacio de nombres",
+  "SUBNAMESPACE_OF": "Sub-espacio de nombres",
+
+  "MOSAIC": "Mosaico",
+  "MOSAICS": "Mosaicos",
+
+  "ACCOUNT": "Cuenta de NEM Authenticator",
+  "COSIG_OF_MULTISIG": "Consignatario de Multifirma",
+
+
+  "MENU_TITLE": "Menú",
+  "MENU_TRANSACTIONS": "Transacciones",
+  "MENU_ACCOUNT": "Cuenta",
+  "MENU_REMOVE_ACCOUNT": "Eliminar Cuenta",
+
+
+  "LOGIN_TITLE_UNLOCK": "Desbloquear NEM Authenticator",
+  "LOGIN_PASSWORD": "Introduzca su contraseña",
+  "LOGIN_BUTTON_UNLOCK": "Desbloquear",
+
+  "REMOVE_ACCOUNT_TITLE": "ELIMINAR CUENTA",
+  "REMOVE_ACCOUNT_MESSAGE": "NEM Authenticator eliminará la cuenta y no podrá iniciar sesión de nuevo. ¿Está seguro?",
+  "REMOVE_ACCOUNT_AGREE": "Sí",
+  "REMOVE_ACCOUNT_DISMISS": "No",
+
+  "ERROR_NO_COSIG": "La cuenta importada no es consignataria de la cuenta multifirma",
+  "ERROR_OFFLINE": "Está sin conexión, reinicie el proceso otra vez cuando disponga de conexión a internet",
+  "ERROR_PASSWORD": "La contraseña no es válida",
+  "ERROR_NO_INTERNET": "Compruebe su conexión a internet",
+  "ERROR_TRANSACTION_SIGNED": "transacción ya firmada, pendiente de ser incluida en un bloque",
+  "ERROR_CHECK_PASSWORD": "Compruebe su contraseña",
+  "LOADING_WAIT_TEXT":  "Por favor, espere ...",
+  "LOADING_FETCHING_TEXT": "Obteniendo Información de la Cuenta"
+}
