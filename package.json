@@ -71,10 +71,6 @@
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
             "cordova-sqlite-storage": {},
-            "cordova-fabric-plugin": {
-                "FABRIC_API_KEY": "",
-                "FABRIC_API_SECRET": ""
-            },
             "phonegap-plugin-barcodescanner": {}
         },
         "platforms": [
