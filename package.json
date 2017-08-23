@@ -57,7 +57,6 @@
     },
     "devDependencies": {
         "@ionic/app-scripts": "^2.1.4",
-        "@ionic/cli-plugin-ionic-angular": "^1.4.1",
         "fs-extra": "^3.0.1",
         "nyc": "^11.1.0",
         "typescript": "^2.5.1",
