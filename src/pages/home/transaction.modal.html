@@ -39,6 +39,12 @@
           *ngIf="unconfirmedTransaction.otherTransaction.type == TransactionTypes.IMPORTANCE_TRANSFER"
           [transaction]="unconfirmedTransaction.otherTransaction">
         </importance-transfer-transaction-component>
+        <ion-item-group>
+          <ion-item-divider color="light">Transaction Id</ion-item-divider>
+          <ion-item text-wrap>
+            {{unconfirmedTransaction.hashData.data}}
+          </ion-item>
+        </ion-item-group>
       </ion-col>
       <ion-col col-6>
         <button text-center ion-button full color="danger" (click)="dismiss()">{{ 'DISMISS' | translate }}</button>

@@ -107,6 +107,7 @@ export class HomePage {
     this.unconfirmedTransactions = [];
     this.accountPulling.subscribe(
       value => {
+        console.log("transactions", value);
         this.unconfirmedTransactions = value;
         this.loader.dismiss();
         if (refresher) refresher.complete();
