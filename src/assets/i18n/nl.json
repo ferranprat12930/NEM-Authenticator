@@ -1,0 +1,107 @@
+{
+  "TRANSFER": "TRANSFER",
+  "IMPORTANCE_TRANSFER": "IMPORTANCE",
+  "MULTISIG_AGGREGATE_MODIFICATION": "MULTISIG AGGREGAAT-MODIFICATIE",
+  "PROVISION_NAMESPACE": "VOORZIENING NAMESPACE",
+  "MOSAIC_DEFINITION_CREATION": "CREATIE MOSAIC DEFINITIE",
+  "MOSAIC_SUPPLY_CHANGE": "VERANDERING MOSAIC SUPPLY",
+
+  "TRANSACTION": "TRANSACTIE",
+  "STARTED_BY": "GESTART DOOR",
+  "TRANSACTION_TIMESTAMP": "Transactie gestart om",
+  "TRANSACTION_DEADLINE": "Transactietermijn tot",
+  "SIGNING_TRANSACTION": "Tekenen transactie",
+  "TRANSACTION_SIGNED": "GETEKEND (transactie zal binnenkort ingesloten worden in een block)",
+  "NO_PENDING_TRANSACTIONS": "Je hebt geen transacties in afwachting",
+
+  "SETUP": "setup",
+  "SETUP_SLIDE_1_TITLE": "Welkom bij NEM Authenticator",
+  "SETUP_SLIDE_1_DESCRIPTION": "Om te beginnen moeten we eerst je account instellen",
+  "SETUP_SLIDE_2_TITLE": "Deze stap is veiligheidskritisch",
+  "SETUP_SLIDE_2_DESCRIPTION": "We moeten je NEM Authenticator-account importeren via de QR-code verkregen op",
+  "SETUP_SLIDE_3_TITLE": "Importeer je account",
+  "SETUP_SLIDE_3_DESCRIPTION": "Importeer",
+  "SETUP_SLIDE_4_TITLE" : "NEM Authenticator-adres",
+  "SETUP_SLIDE_4_TITLE_2" : "Co-ondertekenaar van Multisig-account",
+  "SETUP_SLIDE_4_TITLE_3" : "Dit is mijn account",
+
+  "SETUP_SLIDE_5_TITLE" : "Klaar om NEM te gebruiken?",
+  "SETUP_SLIDE_5_TITLE_2" : "Doorgaan",
+  "SETUP_SLIDE_5_DESCRIPTION": "Heb je de details van je account nagekeken?",
+
+  "SETUP_ACCOUNT_TITLE": "Importeer je account",
+  "SETUP_ACCOUNT_SCAN_THE_QR": "Scan de QR-code",
+  "SETUP_ACCOUNT_SCAN_QR": "SCAN QR-code",
+  "SETUP_ACCOUNT_WALLET_NAME": "Naam wallet",
+  "SETUP_ACCOUNT_PASSWORD": "Vul het paswoord van je NEM Authenticator-account in",
+  "SETUP_ACCOUNT_IMPORT": "Importeer",
+
+  "TRANSACTION_MODAL_TITLE": "Transactiedetails",
+  "SIGN_TRANSACTION": "ONDERTEKEN TRANSACTIE",
+  "TRANSACTION_MODAL_DESCRIPTION": "Let op, wanneer je de transactie afwijst zal deze zichtbaar zijn tot de transactietermijn verstreken is",
+
+
+  "CANCEL": "Annuleren",
+  "DISMISS": "Afwijzen",
+
+  "AMOUNT": "Bedrag",
+  "RECIPIENT": "Ontvanger",
+  "MESSAGE": "Bericht",
+  "FEE": "Transactiekost",
+  "ENCRYPTED_MESSAGE": "Versleuteld bericht",
+  "ADD_COSIGNATORY": "Voeg co-ondertekenaar toe",
+  "DELETE_COSIGNATORY": "Verwijder co-ondertekenaar",
+  "RELATIVE_CHANGES": "Relatieve veranderingen",
+  "SUPPLY_INCREASE": "Verhoog",
+  "SUPPLY_DECREASE": "Verlaag",
+
+  "NAME": "Naam",
+  "DESCRIPTION": "Omschrijving",
+  "PROPERTIES": "Eigenschappen",
+  "INITIAL_SUPPLY": "Initiële supply",
+  "DIVISIBILITY": "Deelbaarheid",
+  "TRANSFERABLE": "Transfereerbaar",
+  "SUPPLY_MUTABLE": "Veranderlijke supply",
+  "LEVY": "Heffing",
+  "TYPE": "Type",
+  "LEVY_TYPE_ABSOLUTE": "Absoluut",
+  "LEVY_TYPE_PERCENTIL": "Percentueel",
+  "ACTIVATE_HARVESTING": "Activeer harvesting",
+  "DEACTIVATE_HARVESTING": "Deactiveer harvesting",
+  "HARVESTING": "Harvesting",
+  "REMOTE_ACCOUNT": "Remote account",
+
+  "NAMESPACE": "Namespace",
+  "SUBNAMESPACE_OF": "Subnamespace van",
+
+  "MOSAIC": "Mosaic",
+  "MOSAICS": "Mosaics",
+
+  "ACCOUNT": "NEM Authenticator-account",
+  "COSIG_OF_MULTISIG": "Co-ondertekenaar van Multisig-account",
+
+
+  "MENU_TITLE": "Menu",
+  "MENU_TRANSACTIONS": "Transacties",
+  "MENU_ACCOUNT": "Account",
+  "MENU_REMOVE_ACCOUNT": "Verwijder account",
+
+
+  "LOGIN_TITLE_UNLOCK": "Open NEM Authenticator",
+  "LOGIN_PASSWORD": "Vul je wachtwoord in",
+  "LOGIN_BUTTON_UNLOCK": "Open",
+
+  "REMOVE_ACCOUNT_TITLE": "VERWIJDER ACCOUNT",
+  "REMOVE_ACCOUNT_MESSAGE": "NEM Authenticator zal je account verwijderen en ja zal niet meer kunnen inloggen. Ben je zeker?",
+  "REMOVE_ACCOUNT_AGREE": "Ja",
+  "REMOVE_ACCOUNT_DISMISS": "Nee",
+
+  "ERROR_NO_COSIG": "Het geïmporteerd account is geen co-ondertekenaar van een multisig-account",
+  "ERROR_OFFLINE": "Je bent offline, probeer opnieuw wanneer je weer online bent",
+  "ERROR_PASSWORD": "Het wachtwoord is niet juist",
+  "ERROR_NO_INTERNET": "Controleer je internetverbinding",
+  "ERROR_TRANSACTION_SIGNED": "Transactie al ondertekend, in afwachting om ingesloten te worden in een block",
+  "ERROR_CHECK_PASSWORD": "Controleer wachtwoord",
+  "LOADING_WAIT_TEXT":  "Graag even geduld...",
+  "LOADING_FETCHING_TEXT": "Accountinformatie wordt opgehaald"
+}

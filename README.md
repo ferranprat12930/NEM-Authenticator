@@ -23,9 +23,14 @@ Check [CONTRIBUTING.md](CONTRIBUTING.md)
 
 | username | Role |
 | --- | --- |
-| [@aleixmorgadas](https://github.com/aleixmorgadas) | Project lead |
-| [@guillemsole](https://github.com/guillemsole) | Developer |
-| [@gerardbe](https://t.me/GerardBe) | QA |
+| [Aleix](https://github.com/aleixmorgadas) | Project lead |
+| [Guillem](https://github.com/guillemsole) | Developer |
+| [Rin MIZUNASHI](https://github.com/mizunashi) from NEM Community | Quality assurance |
+| John Galt from NEM Community | Quality assurance |
+| King Cole from NEM Community | Quality assurance |
+| Gerard | Quality assurance |
+| Ziggy from NEM Community | Dutch Language Translator |
+| [David](https://github.com/dgarcia360) from NEM Community | Spanish Language Translator |
 | [Jordi](https://www.behance.net/JordiBrandia) | Logo Designer |
 
 Telegram Group: [https://t.me/nemprojects][telegram-group]
