@@ -69,7 +69,7 @@
   "ACTIVATE_HARVESTING": "Activar cosecha",
   "DEACTIVATE_HARVESTING": "Desactivar cosecha",
   "HARVESTING": "Cosecha",
-  "REMOVE_ACCOUNT": "Cuenta remota",
+  "REMOTE_ACCOUNT": "Cuenta remota",
 
   "NAMESPACE": "Espacio de nombres",
   "SUBNAMESPACE_OF": "Sub-espacio de nombres",

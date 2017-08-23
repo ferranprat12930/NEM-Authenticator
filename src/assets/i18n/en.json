@@ -69,7 +69,7 @@
   "ACTIVATE_HARVESTING": "Activate harvesting",
   "DEACTIVATE_HARVESTING": "Deactivate harvesting",
   "HARVESTING": "Harvesting",
-  "REMOVE_ACCOUNT": "Remote account",
+  "REMOTE_ACCOUNT": "Remote account",
 
   "NAMESPACE": "Namespace",
   "SUBNAMESPACE_OF": "Subnamespace of",
