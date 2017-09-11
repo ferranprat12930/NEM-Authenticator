@@ -1,0 +1,107 @@
+{
+  "TRANSFER": "ÜBERWEISUNG",
+  "IMPORTANCE_TRANSFER": "WICHTIGKEIT",
+  "MULTISIG_AGGREGATE_MODIFICATION": "MULTISIGNATUR ANPASSUNGEN",
+  "PROVISION_NAMESPACE": "PROVISION NAMENSRAUM",
+  "MOSAIC_DEFINITION_CREATION": "MOSAIK DEFINITION ERSTELLUNG",
+  "MOSAIC_SUPPLY_CHANGE": "MOSAIC BESTAND ÄNDERUNG",
+
+  "TRANSACTION": "ÜBERWEISUNG",
+  "STARTED_BY": "Gestartet von",
+  "TRANSACTION_TIMESTAMP": "Überweisung gestartet am",
+  "TRANSACTION_DEADLINE": "Überweisungsfrist ist am",
+  "SIGNING_TRANSACTION": "Signiere Überweisung",
+  "TRANSACTION_SIGNED": "SIGNIERT (es wird bald einem Block hinzugefügtit)",
+  "NO_PENDING_TRANSACTIONS": "Sie haben keine ausstehenden Überweisungen",
+
+  "SETUP": "einrichten",
+  "SETUP_SLIDE_1_TITLE": "Willkommen zu NEM Authenticator",
+  "SETUP_SLIDE_1_DESCRIPTION": "Wir müssen zuerst ihr Konto einrichten",
+  "SETUP_SLIDE_2_TITLE": "Dieser Schritt ist sicherheitsrelevant",
+  "SETUP_SLIDE_2_DESCRIPTION": "Wir müssen ihr NEM Authenticator Konto importieren über den QR code generiert durch",
+  "SETUP_SLIDE_3_TITLE": "Importieren Sie ihr Konto",
+  "SETUP_SLIDE_3_DESCRIPTION": "Importieren",
+  "SETUP_SLIDE_4_TITLE" : "NEM Authenticator Addresse",
+  "SETUP_SLIDE_4_TITLE_2" : "Mitunterzeichner des Multisignatur Kontos",
+  "SETUP_SLIDE_4_TITLE_3" : "Es ist mein Konto",
+
+  "SETUP_SLIDE_5_TITLE" : "Bereit NEM zu verwenden?",
+  "SETUP_SLIDE_5_TITLE_2" : "Fortfahren",
+  "SETUP_SLIDE_5_DESCRIPTION": "Haben Sie ihre Konto-Details überprüft?",
+
+  "SETUP_ACCOUNT_TITLE": "Imporrieren Sie ihr Konto",
+  "SETUP_ACCOUNT_SCAN_THE_QR": "Scan Sie den QR Code",
+  "SETUP_ACCOUNT_SCAN_QR": "QR Code scannen",
+  "SETUP_ACCOUNT_WALLET_NAME": "Wallet Name",
+  "SETUP_ACCOUNT_PASSWORD": "Tragen Sie ihr NEM Auth Konto Passwort",
+  "SETUP_ACCOUNT_IMPORT": "Importieren",
+
+  "TRANSACTION_MODAL_TITLE": "Überweisungs-Details",
+  "SIGN_TRANSACTION": "ÜBERWEISUNG SIGNIEREN",
+  "TRANSACTION_MODAL_DESCRIPTION": "Beachten Sie, wenn sie die Überweisung zurückweisen wird diese erscheinen bis die Überweisungsfrist abgelaufen ist",
+
+
+  "CANCEL": "Abbrechen",
+  "DISMISS": "Zurückweisen",
+
+  "AMOUNT": "Menge",
+  "RECIPIENT": "Empfänger",
+  "MESSAGE": "Nachricht",
+  "FEE": "Gebühr",
+  "ENCRYPTED_MESSAGE": "Verschlüsselte Nachricht",
+  "ADD_COSIGNATORY": "Mitunterzeichner hinzufügen",
+  "DELETE_COSIGNATORY": "Mitunterzeichner entfernen",
+  "RELATIVE_CHANGES": "Relative Änderungen",
+  "SUPPLY_INCREASE": "Erhöhen",
+  "SUPPLY_DECREASE": "Verringern",
+
+  "NAME": "Name",
+  "DESCRIPTION": "Beschreibung",
+  "PROPERTIES": "Eigenschaften",
+  "INITIAL_SUPPLY": "Initialer Bestand",
+  "DIVISIBILITY": "Teilbarkeit",
+  "TRANSFERABLE": "Übertragbar",
+  "SUPPLY_MUTABLE": "Variabler Bestand",
+  "LEVY": "Levy",
+  "TYPE": "Typ",
+  "LEVY_TYPE_ABSOLUTE": "Absolut",
+  "LEVY_TYPE_PERCENTIL": "Prozentual",
+  "ACTIVATE_HARVESTING": "Harvesting aktivieren",
+  "DEACTIVATE_HARVESTING": "Harvesting deaktivieren",
+  "HARVESTING": "Harvesting",
+  "REMOTE_ACCOUNT": "Remote Konto",
+
+  "NAMESPACE": "Namensraum",
+  "SUBNAMESPACE_OF": "Sub-Namensraum von",
+
+  "MOSAIC": "Mosaik",
+  "MOSAICS": "Mosaike",
+
+  "ACCOUNT": "NEM Authenticator Konto",
+  "COSIG_OF_MULTISIG": "Mitunterzeichner von Multisignatur",
+
+
+  "MENU_TITLE": "Menü",
+  "MENU_TRANSACTIONS": "Überweisungen",
+  "MENU_ACCOUNT": "Konto",
+  "MENU_REMOVE_ACCOUNT": "Konto löschen",
+
+
+  "LOGIN_TITLE_UNLOCK": "NEM Authenticator entsperren",
+  "LOGIN_PASSWORD": "Geben Sie ihr Passwort ein",
+  "LOGIN_BUTTON_UNLOCK": "Entsperren",
+
+  "REMOVE_ACCOUNT_TITLE": "KONTO LÖSCHEN",
+  "REMOVE_ACCOUNT_MESSAGE": "NEM Authenticator wird das Konto löschen und sie werden sich nicht mehr einloggen können. Sind Sie sicher?",
+  "REMOVE_ACCOUNT_AGREE": "Ja",
+  "REMOVE_ACCOUNT_DISMISS": "Nein",
+
+  "ERROR_NO_COSIG": "Das importierte Konto ist kein Mitunterzeichner eines Multisignatur-Kontos",
+  "ERROR_OFFLINE": "Sie sind offline, starten Sie den Prozess erneut wenn Sie eine Netzwerkverbindung haben",
+  "ERROR_PASSWORD": "Das Passwort ist ungültig",
+  "ERROR_NO_INTERNET": "Überprüfen Sie ihre Internet Verbindung",
+  "ERROR_TRANSACTION_SIGNED": "Überweisung brerits signiert, warte um in einem Block hinzugefügt zu werden",
+  "ERROR_CHECK_PASSWORD": "Überprüfen Sie ihr Passwort",
+  "LOADING_WAIT_TEXT":  "Bitte warten...",
+  "LOADING_FETCHING_TEXT": "Hole Konto Informationen"
+}
