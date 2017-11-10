@@ -1,0 +1,107 @@
+{
+  "TRANSFER": "転送",
+  "IMPORTANCE_TRANSFER": "インポータンス",
+  "MULTISIG_AGGREGATE_MODIFICATION": "マルチシグの変更",
+  "PROVISION_NAMESPACE": "ネームスペースを作成",
+  "MOSAIC_DEFINITION_CREATION": "モザイクを作成",
+  "MOSAIC_SUPPLY_CHANGE": "モザイク供給量を変更",
+
+  "TRANSACTION": "トランザクション",
+  "STARTED_BY": "発行者",
+  "TRANSACTION_TIMESTAMP": "トランザクション開始時刻",
+  "TRANSACTION_DEADLINE": "トランザクション期限時刻",
+  "SIGNING_TRANSACTION": "トランザクションに署名中",
+  "TRANSACTION_SIGNED": "署名済み(まもなくブロックに取り込まれます)",
+  "NO_PENDING_TRANSACTIONS": "署名待ちのトランザクションはありません",
+
+  "SETUP": "セットアップ",
+  "SETUP_SLIDE_1_TITLE": "NEM Authenticatorへようこそ",
+  "SETUP_SLIDE_1_DESCRIPTION": "アカウントのセットアップを始めます。",
+  "SETUP_SLIDE_2_TITLE": "このステップは非常に重要です。",
+  "SETUP_SLIDE_2_DESCRIPTION": "NEM AuthenticatorアカウントのQRコードの読み込みが必要です。こちらから作成してください。",
+  "SETUP_SLIDE_3_TITLE": "アカウントをインポートする",
+  "SETUP_SLIDE_3_DESCRIPTION": "インポート",
+  "SETUP_SLIDE_4_TITLE" : "NEM Authenticatorアドレス",
+  "SETUP_SLIDE_4_TITLE_2" : "マルチシグ連署人アカウント",
+  "SETUP_SLIDE_4_TITLE_3" : "これは私のアカウントです",
+
+  "SETUP_SLIDE_5_TITLE" : "NEMを使い始める準備はいいですか？",
+  "SETUP_SLIDE_5_TITLE_2" : "続ける",
+  "SETUP_SLIDE_5_DESCRIPTION": "あなたのアカウントの詳細を確認しましたか？",
+
+  "SETUP_ACCOUNT_TITLE": "アカウントのインポート",
+  "SETUP_ACCOUNT_SCAN_THE_QR": "QRコードのスキャン",
+  "SETUP_ACCOUNT_SCAN_QR": "QRコードをスキャン",
+  "SETUP_ACCOUNT_WALLET_NAME": "ウォレット名",
+  "SETUP_ACCOUNT_PASSWORD": "NEM Authアカウントのパスワード",
+  "SETUP_ACCOUNT_IMPORT": "インポート",
+
+  "TRANSACTION_MODAL_TITLE": "トランザクション詳細",
+  "SIGN_TRANSACTION": "トランザクションに署名",
+  "TRANSACTION_MODAL_DESCRIPTION": "トランザクションの取消を行っても、トランザクション期限日時を迎えるまでは表示されることに留意してください。",
+
+
+  "CANCEL": "キャンセル",
+  "DISMISS": "取消",
+
+  "AMOUNT": "量",
+  "RECIPIENT": "受信者",
+  "MESSAGE": "メッセージ",
+  "FEE": "手数料",
+  "ENCRYPTED_MESSAGE": "暗号化されたメッセージ",
+  "ADD_COSIGNATORY": "連署人の追加",
+  "DELETE_COSIGNATORY": "連署人の削除",
+  "RELATIVE_CHANGES": "署名者数の相対変化",
+  "SUPPLY_INCREASE": "増加",
+  "SUPPLY_DECREASE": "減少",
+
+  "NAME": "名前",
+  "DESCRIPTION": "説明",
+  "PROPERTIES": "プロパティ",
+  "INITIAL_SUPPLY": "初期供給量",
+  "DIVISIBILITY": "可分性",
+  "TRANSFERABLE": "譲渡許可",
+  "SUPPLY_MUTABLE": "供給量変更可",
+  "LEVY": "徴収",
+  "TYPE": "タイプ",
+  "LEVY_TYPE_ABSOLUTE": "固定徴収方式",
+  "LEVY_TYPE_PERCENTIL": "パーセンタイル徴収方式",
+  "ACTIVATE_HARVESTING": "委任有効化",
+  "DEACTIVATE_HARVESTING": "委任無効化",
+  "HARVESTING": "ハーベスティング",
+  "REMOTE_ACCOUNT": "リモートアカウント",
+
+  "NAMESPACE": "ネームスペース",
+  "SUBNAMESPACE_OF": "ブネームスぺース",
+
+  "MOSAIC": "モザイク",
+  "MOSAICS": "モザイク",
+
+  "ACCOUNT": "NEM Authenticatorアカウント",
+  "COSIG_OF_MULTISIG": "マルチシグ連署人",
+
+
+  "MENU_TITLE": "メニュー",
+  "MENU_TRANSACTIONS": "トランザクション",
+  "MENU_ACCOUNT": "アカウント",
+  "MENU_REMOVE_ACCOUNT": "リモートアカウント",
+
+
+  "LOGIN_TITLE_UNLOCK": "NEM Authenticatorのアンロック",
+  "LOGIN_PASSWORD": "パスワードを入力してください",
+  "LOGIN_BUTTON_UNLOCK": "アンロック",
+
+  "REMOVE_ACCOUNT_TITLE": "リモートアカウント",
+  "REMOVE_ACCOUNT_MESSAGE": "アカウントを削除すると、二度とログインできなくなります。本当によろしいですか？",
+  "REMOVE_ACCOUNT_AGREE": "はい",
+  "REMOVE_ACCOUNT_DISMISS": "いいえ",
+
+  "ERROR_NO_COSIG": "インポートされたアカウントはマルチシグアカウントの連署人ではありません。",
+  "ERROR_OFFLINE": "オフライン状態です。ネットワークに接続次第、処理されます。",
+  "ERROR_PASSWORD": "パスワードが間違っています",
+  "ERROR_NO_INTERNET": "インターネット接続を確認してください",
+  "ERROR_TRANSACTION_SIGNED": "トランザクションは署名済みです。まもなくブロックに取り込まれます。",
+  "ERROR_CHECK_PASSWORD": "パスワードを確認してください",
+  "LOADING_WAIT_TEXT":  "しばらくお待ちください...",
+  "LOADING_FETCHING_TEXT": "アカウント情報を読み込み中"
+}
