@@ -31,6 +31,7 @@ Check [CONTRIBUTING.md](CONTRIBUTING.md)
 | Gerard | Quality assurance |
 | Ziggy from NEM Community | Dutch Language Translator |
 | [David](https://github.com/dgarcia360) from NEM Community | Spanish Language Translator |
+| [Yoshiyuki Ieyama](https://github.com/44uk) from NEM Community | Japanese Language Translator |
 | [Jordi](https://www.behance.net/JordiBrandia) | Logo Designer |
 
 Telegram Group: [https://t.me/nemprojects][telegram-group]
