@@ -32,6 +32,7 @@ Check [CONTRIBUTING.md](CONTRIBUTING.md)
 | Ziggy from NEM Community | Dutch Language Translator |
 | [David](https://github.com/dgarcia360) from NEM Community | Spanish Language Translator |
 | [Yoshiyuki Ieyama](https://github.com/44uk) from NEM Community | Japanese Language Translator |
+| [cyrus1683](https://github.com/cyrus1683) from NEM Community | German Language Translator |
 | [Jordi](https://www.behance.net/JordiBrandia) | Logo Designer |
 
 Telegram Group: [https://t.me/nemprojects][telegram-group]
