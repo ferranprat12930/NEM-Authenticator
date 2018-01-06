@@ -35,12 +35,12 @@ import {
   NEMLibrary,
   TimeWindow,
   Transaction,
+  MultisigTransactionInfo,
   TransactionHttp,
   TransactionTypes,
   UnconfirmedTransactionListener
 } from "nem-library";
 import {LocalDateTime} from "js-joda";
-import {MultisigTransactionInfo} from "nem-library/dist/src/models/transaction/TransactionInfo";
 import {NetworkTypes} from "nem-library/dist/src/models/node/NetworkTypes";
 import {AccountService} from "../../services/account.service";
 import {TranslateService} from "@ngx-translate/core";
