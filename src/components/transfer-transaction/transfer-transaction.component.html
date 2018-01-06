@@ -5,12 +5,12 @@
   <ion-item text-wrap>{{transaction.recipient.pretty()}}</ion-item>
 </ion-item-group>
 
-<ion-item-group *ngIf="!transaction.mosaics">
+<ion-item-group *ngIf="!transaction.containsMosaics()">
   <ion-item-divider color="light">{{'AMOUNT' | translate}}</ion-item-divider>
   <ion-item>{{transaction.amount | xem}} XEM</ion-item>
 </ion-item-group>
 
-<ion-item-group *ngIf="transaction.mosaics">
+<ion-item-group *ngIf="transaction.containsMosaics()">
   <ion-item-divider color="light">{{'MOSAICS' | translate}}</ion-item-divider>
   <ion-item *ngFor="let mosaic of transaction.mosaics">
     {{mosaic.quantity}} {{mosaic.mosaicId.description()}}
