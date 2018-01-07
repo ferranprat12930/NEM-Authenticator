@@ -7,7 +7,7 @@
 
 <ion-item-group *ngIf="!transaction.containsMosaics()">
   <ion-item-divider color="light">{{'AMOUNT' | translate}}</ion-item-divider>
-  <ion-item>{{transaction.amount | xem}} XEM</ion-item>
+  <ion-item>{{transaction.xem().amount | xem}} XEM</ion-item>
 </ion-item-group>
 
 <ion-item-group *ngIf="transaction.containsMosaics()">
