@@ -56,9 +56,8 @@ export class HomePage {
   private account: Account;
   unconfirmedTransactions: MultisigTransactionPlusView[];
   loader: Loading;
-  accountPulling: Observable<MultisigTransactionPlusView[]>;
 
-   constructor(public navCtrl: NavController,
+  constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,
               public modalCtrl: ModalController,
               public toastCtrl: ToastController,
@@ -66,21 +65,16 @@ export class HomePage {
               private accountService: AccountService,
               public transactionHttp: TransactionHttp,
               private translateService: TranslateService) {
-     this.translateService.get("LOADING_WAIT_TEXT").subscribe(value => {
-       this.loader = loadingCtrl.create({
-         content: value
-       });
-       this.loader.present().then(() => {
-       });
+    this.translateService.get("LOADING_WAIT_TEXT").subscribe(value => {
+      this.loader = loadingCtrl.create({
+        content: value
+      });
+      this.loader.present().then(() => {
+      });
 
-     });
+    });
 
     this.account = this.accountService.getAccount();
-    this.accountPulling = accountHttp.unconfirmedTransactions(this.account.address)
-      .flatMap(_ => _)
-      .filter(transaction => transaction.type == TransactionTypes.MULTISIG)
-      .map(multisigTransaction => new MultisigTransactionPlusView(<MultisigTransaction> multisigTransaction, false, false))
-      .toArray();
     this.fetchTransactions();
 
     let multisig = accountService.getMultisig();
@@ -105,24 +99,29 @@ export class HomePage {
 
   fetchTransactions(refresher?: any) {
     this.unconfirmedTransactions = [];
-    this.accountPulling.subscribe(
-      value => {
-        console.log("transactions", value);
-        this.unconfirmedTransactions = value;
-        this.loader.dismiss();
-        if (refresher) refresher.complete();
-      },
-      error => {
-        this.loader.dismiss();
-        this.translateService.get("ERROR_NO_INTERNET").subscribe(value => {
-          this.toastCtrl.create({
-            message: value,
-            duration: 2000
-          }).present();
+    this.accountHttp.unconfirmedTransactions(this.account.address)
+      .flatMap(_ => _)
+      .filter(transaction => transaction.type == TransactionTypes.MULTISIG)
+      .map(multisigTransaction => new MultisigTransactionPlusView(<MultisigTransaction> multisigTransaction, false, false))
+      .toArray()
+      .subscribe(
+        value => {
+          console.log("transactions", value);
+          this.unconfirmedTransactions = value;
+          this.loader.dismiss();
           if (refresher) refresher.complete();
-        });
-      }
-    );
+        },
+        error => {
+          this.loader.dismiss();
+          this.translateService.get("ERROR_NO_INTERNET").subscribe(value => {
+            this.toastCtrl.create({
+              message: value,
+              duration: 2000
+            }).present();
+            if (refresher) refresher.complete();
+          });
+        }
+      );
   }
 
   doRefresh(refresher) {
