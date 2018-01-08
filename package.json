@@ -1,6 +1,6 @@
 {
   "name": "NEM-Authenticator",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "author": "Aleix Morgadas <aleix602@gmail.com>",
   "private": true,
   "scripts": {

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="17" id="com.nemauthenticator.app" version="0.3.4" xmlns="http://www.w3.org/ns/widgets">
+<widget android-versionCode="18" id="com.nemauthenticator.app" version="0.3.5" xmlns="http://www.w3.org/ns/widgets">
     <name>NEM Auth</name>
     <description>NEM Authenticator for a 2-Factor Confirmation</description>
     <author email="aleix602@gmail.com" href="http://nemauthenticator.com/">NEM Authenticator</author>
