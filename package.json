@@ -1,6 +1,6 @@
 {
   "name": "NEM-Authenticator",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "author": "Aleix Morgadas <aleix602@gmail.com>",
   "private": true,
   "scripts": {
@@ -44,7 +44,7 @@
     "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
     "js-joda": "^1.5.4",
-    "nem-library": "^0.11.0",
+    "nem-library": "^0.11.1",
     "nem-sdk": "^1.5.1",
     "node-sass": "4.5.3",
     "phonegap-plugin-barcodescanner": "^6.0.8",
