@@ -12,8 +12,8 @@
 
 <ion-item-group *ngIf="transaction.containsMosaics()">
   <ion-item-divider color="light">{{'MOSAICS' | translate}}</ion-item-divider>
-  <ion-item *ngFor="let mosaic of transaction.mosaics">
-    {{mosaic.quantity}} {{mosaic.mosaicId.description()}}
+  <ion-item *ngFor="let mosaic of mosaics">
+    {{mosaic.amount}} {{mosaic.mosaicId.description()}}
   </ion-item>
 </ion-item-group>
 

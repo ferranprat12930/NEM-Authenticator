@@ -21,14 +21,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {TransferTransaction} from "nem-library/dist/src/models/transaction/TransferTransaction";
+import {AccountOwnedMosaicsService, MosaicHttp, MosaicService, MosaicTransferable, XEM} from "nem-library";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'transfer-transaction-component',
   templateUrl: './transfer-transaction.component.html'
 })
-export class TransferTransactionComponent {
+export class TransferTransactionComponent implements OnInit {
   @Input() transaction: TransferTransaction;
+  mosaics: MosaicTransferable[] = [];
 
+  ngOnInit(): void {
+    if (this.transaction.containsMosaics()) {
+      const mosaicHttp = new MosaicHttp();
+      Observable.of(this.transaction.mosaics())
+        .flatMap(_ => _)
+        .flatMap((mosaic) => {
+          if (XEM.MOSAICID.equals(mosaic.mosaicId)) return Observable.of(new XEM(mosaic.quantity / Math.pow(10, 6)));
+          else {
+            return mosaicHttp.getMosaicDefinition(mosaic.mosaicId)
+              .map((mosaicDefinition) => {
+                return MosaicTransferable.createWithMosaicDefinition(mosaicDefinition, mosaic.quantity / Math.pow(10, mosaicDefinition.properties.divisibility));
+              });
+          }
+        })
+        .subscribe(mosaicTransferable => this.mosaics.push(mosaicTransferable));
+    }
+  }
 }
